@@ -1,0 +1,9 @@
+2025-12-20 15:19:57,685 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-20 15:20:28,437 - gmail_service - INFO - New email from: stazizovs@gmail.com | Subject: 
+2025-12-20 15:20:55,171 - httpx - INFO - HTTP Request: POST http://localhost:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 15:20:55,172 - gmail_service - INFO - AI generated response for stazizovs@gmail.com. Sending reply...
+2025-12-20 15:20:56,181 - gmail_service - INFO - Reply sent to stazizovs@gmail.com
+2025-12-20 15:21:26,578 - gmail_service - INFO - New email from: stazizovs@gmail.com | Subject: вопрос
+2025-12-20 15:21:50,409 - httpx - INFO - HTTP Request: POST http://localhost:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 15:21:50,410 - gmail_service - INFO - AI generated response for stazizovs@gmail.com. Sending reply...
+2025-12-20 15:21:50,966 - gmail_service - INFO - Reply sent to stazizovs@gmail.com

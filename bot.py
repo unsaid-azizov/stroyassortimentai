@@ -179,7 +179,11 @@ async def handle_message(message: Message) -> None:
         )
         
         # Отправляем ответ пользователю
-        await message.answer(response, parse_mode="HTML")
+        if response:
+            await message.answer(response, parse_mode="HTML")
+        else:
+            # Если ответ пустой (агент решил проигнорировать сообщение/спам)
+            logger.info(f"AI decided to ignore message from user {user_id}")
     
     except Exception as e:
         logger.error(f"Error handling message: {str(e)}", exc_info=True)

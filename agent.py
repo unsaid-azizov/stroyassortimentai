@@ -3,7 +3,8 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from pathlib import Path
 
-from typing import Annotated, TypedDict
+from typing import Annotated, TypedDict, Optional, List
+from pydantic import BaseModel, Field
 from langgraph.prebuilt import create_react_agent
 from langgraph.graph.message import add_messages
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage, AIMessage, ToolMessage
@@ -29,21 +30,29 @@ llm_config = {
     "max_tokens": 2000,
 }
 
+main_llm = ChatOpenAI(
+    model=MAIN_LLM, 
+    **llm_config
+)
+# Резервная модель на случай сбоев
 backup_llm = ChatOpenAI(
     model=BACKUP_LLM, 
     **llm_config
 )
 
-main_llm = ChatOpenAI(
-    model=MAIN_LLM, 
-    **llm_config
-).with_fallbacks([backup_llm])
+# Модель структурированного ответа для классификации и ответа клиенту
+class AgentStructuredResponse(BaseModel):
+    category: str = Field(description="Категория сообщения: SPAM, ORDER_LEAD, COMPANY_INFO, DELIVERY_PAYMENT, SMALL_TALK, OFF_TOPIC, HUMAN_NEEDED")
+    reasoning: str = Field(description="Краткое обоснование выбора категории")
+    response: str = Field(description="Твой ответ клиенту. Если category=SPAM или OFF_TOPIC, может быть пустой строкой или кратким отказом.")
+    ignore: bool = Field(description="true если сообщение - спам или не по теме, и отвечать клиенту НЕ нужно. false в остальных случаях.")
 
 # Определяем схему состояния агента
 class AgentState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
     user_info: dict
     remaining_steps: int
+    structured_response: Optional[AgentStructuredResponse]
 
 def dynamic_prompt_template(state: AgentState) -> list[BaseMessage]:
     """Dynamic prompt template for the agent."""
@@ -70,6 +79,15 @@ def dynamic_prompt_template(state: AgentState) -> list[BaseMessage]:
     system_prompt = f"""Ты - Саид, ведущий менеджер по продажам компании "{company.get('name', 'СтройАссортимент')}". 
 Твоя цель: помочь клиенту выбрать стройматериалы и довести его до покупки или передачи контактов.
 
+КЛАССИФИКАЦИЯ СООБЩЕНИЙ (обязательно выбери одну):
+- SPAM: Реклама, ссылки, боты, предложения услуг.
+- ORDER_LEAD: Клиент хочет купить, спрашивает цену, наличие, просит расчет.
+- COMPANY_INFO: Вопросы про адрес, склад, время работы, видео-инструкции.
+- DELIVERY_PAYMENT: Вопросы про логистику, стоимость доставки, способы оплаты.
+- SMALL_TALK: Приветствия, "спасибо", "как дела".
+- OFF_TOPIC: Любые темы, не связанные со стройматериалами и компанией.
+- HUMAN_NEEDED: Прямой запрос позвать человека или очень сложный тех. вопрос.
+
 ДАННЫЕ О ТЕКУЩЕМ КЛИЕНТЕ:
 - Имя: {user_name}
 - Телефон в профиле: {user_phone}
@@ -77,10 +95,11 @@ def dynamic_prompt_template(state: AgentState) -> list[BaseMessage]:
 
 GUARDRAILS (СТРОГИЕ ПРАВИЛА):
 - Твоя экспертиза ограничена ТОЛЬКО продукцией компании "СтройАссортимент" (пиломатериалы, дерево, услуги компании).
-- Если клиент задает вопросы на отвлеченные темы (программирование, кулинария, политика, общие знания), вежливо откажи: "Извините, я специализируюсь только на строительных материалах и продукции нашей компании. Чем я могу помочь вам в выборе дерева?".
+- Если сообщение классифицировано как SPAM или OFF_TOPIC — установи ignore=true.
 - Не пиши код, не решай задачи, не пиши эссе. Ты - менеджер по продажам, а не универсальный помощник.
 
-ИНСТРУКЦИЯ ПО ОБЩЕНИЮ С КЛИЕНТОМ:
+    ИНСТРУКЦИЯ ПО ОБЩЕНИЮ С КЛИЕНТОМ:
+    - При общении через email: используй более формальный стиль, обязательно здоровайся по имени и добавляй подпись "С уважением, СтройАссортимент".
 - Если клиент спрашивает про АДРЕС, КОНТАКТЫ, ЦЕНЫ или ДОСТАВКУ или СКЛАД и ПРОДУКТЫ — ты ОБЯЗАН сначала вызвать `search_company_info` с соответствующим ключом.
 - Никогда не говори "в базе нет адреса", пока не попробуешь поискать по словам "адрес", "контакты" или "склад".
 - Используй имя клиента органично. Если имя в профиле на латинице (как "Said"), а общение идет на русском — используй русский вариант ("Саид") или сочетай его естественно. 
@@ -93,11 +112,17 @@ GUARDRAILS (СТРОГИЕ ПРАВИЛА):
 - Не будь роботом. Не начинай каждый ответ с приветствия или сообщения о времени работы.
 - Используй информацию о времени ({current_time_str}, {weekday_ru}), только если это критично для ответа (например, "мы уже закрыты, отвечу утром").
 
-ТВОЯ СТРАТЕГИЯ:
-1. Квалификация: Если клиент спрашивает обще, уточни детали (размеры, порода дерева, объем, для каких целей).
-2. Поиск: Используй `search_company_info` для получения точных фактов, цен и ссылок. Не выдумывай данные!
-3. Продажа: Если клиент определился, предложи оформить заказ через `collect_order_info` или позови человека через `call_manager`.
-4. Кросс-сейл: К доскам предлагай антисептик или крепеж, если это уместно.
+    ТВОЯ СТРАТЕГИЯ:
+    1. Квалификация: Перед тем как передать заказ или позвать менеджера, уточни ОБЯЗАТЕЛЬНО:
+       - Куда нужна доставка (город/район)?
+       - Какой объем нужен (в штуках, кубах или м²)?
+       - Нужен ли расчет по проекту (если клиент не знает объем)?
+    2. Поиск: Используй `search_company_info` для получения точных фактов, цен и ссылок. Не выдумывай данные!
+    3. Продажа: Если клиент определился, предложи оформить заказ через `collect_order_info` или позови человека через `call_manager`.
+    4. Кросс-сейл: 
+       - К любой доске/брусу предлагай антисептик (у нас есть свое производство).
+       - К имитации бруса/вагонке предлагай крепеж (метизы).
+       - Если клиент строит дом, предложи расчет утеплителя и пленок.
 
 ДОСТУПНЫЕ ИНСТРУМЕНТЫ:
 - `search_company_info`: получение данных из базы. Аргумент `section` может быть: 'company', 'contacts' (адрес, склад, телефон), 'delivery', 'product_categories' (дерево, товары), 'services', 'payment', 'warranty_and_return', 'special_offers', 'faq'.
@@ -133,11 +158,13 @@ agent_tools = [
 
 # Создаем агента с использованием langgraph.prebuilt.create_react_agent
 # Мы используем prompt для динамического системного промпта и state_schema для метаданных
+# response_format заставляет агента всегда возвращать структурированный JSON
 agent = create_react_agent(
     model=main_llm,
     tools=agent_tools,
     prompt=dynamic_prompt_template,
     state_schema=AgentState,
+    response_format=AgentStructuredResponse,
 )
 
 

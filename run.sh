@@ -13,6 +13,7 @@ show_help() {
     echo "Опции:"
     echo "  --ai       Запустить только AI сервис (FastAPI)"
     echo "  --bot      Запустить только Telegram бота"
+    echo "  --gmail    Запустить только Gmail сервис"
     echo "  --all      Запустить всё вместе"
     echo "  --help     Показать это сообщение"
     echo ""
@@ -24,6 +25,7 @@ cleanup() {
     echo -e "\n${RED}🛑 Останавливаем сервисы...${NC}"
     if [ ! -z "$AI_PID" ]; then kill $AI_PID 2>/dev/null; fi
     if [ ! -z "$BOT_PID" ]; then kill $BOT_PID 2>/dev/null; fi
+    if [ ! -z "$GMAIL_PID" ]; then kill $GMAIL_PID 2>/dev/null; fi
     exit
 }
 
@@ -33,6 +35,7 @@ trap cleanup SIGINT
 # Переменные для отслеживания запуска
 START_AI=false
 START_BOT=false
+START_GMAIL=false
 
 # Разбор аргументов
 if [ $# -eq 0 ]; then
@@ -50,9 +53,14 @@ while [[ $# -gt 0 ]]; do
             START_BOT=true
             shift
             ;;
+        --gmail)
+            START_GMAIL=true
+            shift
+            ;;
         --all)
             START_AI=true
             START_BOT=true
+            START_GMAIL=true
             shift
             ;;
         --help)
@@ -86,8 +94,16 @@ if [ "$START_BOT" = true ]; then
     echo -e "${GREEN}✅ Бот запущен (PID: $BOT_PID, лог: bot.log)${NC}"
 fi
 
+# Запуск Gmail сервиса
+if [ "$START_GMAIL" = true ]; then
+    echo -e "${BLUE}📧 Запуск Gmail сервиса...${NC}"
+    uv run gmail_service.py > gmail_service.log 2>&1 &
+    GMAIL_PID=$!
+    echo -e "${GREEN}✅ Gmail сервис запущен (PID: $GMAIL_PID, лог: gmail_service.log)${NC}"
+fi
+
 echo -e "\n${GREEN}Все выбранные сервисы запущены. Нажмите Ctrl+C для остановки.${NC}"
-echo -e "Используйте 'tail -f ai_service.log' или 'tail -f bot.log' для просмотра логов в реальном времени.\n"
+echo -e "Используйте 'tail -f ai_service.log', 'tail -f bot.log' или 'tail -f gmail_service.log' для просмотра логов.\n"
 
 # Ожидаем завершения фоновых процессов
 wait
