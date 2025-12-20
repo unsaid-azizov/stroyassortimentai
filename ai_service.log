@@ -1,0 +1,18 @@
+INFO:     Will watch for changes in these directories: ['/home/said/agency/1/consultant']
+INFO:     Uvicorn running on http://0.0.0.0:5537 (Press CTRL+C to quit)
+INFO:     Started reloader process [3621733] using WatchFiles
+INFO:     Started server process [3621742]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:52310 - "GET /health HTTP/1.1" 200 OK
+INFO:ai_service:Received message from user 1103652370: /сдуфк...
+INFO:ai_service:Metadata: {'first_name': 'Said', 'last_name': 'Azizov', 'username': 'said_azizov', 'language_code': 'en', 'channel': 'telegram'}
+INFO:httpx:HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:ai_service:Received message from user 1103652370: подскажи как до вас добраться...
+INFO:ai_service:Metadata: {'first_name': 'Said', 'last_name': 'Azizov', 'username': 'said_azizov', 'language_code': 'en', 'channel': 'telegram'}
+INFO:httpx:HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:ai_service:Agent response generated for user 1103652370
+INFO:     127.0.0.1:52318 - "POST /chat HTTP/1.1" 200 OK
+INFO:httpx:HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:ai_service:Agent response generated for user 1103652370
+INFO:     127.0.0.1:52332 - "POST /chat HTTP/1.1" 200 OK
