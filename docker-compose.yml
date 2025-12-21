@@ -1,0 +1,92 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: said_postgres
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ai_service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.ai_service
+    container_name: said_ai_service
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_BASE_URL=${OPENAI_BASE_URL}
+      - MAIN_LLM=${MAIN_LLM}
+      - BACKUP_LLM=${BACKUP_LLM}
+      - JWT_SECRET=${JWT_SECRET}
+      - ADMIN_USERNAME=${ADMIN_USERNAME}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_PASSWORD_HASH=${ADMIN_PASSWORD_HASH}
+    ports:
+      - "5537:5537"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend/logs:/app/logs
+      - ./backend/data:/app/data
+    restart: unless-stopped
+
+  bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.bot
+    container_name: said_bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - AI_SERVICE_URL=http://ai_service:5537
+    depends_on:
+      - ai_service
+    volumes:
+      - ./backend/logs:/app/logs
+    restart: unless-stopped
+
+  gmail_service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.gmail
+    container_name: said_gmail
+    environment:
+      - IMAP_SERVER=${IMAP_SERVER}
+      - IMAP_PORT=${IMAP_PORT}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - AI_SERVICE_URL=http://ai_service:5537
+    depends_on:
+      - ai_service
+    volumes:
+      - ./backend/logs:/app/logs
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: said_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5537
+    depends_on:
+      - ai_service
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+

@@ -1,0 +1,735 @@
+2025-12-20 18:17:30,617 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-20 19:25:04,538 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-20 19:31:38,371 - gmail_service - INFO - New email from: stazizovs@gmail.com | Subject: предложение
+2025-12-20 19:32:17,201 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 19:32:17,207 - gmail_service - INFO - AI generated response for stazizovs@gmail.com. Sending reply...
+2025-12-20 19:32:17,813 - gmail_service - INFO - Reply sent to stazizovs@gmail.com
+2025-12-20 19:35:23,302 - gmail_service - ERROR - IMAP Error: [Errno 101] Network is unreachable
+2025-12-21 13:01:02,710 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-21 15:08:06,559 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:08:06,890 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:08:37,143 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:08:37,184 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:09:07,424 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:09:07,457 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:09:37,734 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:09:37,768 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:10:08,085 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:10:08,116 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:10:38,404 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:10:38,434 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:11:08,683 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:11:08,713 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:11:39,005 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:11:39,039 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:12:09,306 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:12:09,338 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:12:39,636 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:12:39,668 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:13:09,961 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:13:09,992 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:13:40,263 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:13:40,295 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:14:10,540 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:14:10,568 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:14:40,822 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:14:40,853 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:15:11,129 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:15:11,160 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:15:41,458 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:15:41,486 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:16:11,741 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:16:11,773 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:16:42,261 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:16:42,294 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:17:12,800 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:17:12,831 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:17:43,107 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:17:43,138 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:18:13,445 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:18:13,476 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:18:43,812 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:18:43,846 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:19:14,171 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:19:14,201 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:19:44,463 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:19:44,492 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:20:14,753 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:20:14,795 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:20:45,062 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:20:45,095 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:21:15,584 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:21:15,616 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:21:45,891 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:21:45,920 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:22:16,177 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:22:16,208 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:22:46,487 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:22:46,516 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:23:16,776 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:23:16,808 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:23:47,068 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:23:47,101 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:24:17,373 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:24:17,405 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:24:47,674 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:24:47,702 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:25:17,966 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:25:18,004 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:25:48,273 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:25:48,311 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:26:18,570 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:26:18,599 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:26:48,872 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:26:48,908 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:27:19,165 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:27:19,204 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:27:49,470 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:27:49,502 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:28:19,762 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:28:19,799 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:28:50,064 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:28:50,100 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:29:20,355 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:29:20,389 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:29:50,666 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:29:50,696 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:30:20,973 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:30:21,007 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:30:51,284 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:30:51,318 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:31:21,582 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:31:21,626 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:31:51,911 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:31:51,943 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:32:22,206 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:32:22,236 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:32:52,494 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:32:52,528 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:33:22,787 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:33:22,818 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:33:53,087 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:33:53,120 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:34:23,598 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:34:23,632 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:34:53,898 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:34:53,932 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:35:24,186 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:35:24,216 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:35:55,501 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:35:55,532 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:36:25,831 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:36:25,859 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:36:56,115 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:36:56,142 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:37:26,417 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:37:26,447 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:37:56,720 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:37:56,748 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:38:27,067 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:38:27,099 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:38:57,436 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:38:57,465 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:39:27,748 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:39:27,779 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:39:58,082 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:39:58,113 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:40:28,879 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:40:28,914 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:40:29,159 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:40:29,177 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:40:59,870 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:40:59,901 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:40:59,926 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:40:59,944 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:41:30,204 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:41:30,236 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:41:30,261 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:41:30,280 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:42:00,537 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:42:00,568 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:42:00,592 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:42:00,608 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:42:30,869 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:42:30,900 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:42:30,977 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:42:30,999 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:43:01,250 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:43:01,284 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:43:01,308 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:43:01,326 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:43:31,661 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:43:31,697 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:43:31,721 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:43:31,741 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:44:02,018 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:44:02,064 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:44:02,090 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:44:02,108 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:44:32,398 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:44:32,428 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:44:32,454 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:44:32,470 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:45:02,993 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:45:03,029 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:45:03,054 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:45:03,075 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:45:33,429 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:45:33,500 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:45:33,535 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:45:33,569 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:46:03,838 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:46:03,871 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:46:03,897 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:46:03,921 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:46:34,245 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:46:34,278 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:46:34,305 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:46:34,327 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:47:04,622 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:47:04,653 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:47:04,679 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:47:04,694 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:47:34,959 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:47:35,006 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:47:35,028 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:47:35,048 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:48:05,313 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:48:05,343 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:48:05,376 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:48:05,394 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:48:35,675 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:48:35,708 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:48:35,734 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:48:35,755 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:49:06,275 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:49:24,844 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:49:24,901 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:49:24,920 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:49:55,199 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:49:55,233 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:49:55,258 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:49:55,276 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:50:25,560 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:50:25,596 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:50:25,620 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:50:25,642 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:50:55,934 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:50:55,979 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:50:56,012 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:50:56,032 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:51:26,612 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:51:26,642 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:51:26,718 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:51:26,739 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:51:57,039 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:51:57,072 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:51:57,099 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:51:57,118 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:52:27,378 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:52:27,413 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:52:27,438 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:52:27,458 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:52:57,826 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:52:57,856 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:52:57,881 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:52:57,899 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:53:28,171 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:53:28,204 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:53:28,228 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:53:28,247 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:53:58,568 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:53:58,600 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:53:58,627 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:53:58,646 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:54:28,944 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:54:28,979 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:54:29,014 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:54:29,031 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:54:59,404 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:54:59,438 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:54:59,504 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:54:59,522 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:55:30,202 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:55:30,236 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:55:30,259 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:55:30,277 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:56:00,751 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:56:00,784 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:56:00,809 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:56:00,830 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:56:31,102 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:56:31,138 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:56:31,165 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:56:31,188 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:57:01,680 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:57:01,717 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:57:01,773 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:57:01,792 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:57:32,124 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:57:32,154 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:57:32,211 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:57:32,230 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:58:02,591 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:58:02,629 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:58:02,691 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:58:02,716 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:58:32,975 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:58:33,006 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:58:33,031 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:58:33,049 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:59:03,792 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:59:03,844 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:59:03,939 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:59:03,964 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 15:59:34,342 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 15:59:34,376 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 15:59:34,437 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 15:59:34,456 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:00:04,897 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:00:04,944 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:00:04,972 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:00:04,999 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:00:35,333 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:00:35,363 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:00:35,390 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:00:35,411 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:01:05,850 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:01:05,880 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:01:05,942 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:01:05,959 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:01:36,778 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:01:36,815 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:01:36,840 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:01:36,857 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:02:07,181 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:02:07,216 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:02:07,266 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:02:07,284 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:02:37,542 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:02:37,573 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:02:37,638 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:02:37,657 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:03:07,925 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:03:07,956 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:03:08,003 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:03:08,021 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:03:38,288 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:03:38,323 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:03:38,352 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:03:38,380 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:04:08,645 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:04:08,675 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:04:08,701 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:04:08,720 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:04:38,988 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:04:39,020 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:04:39,045 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:04:39,062 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:05:09,335 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:05:09,363 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:05:09,390 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:05:09,406 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:05:39,679 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:05:39,728 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:05:39,758 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:05:39,786 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:06:10,062 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:06:10,096 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:06:10,121 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:06:10,139 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:06:41,212 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:06:41,248 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:06:41,291 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:06:41,316 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:07:11,812 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:07:11,848 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:07:11,873 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:07:11,890 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:07:42,165 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:07:42,199 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:07:42,234 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:07:42,252 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:08:12,521 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:08:12,552 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:08:12,578 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:08:12,597 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:08:42,849 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:08:42,880 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:08:42,902 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:08:42,918 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:09:13,172 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:09:13,204 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:09:13,229 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:09:13,249 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:09:43,564 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:09:43,596 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:09:43,622 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:09:43,643 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:09:43,686 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:09:43,718 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:13,992 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:10:14,025 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:14,048 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:10:14,072 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:14,109 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:10:14,151 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:44,440 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:10:44,474 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:44,497 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:10:44,518 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:44,557 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:10:44,592 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:10:44,631 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:10:44,664 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:11:14,927 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:11:14,957 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:11:14,980 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:11:15,005 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:11:15,041 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:11:15,080 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:11:15,108 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:11:15,143 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:11:45,401 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:11:45,448 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:11:45,473 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:11:45,501 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:11:45,537 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:11:45,571 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:11:45,605 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:11:45,636 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:15,892 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:12:15,922 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:15,948 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:12:15,965 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:16,000 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:12:16,038 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:16,067 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:12:16,098 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:46,688 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:12:46,720 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:46,747 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:12:46,767 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:46,885 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:12:46,916 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:12:46,963 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:12:46,992 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:17,309 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:13:17,336 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:17,362 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:13:17,377 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:17,416 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:13:17,446 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:17,477 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:13:17,512 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:48,003 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:13:48,039 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:48,066 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:13:48,085 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:48,121 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:13:48,152 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:13:48,184 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:13:48,216 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:18,544 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:14:18,575 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:18,602 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:14:18,620 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:18,691 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:14:18,720 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:18,756 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:14:18,800 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:49,110 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:14:49,142 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:49,170 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:14:49,186 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:49,218 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:14:49,248 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:14:49,286 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:14:49,316 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:19,863 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:15:19,899 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:19,926 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:15:19,946 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:20,005 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:15:20,042 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:20,080 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:15:20,114 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:50,414 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:15:50,444 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:50,469 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:15:50,486 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:50,523 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:15:50,552 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:15:50,584 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:15:50,612 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:16:20,947 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:16:20,976 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:16:21,009 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:16:21,028 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:16:21,065 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:16:21,096 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:16:21,401 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:16:21,432 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:16:51,694 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:16:51,739 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:16:51,764 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:16:51,784 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:16:51,829 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:17:10,380 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:17:10,413 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:17:10,448 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:17:41,037 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:17:41,081 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:17:41,106 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:17:41,124 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:17:41,156 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:17:41,186 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:17:41,232 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:17:41,264 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:11,549 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:18:11,580 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:11,605 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:18:11,624 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:11,659 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:18:11,688 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:11,717 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:18:11,748 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:42,042 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:18:42,072 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:42,179 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:18:42,195 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:42,246 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:18:42,277 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:18:42,345 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:18:42,381 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:12,733 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:19:12,764 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:12,810 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:19:12,828 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:12,865 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:19:12,899 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:12,934 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:19:12,966 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:43,235 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:19:43,272 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:43,298 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:19:43,316 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:43,354 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:19:43,387 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:19:43,419 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:19:43,450 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:13,713 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:20:13,756 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:13,816 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:20:13,840 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:13,910 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:20:13,952 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:14,033 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:20:14,067 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:44,568 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:20:44,608 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:44,720 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:20:44,740 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:44,847 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:20:44,879 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:20:44,961 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:20:44,996 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:21:15,278 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:21:15,321 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:21:15,364 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:21:15,386 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:21:15,455 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:21:15,487 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:21:15,520 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:21:15,552 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:21:45,834 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:21:45,868 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:21:45,897 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:21:45,917 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:21:45,999 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:21:46,036 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:21:46,068 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:21:46,102 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:16,355 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:22:16,392 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:16,418 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:22:16,440 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:16,476 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:22:16,512 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:16,540 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:22:16,572 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:46,853 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:22:46,886 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:46,913 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:22:46,931 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:46,966 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:22:46,995 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:22:47,074 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:22:47,106 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:17,502 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:23:17,544 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:17,569 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:23:17,591 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:17,628 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:23:17,661 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:17,689 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:23:17,721 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:48,000 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:23:48,034 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:48,057 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:23:48,077 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:48,111 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:23:48,145 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:23:48,174 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:23:48,204 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:18,545 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:24:18,584 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:18,609 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:24:18,632 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:18,664 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:24:18,701 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:18,731 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:24:18,768 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:49,029 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:24:49,059 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:49,082 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:24:49,102 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:49,138 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:24:49,171 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:24:49,201 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:24:49,233 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:19,556 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:25:19,603 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:19,629 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:25:19,652 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:19,697 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:25:19,732 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:19,765 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:25:19,795 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:50,061 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:25:50,095 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:50,120 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:25:50,137 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:50,174 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:25:50,202 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:25:50,264 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:25:50,294 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:20,563 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:26:20,594 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:20,617 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:26:20,642 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:20,682 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:26:20,708 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:20,739 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:26:20,772 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:51,252 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:26:51,280 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:51,526 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:26:51,544 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:51,579 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:26:51,620 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:26:51,657 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:26:51,692 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:27:22,113 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:27:22,147 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:27:22,173 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:27:22,203 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:27:22,238 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:27:22,267 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:27:22,340 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:27:22,372 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:27:52,713 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:27:52,761 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:27:52,843 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:27:52,865 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:27:52,920 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:27:52,952 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:27:52,988 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:27:53,024 - gmail_service - ERROR - Error processing email via AI: All connection attempts failed
+2025-12-21 16:28:23,324 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:28:23,356 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:23,390 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:28:23,406 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:23,442 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:28:23,475 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:23,536 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:28:23,568 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:53,889 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:28:53,930 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:53,959 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:28:53,985 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:54,051 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:28:54,098 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:28:54,134 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:28:54,168 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:24,741 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:29:24,770 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:24,804 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:29:24,822 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:24,869 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:29:24,903 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:24,980 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:29:25,020 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:55,979 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:29:56,019 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:56,065 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:29:56,088 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:56,123 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:29:56,156 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:29:56,184 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:29:56,212 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:26,484 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:30:26,515 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:26,539 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:30:26,556 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:26,589 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:30:26,616 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:26,647 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:30:26,677 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:57,415 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:30:57,455 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:57,481 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:30:57,513 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:57,547 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:30:57,589 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:30:57,633 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:30:57,671 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:27,951 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:31:27,993 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:28,042 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:31:28,061 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:28,097 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:31:28,132 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:28,161 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:31:28,199 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:58,465 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:31:58,502 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:58,532 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:31:58,549 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:58,585 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:31:58,624 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:31:58,659 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:31:58,694 - gmail_service - ERROR - Error processing email via AI: [Errno -3] Temporary failure in name resolution
+2025-12-21 16:32:28,970 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:33:25,550 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 16:33:25,551 - gmail_service - INFO - AI decided to ignore email from noreply@ofd.ru (Spam/Off-topic)
+2025-12-21 16:33:26,067 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 ChatGPT Images v. Nano Banano
+2025-12-21 16:33:46,818 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 16:33:46,819 - gmail_service - INFO - AI decided to ignore email from hello@digest.producthunt.com (Spam/Off-topic)
+2025-12-21 16:33:47,427 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 200,0 руб
+2025-12-21 16:34:22,595 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 16:34:22,596 - gmail_service - INFO - AI decided to ignore email from noreply@ofd.ru (Spam/Off-topic)
+2025-12-21 16:34:23,039 - gmail_service - INFO - New email from: noreply@ofd.ru | Subject: Кассовый чек + (1) подарок. ИП Абдуллаев Даниял Мухтарович 100,0 руб
+2025-12-21 16:34:58,192 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 16:34:58,193 - gmail_service - INFO - AI decided to ignore email from noreply@ofd.ru (Spam/Off-topic)
+2025-12-21 19:17:30,817 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-21 19:20:06,590 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-21 19:38:16,837 - gmail_service - INFO - New email from: ozontravel@news.ozon.ru | Subject: 🐎Ваша удача в этом письме. Открывайте скорее!
+2025-12-21 19:38:34,007 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:38:34,008 - gmail_service - INFO - AI decided to ignore email from ozontravel@news.ozon.ru (Spam/Off-topic)
+2025-12-21 19:55:19,107 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-21 20:23:10,025 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-21 20:36:16,139 - gmail_service - INFO - New email from: pinterest-recommendations@ideas.pinterest.com | Subject: Knit patterns for Said
+2025-12-21 20:36:34,750 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 20:36:34,751 - gmail_service - INFO - AI decided to ignore email from pinterest-recommendations@ideas.pinterest.com (Spam/Off-topic)
+2025-12-21 20:56:49,634 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...

@@ -1,0 +1,251 @@
+2025-12-20 18:17:36,037 - bot - INFO - Starting bot...
+2025-12-20 18:17:36,038 - bot - INFO - Bot is starting...
+2025-12-20 18:17:36,407 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
+2025-12-20 18:17:36,408 - aiogram.dispatcher - INFO - Start polling
+2025-12-20 18:17:36,516 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-20 18:55:03,531 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-20 18:55:03,591 - aiogram.event - INFO - Update id=84657404 is handled. Duration 160 ms by bot id=8016349214
+2025-12-20 19:24:24,199 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-20 19:24:24,200 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-20 19:24:24,200 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-20 19:24:24,200 - bot - INFO - Bot is shutting down...
+2025-12-20 19:25:08,629 - bot - INFO - Starting bot...
+2025-12-20 19:25:08,629 - bot - INFO - Bot is starting...
+2025-12-20 19:25:08,891 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
+2025-12-20 19:25:08,892 - aiogram.dispatcher - INFO - Start polling
+2025-12-20 19:25:08,997 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-20 19:25:09,155 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-20 19:25:09,216 - aiogram.event - INFO - Update id=84657405 is handled. Duration 189 ms by bot id=8016349214
+2025-12-20 19:27:52,943 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 19:27:53,010 - aiogram.event - INFO - Update id=84657406 is handled. Duration 13527 ms by bot id=8016349214
+2025-12-20 19:28:32,436 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 19:28:32,496 - aiogram.event - INFO - Update id=84657407 is handled. Duration 26137 ms by bot id=8016349214
+2025-12-21 13:00:51,380 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-21 13:00:51,382 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 13:00:51,383 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-21 13:00:51,383 - bot - INFO - Bot is shutting down...
+2025-12-21 13:01:06,780 - bot - INFO - Starting bot...
+2025-12-21 13:01:06,781 - bot - INFO - Bot is starting...
+2025-12-21 13:01:07,025 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
+2025-12-21 13:01:07,026 - aiogram.dispatcher - INFO - Start polling
+2025-12-21 13:01:07,117 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 13:53:29,847 - bot - ERROR - Error calling AI service: [Errno -3] Temporary failure in name resolution
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-12-21 13:53:29,913 - aiogram.event - INFO - Update id=84657408 is handled. Duration 197 ms by bot id=8016349214
+2025-12-21 17:00:34,758 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 17:00:34,820 - aiogram.event - INFO - Update id=84657409 is handled. Duration 10680 ms by bot id=8016349214
+2025-12-21 19:15:06,601 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-21 19:15:06,602 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 19:15:06,602 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-21 19:15:06,602 - bot - INFO - Bot is shutting down...
+2025-12-21 19:17:39,247 - bot - INFO - Starting bot...
+2025-12-21 19:17:39,252 - bot - INFO - Bot is starting...
+2025-12-21 19:17:39,541 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
+2025-12-21 19:17:39,542 - aiogram.dispatcher - INFO - Start polling
+2025-12-21 19:17:39,651 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 19:58:24,525 - aiogram.event - INFO - Update id=84657410 is handled. Duration 136 ms by bot id=8016349214
+2025-12-21 19:58:44,540 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:58:44,597 - aiogram.event - INFO - Update id=84657411 is handled. Duration 16416 ms by bot id=8016349214
+2025-12-21 19:59:20,314 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:59:20,371 - aiogram.event - INFO - Update id=84657412 is handled. Duration 12643 ms by bot id=8016349214
+2025-12-21 19:59:56,979 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:59:57,044 - aiogram.event - INFO - Update id=84657413 is handled. Duration 23443 ms by bot id=8016349214
+2025-12-21 20:03:36,551 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 20:03:36,627 - aiogram.event - INFO - Update id=84657414 is handled. Duration 46346 ms by bot id=8016349214
+2025-12-21 20:06:13,429 - bot - ERROR - Timeout when calling AI service for user 1636399323
+2025-12-21 20:06:13,491 - aiogram.event - INFO - Update id=84657415 is handled. Duration 60138 ms by bot id=8016349214
+2025-12-21 20:20:58,476 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-21 20:20:58,477 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 20:20:58,477 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-21 20:20:58,478 - bot - INFO - Bot is shutting down...
+2025-12-21 20:23:13,629 - bot - INFO - Starting bot...
+2025-12-21 20:23:13,631 - bot - INFO - Bot is starting...
+2025-12-21 20:23:13,878 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
+2025-12-21 20:23:13,878 - aiogram.dispatcher - INFO - Start polling
+2025-12-21 20:23:13,986 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'

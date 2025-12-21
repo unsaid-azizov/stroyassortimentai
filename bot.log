@@ -1,8 +1,0 @@
-2025-12-20 15:20:00,779 - __main__ - INFO - Starting bot...
-2025-12-20 15:20:00,779 - __main__ - INFO - Bot is starting...
-2025-12-20 15:20:00,860 - httpx - INFO - HTTP Request: GET http://localhost:5537/health "HTTP/1.1 200 OK"
-2025-12-20 15:20:00,860 - __main__ - INFO - AI service is available at http://localhost:5537
-2025-12-20 15:20:00,860 - aiogram.dispatcher - INFO - Start polling
-2025-12-20 15:20:00,946 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
-2025-12-20 15:43:00,430 - httpx - INFO - HTTP Request: POST http://localhost:5537/chat "HTTP/1.1 200 OK"
-2025-12-20 15:43:00,502 - aiogram.event - INFO - Update id=84657403 is handled. Duration 10946 ms by bot id=8016349214
