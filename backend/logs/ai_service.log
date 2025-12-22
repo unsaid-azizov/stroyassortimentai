@@ -155,3 +155,7 @@ AttributeError: module 'bcrypt' has no attribute '__about__'
 2025-12-21 20:36:16,468 - ai_service - INFO - Received message from user pinterest-recommendations@ideas.pinterest.com: To view this content, open the following URL in yo...
 2025-12-21 20:36:17,264 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
 2025-12-21 20:36:27,166 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-22 04:02:05,069 - ai_service - INFO - Received message from user support@email-service.bybit.com: <html><head><style>
+  p{ margin:10px 0; padding:0...
+2025-12-22 04:02:05,830 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-22 04:02:14,196 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"

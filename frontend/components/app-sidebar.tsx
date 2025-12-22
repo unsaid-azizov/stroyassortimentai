@@ -8,6 +8,7 @@ import {
   IconUsers,
   IconBriefcase,
   IconCalculator,
+  IconSettings,
 } from "@tabler/icons-react"
 
 import { NavDocuments } from "@/components/nav-documents"
@@ -34,72 +35,77 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     setComingSoonOpen(true)
   }
 
-  const data = {
-    user: {
-      name: "shadcn",
-      email: "m@example.com",
-      avatar: "/avatars/shadcn.jpg",
-    },
-    navMain: [
-      {
+const data = {
+  user: {
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
+  },
+  navMain: [
+    {
         title: "Главная",
         url: "/dashboard",
-        icon: IconDashboard,
-      },
-      {
+      icon: IconDashboard,
+    },
+        {
         title: "Менеджер продаж",
         url: "/sales-manager",
         icon: IconFileAi,
-      },
-      {
+    },
+        {
+          title: "Настройки",
+          url: "/settings",
+          icon: IconSettings,
+        },
+    {
         title: "HR",
-        url: "#",
+      url: "#",
         icon: IconBriefcase,
         onClick: () => handleComingSoon("HR"),
-      },
-      {
+    },
+    {
         title: "Бухгалтер",
-        url: "#",
+      url: "#",
         icon: IconCalculator,
         onClick: () => handleComingSoon("Бухгалтер"),
-      },
-      {
+    },
+    {
         title: "Лиды",
         url: "/leads",
-        icon: IconUsers,
-      },
-    ],
+      icon: IconUsers,
+    },
+  ],
     navClouds: [],
     navSecondary: [],
     documents: [],
-  }
+}
 
   return (
     <>
-      <Sidebar collapsible="offcanvas" {...props}>
-        <SidebarHeader>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton
-                asChild
-                className="data-[slot=sidebar-menu-button]:!p-1.5"
-              >
+    <Sidebar collapsible="offcanvas" {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className="data-[slot=sidebar-menu-button]:!p-1.5"
+            >
                 <a href="/dashboard">
-                  <IconInnerShadowTop className="!size-5" />
+                <IconInnerShadowTop className="!size-5" />
                   <span className="text-base font-semibold">СтройАссортимент</span>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
-        <SidebarContent>
-          <NavMain items={data.navMain} />
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <NavMain items={data.navMain} />
           {data.documents.length > 0 && <NavDocuments items={data.documents} />}
-        </SidebarContent>
-        <SidebarFooter>
-          <NavUser user={data.user} />
-        </SidebarFooter>
-      </Sidebar>
+      </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={data.user} />
+      </SidebarFooter>
+    </Sidebar>
       <ComingSoonDialog
         open={comingSoonOpen}
         onOpenChange={setComingSoonOpen}

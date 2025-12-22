@@ -25,7 +25,7 @@ from db.repository import (
     get_active_prompt_config, create_prompt_config,
     get_user_by_username, get_user_by_email, create_user,
     get_business_metrics, get_channel_distribution, get_enhanced_funnel,
-    get_order_leads_timeline
+    get_order_leads_timeline, get_settings, upsert_settings
 )
 from auth import authenticate_user, create_access_token, verify_token, get_password_hash
 
@@ -254,6 +254,22 @@ class UpdateKnowledgeBaseRequest(BaseModel):
     content: Dict
 
 
+class SettingsRequest(BaseModel):
+    openrouter_token: Optional[str] = None
+    telegram_bot_token: Optional[str] = None
+    smtp_user: Optional[str] = None
+    smtp_password: Optional[str] = None
+    sales_email: Optional[str] = None
+    imap_server: Optional[str] = None
+    imap_port: Optional[int] = None
+    smtp_server: Optional[str] = None
+    smtp_port: Optional[int] = None
+
+
+class SettingsResponse(BaseModel):
+    settings: SettingsRequest
+
+
 @app.get("/health", response_model=HealthResponse)
 async def health_check():
     """Health check endpoint."""
@@ -474,8 +490,22 @@ async def list_leads(
             page=page,
             limit=limit
         )
+        # Конвертируем лиды в формат ответа, преобразуя UUID в строки
+        leads_data = []
+        for lead in leads:
+            lead_dict = {
+                "id": str(lead.id),
+                "external_id": lead.external_id,
+                "channel": lead.channel,
+                "name": lead.name,
+                "phone": lead.phone,
+                "email": lead.email,
+                "last_seen": lead.last_seen
+            }
+            leads_data.append(LeadResponse(**lead_dict))
+        
         return LeadsListResponse(
-            leads=[LeadResponse.model_validate(lead) for lead in leads],
+            leads=leads_data,
             total=total,
             page=page,
             limit=limit
@@ -492,7 +522,15 @@ async def get_lead(
         lead = await get_lead_by_id(db_session, uuid.UUID(lead_id))
         if not lead:
             raise HTTPException(status_code=404, detail="Lead not found")
-        return LeadResponse.model_validate(lead)
+        return LeadResponse(
+            id=str(lead.id),
+            external_id=lead.external_id,
+            channel=lead.channel,
+            name=lead.name,
+            phone=lead.phone,
+            email=lead.email,
+            last_seen=lead.last_seen
+        )
 
 
 @app.get("/api/threads", response_model=List[ThreadResponse])
@@ -505,7 +543,15 @@ async def list_threads(
     async with async_session_factory() as db_session:
         thread_lead_id = uuid.UUID(lead_id) if lead_id else None
         threads = await get_threads(db_session, lead_id=thread_lead_id, status=status)
-        return [ThreadResponse.model_validate(thread) for thread in threads]
+        return [
+            ThreadResponse(
+                id=str(thread.id),
+                lead_id=str(thread.lead_id),
+                status=thread.status,
+                created_at=thread.created_at
+            )
+            for thread in threads
+        ]
 
 
 @app.get("/api/threads/{thread_id}", response_model=ThreadDetailResponse)
@@ -522,7 +568,15 @@ async def get_thread(
         messages = await get_messages(db_session, uuid.UUID(thread_id))
         messages_data = []
         for msg in messages:
-            msg_dict = MessageResponseDetail.model_validate(msg).model_dump()
+            msg_dict = {
+                "id": str(msg.id),
+                "thread_id": str(msg.thread_id),
+                "sender_role": msg.sender_role,
+                "sender_id": msg.sender_id,
+                "content": msg.content,
+                "created_at": msg.created_at,
+                "ai_stats": None
+            }
             if msg.ai_stats:
                 msg_dict["ai_stats"] = {
                     "category": msg.ai_stats.category,
@@ -539,7 +593,15 @@ async def get_thread(
             lead_id=str(thread.lead_id),
             status=thread.status,
             created_at=thread.created_at,
-            lead=LeadResponse.model_validate(thread.lead),
+            lead=LeadResponse(
+                id=str(thread.lead.id),
+                external_id=thread.lead.external_id,
+                channel=thread.lead.channel,
+                name=thread.lead.name,
+                phone=thread.lead.phone,
+                email=thread.lead.email,
+                last_seen=thread.lead.last_seen
+            ),
             messages=messages_data
         )
 
@@ -554,7 +616,15 @@ async def get_thread_messages(
         messages = await get_messages(db_session, uuid.UUID(thread_id))
         messages_data = []
         for msg in messages:
-            msg_dict = MessageResponseDetail.model_validate(msg).model_dump()
+            msg_dict = {
+                "id": str(msg.id),
+                "thread_id": str(msg.thread_id),
+                "sender_role": msg.sender_role,
+                "sender_id": msg.sender_id,
+                "content": msg.content,
+                "created_at": msg.created_at,
+                "ai_stats": None
+            }
             if msg.ai_stats:
                 msg_dict["ai_stats"] = {
                     "category": msg.ai_stats.category,
@@ -579,7 +649,12 @@ async def update_thread(
         thread = await update_thread_status(db_session, uuid.UUID(thread_id), request.status)
         if not thread:
             raise HTTPException(status_code=404, detail="Thread not found")
-        return ThreadResponse.model_validate(thread)
+        return ThreadResponse(
+            id=str(thread.id),
+            lead_id=str(thread.lead_id),
+            status=thread.status,
+            created_at=thread.created_at
+        )
 
 
 # Статистика
@@ -691,7 +766,14 @@ async def get_prompt(
             # Для этого нужно извлечь системный промпт из функции
             # Пока возвращаем пустой контент, который фронтенд может заполнить
             raise HTTPException(status_code=404, detail="No active prompt config found")
-        return PromptConfigResponse.model_validate(config)
+        return PromptConfigResponse(
+            id=str(config.id),
+            name=config.name,
+            version=config.version,
+            content=config.content,
+            is_active=config.is_active,
+            created_at=config.created_at
+        )
 
 
 @app.put("/api/settings/prompt", response_model=PromptConfigResponse)
@@ -704,7 +786,14 @@ async def update_prompt(
         config = await create_prompt_config(db_session, request.content, request.name)
         # TODO: Hot reload агента - нужно перезагрузить промпт в памяти
         # Это будет реализовано через глобальную переменную или singleton
-        return PromptConfigResponse.model_validate(config)
+        return PromptConfigResponse(
+            id=str(config.id),
+            name=config.name,
+            version=config.version,
+            content=config.content,
+            is_active=config.is_active,
+            created_at=config.created_at
+        )
 
 
 @app.get("/api/settings/knowledge-base", response_model=KnowledgeBaseResponse)
@@ -738,6 +827,56 @@ async def reload_agent(
     """Принудительная перезагрузка агента."""
     # TODO: Реализовать перезагрузку промпта и БЗ в памяти
     return {"status": "ok", "message": "Agent reloaded"}
+
+
+@app.get("/api/settings", response_model=SettingsResponse)
+async def get_settings_endpoint(
+    current_user: dict = Depends(verify_token)
+):
+    """Получить настройки системы."""
+    async with async_session_factory() as db_session:
+        settings_obj = await get_settings(db_session, "system")
+        if settings_obj:
+            settings_dict = settings_obj.value
+        else:
+            # Возвращаем пустые настройки, если их нет
+            settings_dict = {}
+        
+        return SettingsResponse(
+            settings=SettingsRequest(**settings_dict)
+        )
+
+
+@app.put("/api/settings", response_model=SettingsResponse)
+async def update_settings_endpoint(
+    request: SettingsRequest,
+    current_user: dict = Depends(verify_token)
+):
+    """Обновить настройки системы."""
+    async with async_session_factory() as db_session:
+        # Получаем текущие настройки
+        existing = await get_settings(db_session, "system")
+        current_settings = existing.value.copy() if existing and existing.value else {}
+        
+        # Обновляем только переданные поля (включая None для очистки)
+        update_dict = request.model_dump(exclude_unset=True, exclude_none=False)
+        
+        # Обновляем настройки
+        for key, value in update_dict.items():
+            if value is not None and value != "":
+                current_settings[key] = value
+            elif key in current_settings:
+                # Удаляем поле, если передано пустое значение
+                del current_settings[key]
+        
+        # Сохраняем в БД
+        await upsert_settings(db_session, "system", current_settings)
+        
+        logger.info(f"Settings updated by user {current_user.get('username')}: {list(update_dict.keys())}")
+        
+        return SettingsResponse(
+            settings=SettingsRequest(**current_settings)
+        )
 
 
 if __name__ == "__main__":

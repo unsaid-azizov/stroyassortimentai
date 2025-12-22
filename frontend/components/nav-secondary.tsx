@@ -38,10 +38,10 @@ export function NavSecondary({
                     <span>{item.title}</span>
                   </button>
                 ) : (
-                  <a href={item.url}>
-                    <item.icon />
-                    <span>{item.title}</span>
-                  </a>
+                <a href={item.url}>
+                  <item.icon />
+                  <span>{item.title}</span>
+                </a>
                 )}
               </SidebarMenuButton>
             </SidebarMenuItem>

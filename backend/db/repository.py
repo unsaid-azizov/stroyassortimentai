@@ -2,7 +2,7 @@ from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import func, and_, or_, desc
 from sqlalchemy.orm import selectinload
-from db.models import Lead, Thread, Message, AIStats, PromptConfig, User
+from db.models import Lead, Thread, Message, AIStats, PromptConfig, User, Settings
 from typing import Optional, List, Dict
 from datetime import datetime, timedelta
 import uuid
@@ -662,4 +662,29 @@ async def update_user_last_login(session: AsyncSession, user_id: uuid.UUID) -> N
     if user:
         user.last_login = datetime.utcnow()
         await session.commit()
+
+
+# Функции для работы с настройками
+async def get_settings(session: AsyncSession, key: str = "system") -> Optional[Settings]:
+    """Получает настройки по ключу."""
+    stmt = select(Settings).where(Settings.key == key)
+    result = await session.execute(stmt)
+    return result.scalar_one_or_none()
+
+
+async def upsert_settings(session: AsyncSession, key: str, value: dict) -> Settings:
+    """Создает или обновляет настройки."""
+    existing = await get_settings(session, key)
+    if existing:
+        existing.value = value
+        existing.updated_at = datetime.utcnow()
+        await session.commit()
+        await session.refresh(existing)
+        return existing
+    else:
+        settings = Settings(key=key, value=value)
+        session.add(settings)
+        await session.commit()
+        await session.refresh(settings)
+        return settings
 

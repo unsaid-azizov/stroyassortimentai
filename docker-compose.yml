@@ -21,6 +21,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile.ai_service
     container_name: said_ai_service
+    env_file:
+      - .env
     environment:
       - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
@@ -31,6 +33,14 @@ services:
       - ADMIN_USERNAME=${ADMIN_USERNAME}
       - ADMIN_PASSWORD=${ADMIN_PASSWORD}
       - ADMIN_PASSWORD_HASH=${ADMIN_PASSWORD_HASH}
+      - BOT_TOKEN=${BOT_TOKEN}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+      - SALES_EMAIL=${SALES_EMAIL}
+      - IMAP_SERVER=${IMAP_SERVER}
+      - IMAP_PORT=${IMAP_PORT}
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
     ports:
       - "5537:5537"
     depends_on:
@@ -48,25 +58,6 @@ services:
     container_name: said_bot
     environment:
       - BOT_TOKEN=${BOT_TOKEN}
-      - AI_SERVICE_URL=http://ai_service:5537
-    depends_on:
-      - ai_service
-    volumes:
-      - ./backend/logs:/app/logs
-    restart: unless-stopped
-
-  gmail_service:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.gmail
-    container_name: said_gmail
-    environment:
-      - IMAP_SERVER=${IMAP_SERVER}
-      - IMAP_PORT=${IMAP_PORT}
-      - SMTP_SERVER=${SMTP_SERVER}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_USER=${SMTP_USER}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
       - AI_SERVICE_URL=http://ai_service:5537
     depends_on:
       - ai_service

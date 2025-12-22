@@ -23,10 +23,44 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { toast } from "sonner"
 import api from '@/lib/api'
 
+// Хук для определения темы
+function useTheme() {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const checkTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark') ||
+                    window.matchMedia('(prefers-color-scheme: dark)').matches
+      setTheme(isDark ? 'dark' : 'light')
+    }
+
+    checkTheme()
+
+    // Отслеживаем изменения темы
+    const observer = new MutationObserver(checkTheme)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+
+    // Отслеживаем системные изменения темы
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    mediaQuery.addEventListener('change', checkTheme)
+
+    return () => {
+      observer.disconnect()
+      mediaQuery.removeEventListener('change', checkTheme)
+    }
+  }, [])
+
+  return theme
+}
+
 export default function SalesManagerPage() {
   const router = useRouter()
   const [promptContent, setPromptContent] = useState('')
   const [knowledgeBaseContent, setKnowledgeBaseContent] = useState('')
+  const theme = useTheme()
 
   // Загрузка промпта
   const { data: promptData, isLoading: isLoadingPrompt } = useQuery({
@@ -100,7 +134,7 @@ export default function SalesManagerPage() {
 
   // Инициализация содержимого при загрузке
   useEffect(() => {
-    if (promptData?.content && !promptContent) {
+    if (promptData?.content) {
       setPromptContent(promptData.content)
     }
   }, [promptData])
@@ -170,11 +204,12 @@ export default function SalesManagerPage() {
                                 defaultLanguage="markdown"
                                 value={promptContent || promptData?.content || ''}
                                 onChange={(value) => setPromptContent(value || '')}
-                                theme="vs-dark"
+                                theme={theme === 'dark' ? 'vs-dark' : 'light'}
                                 options={{
                                   minimap: { enabled: false },
                                   fontSize: 14,
                                   wordWrap: 'on',
+                                  automaticLayout: true,
                                 }}
                               />
                             </div>
@@ -217,11 +252,12 @@ export default function SalesManagerPage() {
                                 defaultLanguage="json"
                                 value={knowledgeBaseContent || JSON.stringify(kbData?.content || {}, null, 2)}
                                 onChange={(value) => setKnowledgeBaseContent(value || '')}
-                                theme="vs-dark"
+                                theme={theme === 'dark' ? 'vs-dark' : 'light'}
                                 options={{
                                   minimap: { enabled: false },
                                   fontSize: 14,
                                   wordWrap: 'on',
+                                  automaticLayout: true,
                                 }}
                               />
                             </div>

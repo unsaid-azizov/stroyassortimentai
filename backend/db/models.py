@@ -84,4 +84,13 @@ class User(Base):
     last_login: Mapped[Optional[datetime]] = mapped_column(DateTime)
 
 
+class Settings(Base):
+    __tablename__ = "settings"
+    
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    key: Mapped[str] = mapped_column(String(255), unique=True, index=True)  # "system" для системных настроек
+    value: Mapped[dict] = mapped_column(JSON)  # JSON объект со всеми настройками
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
 

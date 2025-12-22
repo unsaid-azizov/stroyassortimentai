@@ -249,3 +249,28 @@ httpx.ConnectError: [Errno -3] Temporary failure in name resolution
 2025-12-21 20:23:13,878 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
 2025-12-21 20:23:13,878 - aiogram.dispatcher - INFO - Start polling
 2025-12-21 20:23:13,986 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 23:55:12,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-21 23:55:12,520 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-21 23:55:23,619 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-21 23:55:42,578 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-12-21 23:55:42,579 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-21 23:55:53,613 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-22 11:35:51,426 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-22 11:35:51,426 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-22 11:35:51,427 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-22 11:35:51,427 - bot - INFO - Bot is shutting down...
+2025-12-22 11:36:01,317 - bot - INFO - Starting bot...
+2025-12-22 11:36:01,318 - bot - INFO - Bot is starting...
+2025-12-22 11:36:01,583 - httpx - INFO - HTTP Request: GET http://ai_service:5537/health "HTTP/1.1 200 OK"
+2025-12-22 11:36:01,588 - bot - INFO - AI service is available at http://ai_service:5537
+2025-12-22 11:36:01,588 - aiogram.dispatcher - INFO - Start polling
+2025-12-22 11:36:01,697 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-22 12:09:38,424 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-22 12:09:38,425 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-22 12:09:38,426 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-22 12:09:38,426 - bot - INFO - Bot is shutting down...
+2025-12-22 12:09:49,592 - bot - INFO - Starting bot...
+2025-12-22 12:09:49,593 - bot - INFO - Bot is starting...
+2025-12-22 12:09:49,873 - bot - WARNING - AI service is not available at http://ai_service:5537. Bot will still start but may fail.
+2025-12-22 12:09:49,874 - aiogram.dispatcher - INFO - Start polling
+2025-12-22 12:09:49,979 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
