@@ -36,7 +36,8 @@ export interface BusinessMetrics {
   human_needed_count: number
   spam_filtered: number
   conversion_rate: number
-  ai_efficiency: number
+  total_leads: number
+  leads_with_orders: number
 }
 
 export interface ChannelDistributionItem {

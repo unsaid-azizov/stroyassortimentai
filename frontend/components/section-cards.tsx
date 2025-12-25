@@ -1,12 +1,13 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query"
-import { IconTrendingUp } from "@tabler/icons-react"
+import { IconTrendingUp, IconX } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardAction,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -16,17 +17,10 @@ import { statsApi } from "@/lib/api/stats"
 import { Skeleton } from "@/components/ui/skeleton"
 
 export function SectionCards() {
-  const { data: businessMetrics, isLoading: isLoadingMetrics } = useQuery({
+  const { data: businessMetrics, isLoading } = useQuery({
     queryKey: ['stats', 'business'],
     queryFn: () => statsApi.getBusinessMetrics(),
   })
-
-  const { data: overview, isLoading: isLoadingOverview } = useQuery({
-    queryKey: ['stats', 'overview'],
-    queryFn: () => statsApi.getOverview(),
-  })
-
-  const isLoading = isLoadingMetrics || isLoadingOverview
 
   if (isLoading) {
     return (
@@ -91,45 +85,45 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Экономия времени</CardDescription>
+          <CardDescription>Конверсия</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {businessMetrics?.ai_processed_messages ?? 0}
+            {(businessMetrics?.conversion_rate ?? 0).toFixed(1)}%
           </CardTitle>
           <CardAction>
-            <Badge variant="outline">
-              <IconTrendingUp />
-              Обработано AI
+            <Badge variant="outline" className="gap-1 whitespace-nowrap">
+              <IconTrendingUp className="size-3" />
+              Конверсия
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
-            Сообщений обработано AI <IconTrendingUp className="size-4" />
+            {businessMetrics?.leads_with_orders ?? 0} из {businessMetrics?.total_leads ?? 0} лидов совершили заказ <IconTrendingUp className="size-4" />
           </div>
           <div className="text-muted-foreground">
-            Эффективность: {businessMetrics?.ai_efficiency.toFixed(1) ?? '0'}%
+            Конверсия лидов в заказы
           </div>
         </CardFooter>
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Активных диалогов</CardDescription>
+          <CardDescription>Отфильтровано спама</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {overview?.active_threads ?? 0}
+            {businessMetrics?.spam_filtered ?? 0}
           </CardTitle>
           <CardAction>
             <Badge variant="outline">
-              <IconTrendingUp />
-              В работе
+              <IconX />
+              SPAM
             </Badge>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
-            Открытые диалоги <IconTrendingUp className="size-4" />
+            Количество спам-сообщений, отфильтрованных системой <IconX className="size-4" />
           </div>
           <div className="text-muted-foreground">
-            Требуют внимания
+            Защита от спама
           </div>
         </CardFooter>
       </Card>

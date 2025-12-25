@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query"
-import { IconCheck, IconX, IconTrendingUp } from "@tabler/icons-react"
+import { IconX, IconTrendingUp } from "@tabler/icons-react"
 
 import { Badge } from "@/components/ui/badge"
 import {
@@ -22,8 +22,8 @@ export function EfficiencyMetrics() {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 md:grid-cols-3">
-        {[1, 2, 3].map((i) => (
+      <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 md:grid-cols-2">
+        {[1, 2].map((i) => (
           <Card key={i}>
             <CardHeader>
               <Skeleton className="h-4 w-24" />
@@ -36,7 +36,7 @@ export function EfficiencyMetrics() {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 md:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 px-4 lg:px-6 md:grid-cols-2">
       <Card>
         <CardHeader>
           <CardDescription>Конверсия</CardDescription>
@@ -48,30 +48,11 @@ export function EfficiencyMetrics() {
           <div className="flex items-center gap-2">
             <Badge variant="outline" className="gap-1">
               <IconTrendingUp className="size-3" />
-              ORDER_LEAD / Всего обращений
+              Лиды с заказами / Всего лидов
             </Badge>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Процент обращений, которые привели к потенциальным заказам
-          </p>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader>
-          <CardDescription>Эффективность AI</CardDescription>
-          <CardTitle className="text-2xl font-semibold tabular-nums">
-            {businessMetrics?.ai_efficiency.toFixed(1) ?? '0.0'}%
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1">
-              <IconCheck className="size-3" />
-              Обработано AI
-            </Badge>
-          </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            Процент сообщений, обработанных без участия человека
+            {businessMetrics?.leads_with_orders ?? 0} из {businessMetrics?.total_leads ?? 0} лидов совершили заказ
           </p>
         </CardContent>
       </Card>

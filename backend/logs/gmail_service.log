@@ -738,3 +738,164 @@
 2025-12-22 04:02:26,844 - gmail_service - INFO - AI decided to ignore email from support@email-service.bybit.com (Spam/Off-topic)
 2025-12-22 11:14:37,450 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
 2025-12-22 11:35:57,220 - gmail_service - INFO - Gmail service started. Polling for new emails...
+2025-12-22 12:16:46,818 - gmail_service - INFO - New email from: notifications@latitude.sh | Subject: 💽 Navigating the hardware supply crunch during 2026
+2025-12-22 12:17:12,402 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 12:17:12,403 - gmail_service - INFO - AI decided to ignore email from notifications@latitude.sh (Spam/Off-topic)
+2025-12-22 13:38:22,551 - gmail_service - INFO - New email from: news@news.ozon.ru | Subject: Ваши итоги года на Ozon
+2025-12-22 13:39:09,378 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 13:39:09,379 - gmail_service - INFO - AI decided to ignore email from news@news.ozon.ru (Spam/Off-topic)
+2025-12-22 15:32:01,947 - gmail_service - INFO - New email from: newsletter@mobbin.com | Subject: Monday Mobile Drop
+2025-12-22 15:32:21,887 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 15:32:21,888 - gmail_service - INFO - AI decided to ignore email from newsletter@mobbin.com (Spam/Off-topic)
+2025-12-22 16:00:08,881 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-22 16:03:40,437 - gmail_service - INFO - New email from: team@mail.airtable.com | Subject: New: Airtable in ChatGPT
+2025-12-22 16:04:10,864 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 16:04:10,865 - gmail_service - INFO - AI decided to ignore email from team@mail.airtable.com (Spam/Off-topic)
+2025-12-22 16:08:43,843 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 Spotlight for tabs
+2025-12-22 16:09:31,105 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 16:09:31,106 - gmail_service - INFO - AI generated response for hello@digest.producthunt.com. Sending reply...
+2025-12-22 16:09:31,807 - gmail_service - INFO - Reply sent to hello@digest.producthunt.com
+2025-12-22 18:57:36,225 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-22 19:35:27,106 - gmail_service - INFO - New email from: newsletter@news.ostrovok.ru | Subject: Коничива и сайонара
+2025-12-22 19:35:49,383 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 19:35:49,383 - gmail_service - INFO - AI decided to ignore email from newsletter@news.ostrovok.ru (Spam/Off-topic)
+2025-12-22 19:37:54,818 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-22 19:48:04,774 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-22 23:18:45,225 - gmail_service - INFO - New email from: hi@retellai.com | Subject: Monthly Recap: Flex Mode, Advanced Warm Transfer, New Languages & More
+2025-12-22 23:19:01,609 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-22 23:19:01,609 - gmail_service - INFO - AI decided to ignore email from hi@retellai.com (Spam/Off-topic)
+2025-12-23 06:01:47,317 - gmail_service - INFO - New email from: hello@ma.linktr.ee | Subject: Linktree features you can’t miss
+2025-12-23 06:02:08,808 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 06:02:08,809 - gmail_service - INFO - AI decided to ignore email from hello@ma.linktr.ee (Spam/Off-topic)
+2025-12-23 08:31:43,406 - gmail_service - INFO - New email from: no-reply@gosuslugi.ru | Subject: Оцените работу социальных организаций
+2025-12-23 08:32:04,407 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 08:32:04,407 - gmail_service - INFO - AI decided to ignore email from no-reply@gosuslugi.ru (Spam/Off-topic)
+2025-12-23 09:40:36,512 - gmail_service - INFO - New email from: hello@langchain.dev | Subject: [December] State of Agent Engineering, LangSmith Polly, and
+ Debugging Voice Agents
+2025-12-23 09:41:04,630 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 09:41:04,631 - gmail_service - INFO - AI generated response for hello@langchain.dev. Sending reply...
+2025-12-23 09:41:04,632 - gmail_service - ERROR - Error processing email via AI: Header values may not contain linefeed or carriage return characters
+2025-12-23 09:41:34,938 - gmail_service - INFO - New email from: hello@langchain.dev | Subject: [December] State of Agent Engineering, LangSmith Polly, and
+ Debugging Voice Agents
+2025-12-23 09:42:05,263 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 09:42:05,263 - gmail_service - INFO - AI generated response for hello@langchain.dev. Sending reply...
+2025-12-23 09:42:05,264 - gmail_service - ERROR - Error processing email via AI: Header values may not contain linefeed or carriage return characters
+2025-12-23 09:42:05,291 - gmail_service - INFO - New email from: noreply@github.com | Subject: [GitHub] Your Dependabot alerts for the week of Dec 16 - Dec 23
+2025-12-23 09:42:52,366 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 09:42:52,366 - gmail_service - INFO - AI generated response for noreply@github.com. Sending reply...
+2025-12-23 09:42:53,315 - gmail_service - INFO - Reply sent to noreply@github.com
+2025-12-23 09:43:24,179 - gmail_service - INFO - New email from: hello@langchain.dev | Subject: [December] State of Agent Engineering, LangSmith Polly, and
+ Debugging Voice Agents
+2025-12-23 09:43:46,430 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 09:43:46,430 - gmail_service - INFO - AI generated response for hello@langchain.dev. Sending reply...
+2025-12-23 09:43:46,431 - gmail_service - ERROR - Error processing email via AI: Header values may not contain linefeed or carriage return characters
+2025-12-23 09:44:16,685 - gmail_service - INFO - New email from: hello@langchain.dev | Subject: [December] State of Agent Engineering, LangSmith Polly, and
+ Debugging Voice Agents
+2025-12-23 09:44:48,583 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 09:44:48,584 - gmail_service - INFO - AI decided to ignore email from hello@langchain.dev (Spam/Off-topic)
+2025-12-23 09:51:21,768 - gmail_service - INFO - New email from: mailer-daemon@googlemail.com | Subject: Delivery Status Notification (Failure)
+2025-12-23 09:51:43,204 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 09:51:43,205 - gmail_service - INFO - AI decided to ignore email from mailer-daemon@googlemail.com (Spam/Off-topic)
+2025-12-23 11:15:50,823 - gmail_service - INFO - New email from: newsletter@tailscale.com | Subject: Here's your December newsletter from Tailscale
+2025-12-23 11:16:21,223 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 11:16:21,224 - gmail_service - INFO - AI decided to ignore email from newsletter@tailscale.com (Spam/Off-topic)
+2025-12-23 12:48:01,297 - gmail_service - INFO - New email from: hi@mail.cursor.com | Subject: Your Year in Code
+2025-12-23 12:48:24,426 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 12:48:24,427 - gmail_service - INFO - AI decided to ignore email from hi@mail.cursor.com (Spam/Off-topic)
+2025-12-23 13:42:56,306 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-23 14:06:06,486 - gmail_service - INFO - New email from: nick+news@leftclick.ai | Subject: Dev work is NOT automation. Here's the difference.
+2025-12-23 14:06:35,137 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 14:06:35,138 - gmail_service - INFO - AI decided to ignore email from nick+news@leftclick.ai (Spam/Off-topic)
+2025-12-23 14:19:41,299 - gmail_service - INFO - New email from: team@mail.airtable.com | Subject: The New Airtable Playbook — Jan 22. See how AI has changed the way we work.
+2025-12-23 14:20:06,751 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 14:20:06,752 - gmail_service - INFO - AI decided to ignore email from team@mail.airtable.com (Spam/Off-topic)
+2025-12-23 15:23:43,698 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-23 15:41:52,894 - gmail_service - INFO - New email from: notifications@github.com | Subject: Re: [Skygen-AI/Backend] Feature/contacts mcp (PR #97)
+2025-12-23 15:42:24,773 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 15:42:24,774 - gmail_service - INFO - AI generated response for notifications@github.com. Sending reply...
+2025-12-23 15:42:25,900 - gmail_service - INFO - Reply sent to notifications@github.com
+2025-12-23 16:27:18,674 - gmail_service - INFO - New email from: subscribe@e.aviasales.ru | Subject: Билеты от 2900 ₽ из Москвы
+2025-12-23 16:27:37,516 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 16:27:37,517 - gmail_service - INFO - AI decided to ignore email from subscribe@e.aviasales.ru (Spam/Off-topic)
+2025-12-23 16:28:08,301 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 😸 Code in your pocket
+2025-12-23 16:28:37,731 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 16:28:37,732 - gmail_service - INFO - AI generated response for hello@digest.producthunt.com. Sending reply...
+2025-12-23 16:28:38,839 - gmail_service - INFO - Reply sent to hello@digest.producthunt.com
+2025-12-23 16:29:39,751 - gmail_service - INFO - New email from: hello@producthunt.com | Subject: Re: Re: 😸 Code in your pocket
+2025-12-23 16:30:09,294 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 16:30:09,295 - gmail_service - INFO - AI decided to ignore email from hello@producthunt.com (Spam/Off-topic)
+2025-12-23 17:07:38,847 - gmail_service - INFO - New email from: team@mail.vapi.ai | Subject: Turn your worst call into a test
+2025-12-23 17:08:00,711 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 17:08:00,712 - gmail_service - INFO - AI decided to ignore email from team@mail.vapi.ai (Spam/Off-topic)
+2025-12-23 18:31:48,285 - gmail_service - INFO - New email from: notifications@tasks.clickup.com | Subject: Добавить MCP Tool получения контактов Gmail
+2025-12-23 18:32:08,714 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-23 18:32:08,714 - gmail_service - INFO - AI decided to ignore email from notifications@tasks.clickup.com (Spam/Off-topic)
+2025-12-23 19:30:43,942 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-23 20:01:31,670 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-24 00:35:01,793 - gmail_service - INFO - New email from: applecard@insideapple.apple.com | Subject: Your credit limit offer is ready to preview.
+2025-12-24 00:35:15,530 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 00:35:15,530 - gmail_service - INFO - AI decided to ignore email from applecard@insideapple.apple.com (Spam/Off-topic)
+2025-12-24 06:32:13,085 - gmail_service - INFO - New email from: ozontravel@news.ozon.ru | Subject: Потеплело на душе? Это мили!
+2025-12-24 06:32:28,888 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 06:32:28,889 - gmail_service - INFO - AI decided to ignore email from ozontravel@news.ozon.ru (Spam/Off-topic)
+2025-12-24 10:47:22,138 - gmail_service - INFO - New email from: nizam.med69@gmail.com | Subject: Самурский лес
+2025-12-24 10:47:59,992 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 10:47:59,993 - gmail_service - INFO - AI generated response for nizam.med69@gmail.com. Sending reply...
+2025-12-24 10:48:00,821 - gmail_service - INFO - Reply sent to nizam.med69@gmail.com
+2025-12-24 12:09:39,522 - gmail_service - INFO - New email from: info@email.manychat.com | Subject: Baby, it's cold outside, but our DMs are nice and warm 🥵
+2025-12-24 12:09:55,496 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 12:09:55,497 - gmail_service - INFO - AI decided to ignore email from info@email.manychat.com (Spam/Off-topic)
+2025-12-24 13:38:08,849 - gmail_service - INFO - New email from: aakhmedov2025@mail.ru | Subject: 
+2025-12-24 13:38:34,190 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 13:38:34,191 - gmail_service - INFO - AI generated response for aakhmedov2025@mail.ru. Sending reply...
+2025-12-24 13:38:35,002 - gmail_service - INFO - Reply sent to aakhmedov2025@mail.ru
+2025-12-24 13:39:35,847 - gmail_service - INFO - New email from: aakhmedov2025@mail.ru | Subject: Re: 
+2025-12-24 13:40:19,035 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 13:40:19,036 - gmail_service - INFO - AI generated response for aakhmedov2025@mail.ru. Sending reply...
+2025-12-24 13:40:19,738 - gmail_service - INFO - Reply sent to aakhmedov2025@mail.ru
+2025-12-24 13:41:50,772 - gmail_service - INFO - New email from: aakhmedov2025@mail.ru | Subject: Re: 
+2025-12-24 13:42:38,189 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 13:42:38,190 - gmail_service - INFO - AI generated response for aakhmedov2025@mail.ru. Sending reply...
+2025-12-24 13:42:38,851 - gmail_service - INFO - Reply sent to aakhmedov2025@mail.ru
+2025-12-24 14:02:48,090 - gmail_service - INFO - New email from: nick+news@leftclick.ai | Subject: What to do when the market is slow (Dec-Jan)
+2025-12-24 14:03:21,676 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 14:03:21,676 - gmail_service - INFO - AI decided to ignore email from nick+news@leftclick.ai (Spam/Off-topic)
+2025-12-24 15:04:57,242 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-24 15:19:38,129 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-24 15:47:23,950 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-24 16:01:03,099 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-24 16:27:15,672 - gmail_service - INFO - New email from: hello@digest.producthunt.com | Subject: 🎄 Product Hunt Wrapped 2025
+2025-12-24 16:27:33,274 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 16:27:33,274 - gmail_service - INFO - AI decided to ignore email from hello@digest.producthunt.com (Spam/Off-topic)
+2025-12-24 18:23:27,738 - gmail_service - INFO - New email from: notifications@tasks.clickup.com | Subject: Добавить прикрепление файлов в Агента
+2025-12-24 18:23:52,521 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 18:23:52,521 - gmail_service - INFO - AI decided to ignore email from notifications@tasks.clickup.com (Spam/Off-topic)
+2025-12-24 19:00:45,216 - gmail_service - WARNING - Network error connecting to IMAP server (attempt 1): [Errno 101] Network is unreachable. Retrying in 60s...
+2025-12-24 19:24:27,528 - gmail_service - INFO - New email from: charlie@imperiumlabsltd.com | Subject: The Christmas Present That Keeps Giving To You, and Yours.
+2025-12-24 19:24:49,759 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 19:24:49,760 - gmail_service - INFO - AI decided to ignore email from charlie@imperiumlabsltd.com (Spam/Off-topic)
+2025-12-24 20:00:38,279 - gmail_service - INFO - New email from: applewallet@insideapple.apple.com | Subject: Digital ID in Wallet is here.
+2025-12-24 20:00:55,585 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 20:00:55,586 - gmail_service - INFO - AI decided to ignore email from applewallet@insideapple.apple.com (Spam/Off-topic)
+2025-12-24 20:36:42,217 - gmail_service - INFO - New email from: recommendations@discover.pinterest.com | Subject: Couture for Said
+2025-12-24 20:36:55,143 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-24 20:36:55,144 - gmail_service - INFO - AI decided to ignore email from recommendations@discover.pinterest.com (Spam/Off-topic)
+2025-12-25 02:42:27,397 - gmail_service - INFO - New email from: newsletter@mobbin.com | Subject: Wednesday Web Drop
+2025-12-25 02:42:51,619 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-25 02:42:51,620 - gmail_service - INFO - AI decided to ignore email from newsletter@mobbin.com (Spam/Off-topic)
+2025-12-25 12:23:29,922 - gmail_service - INFO - New email from: ozontravel@news.ozon.ru | Subject: Устроим свою карнавальную ночь?
+2025-12-25 12:24:06,512 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-25 12:24:06,513 - gmail_service - INFO - AI decided to ignore email from ozontravel@news.ozon.ru (Spam/Off-topic)
+2025-12-25 12:34:41,373 - gmail_service - INFO - New email from: sc-noreply@google.com | Subject: New reasons prevent pages from being indexed on site speech0.com
+2025-12-25 12:35:23,230 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-25 12:35:23,230 - gmail_service - INFO - AI generated response for sc-noreply@google.com. Sending reply...
+2025-12-25 12:35:24,071 - gmail_service - INFO - Reply sent to sc-noreply@google.com
+2025-12-25 13:36:58,217 - gmail_service - INFO - New email from: subscribe@e.aviasales.ru | Subject: В это письмо попал волос
+2025-12-25 13:37:16,008 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-25 13:37:16,009 - gmail_service - INFO - AI decided to ignore email from subscribe@e.aviasales.ru (Spam/Off-topic)
+2025-12-25 13:38:16,975 - gmail_service - INFO - New email from: applenewsplus@insideapple.apple.com | Subject: Accept your 3-month free trial today
+2025-12-25 13:38:36,721 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-25 13:38:36,721 - gmail_service - INFO - AI decided to ignore email from applenewsplus@insideapple.apple.com (Spam/Off-topic)
+2025-12-25 14:11:52,169 - gmail_service - INFO - New email from: hello@m.getcontact.com | Subject: Said, 1 People Searched Your Number
+2025-12-25 14:12:11,978 - httpx - INFO - HTTP Request: POST http://ai_service:5537/chat "HTTP/1.1 200 OK"
+2025-12-25 14:12:11,979 - gmail_service - INFO - AI decided to ignore email from hello@m.getcontact.com (Spam/Off-topic)

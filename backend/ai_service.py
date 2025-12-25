@@ -206,7 +206,8 @@ class BusinessMetricsResponse(BaseModel):
     human_needed_count: int
     spam_filtered: int
     conversion_rate: float
-    ai_efficiency: float
+    total_leads: int
+    leads_with_orders: int
 
 
 class ChannelDistributionItem(BaseModel):

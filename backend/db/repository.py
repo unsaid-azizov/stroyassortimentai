@@ -433,23 +433,25 @@ async def get_business_metrics(session: AsyncSession) -> Dict:
     )
     spam_filtered_count = spam_filtered.scalar() or 0
     
-    # Всего обращений (все сообщения от пользователей)
-    total_interactions = await session.execute(
-        select(func.count(Message.id)).where(Message.sender_role == "USER")
+    # Всего лидов (все уникальные лиды)
+    total_leads = await session.execute(select(func.count(Lead.id)))
+    total_leads_count = total_leads.scalar() or 0
+    
+    # Лиды, которые совершили заказ (лиды с хотя бы одним ORDER_LEAD)
+    # Связь: Lead -> Thread -> Message -> AIStats (где category = 'ORDER_LEAD')
+    leads_with_orders = await session.execute(
+        select(func.count(func.distinct(Lead.id)))
+        .join(Thread, Lead.id == Thread.lead_id)
+        .join(Message, Thread.id == Message.thread_id)
+        .join(AIStats, Message.id == AIStats.message_id)
+        .where(AIStats.category == "ORDER_LEAD")
     )
-    total_interactions_count = total_interactions.scalar() or 0
+    leads_with_orders_count = leads_with_orders.scalar() or 0
     
-    # Конверсия (ORDER_LEAD / всего обращений)
+    # Конверсия (лиды с заказами / всего лидов)
     conversion_rate = 0.0
-    if total_interactions_count > 0:
-        conversion_rate = (potential_orders_count / total_interactions_count) * 100
-    
-    # Эффективность AI (процент сообщений обработанных AI)
-    total_messages = await session.execute(select(func.count(Message.id)))
-    total_messages_count = total_messages.scalar() or 0
-    ai_efficiency = 0.0
-    if total_messages_count > 0:
-        ai_efficiency = (ai_processed_count / total_messages_count) * 100
+    if total_leads_count > 0:
+        conversion_rate = (leads_with_orders_count / total_leads_count) * 100
     
     return {
         "potential_orders": potential_orders_count,
@@ -459,7 +461,8 @@ async def get_business_metrics(session: AsyncSession) -> Dict:
         "human_needed_count": human_needed_count,
         "spam_filtered": spam_filtered_count,
         "conversion_rate": round(conversion_rate, 2),
-        "ai_efficiency": round(ai_efficiency, 2)
+        "total_leads": total_leads_count,
+        "leads_with_orders": leads_with_orders_count
     }
 
 

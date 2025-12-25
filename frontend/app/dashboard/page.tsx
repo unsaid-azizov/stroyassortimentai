@@ -7,7 +7,6 @@ import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 import { SectionCards } from "@/components/section-cards"
 import { FunnelChart } from "@/components/funnel-chart"
 import { ChannelDistribution } from "@/components/channel-distribution"
-import { EfficiencyMetrics } from "@/components/efficiency-metrics"
 import { LeadsTable } from "@/components/leads-table"
 import { SiteHeader } from "@/components/site-header"
 import {
@@ -52,7 +51,6 @@ export default function Page() {
               <div className="px-4 lg:px-6">
                 <ChannelDistribution />
               </div>
-              <EfficiencyMetrics />
               <div className="px-4 lg:px-6">
                 <Card>
                   <CardHeader>

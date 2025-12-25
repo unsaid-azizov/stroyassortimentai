@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 from os import getenv
 
 # Импортируем tools
-from tools import search_company_info, call_manager, collect_order_info
+from tools import search_company_info, call_manager, collect_order_info, search_1c_products
 
 load_dotenv()
 
@@ -154,6 +154,7 @@ agent_tools = [
     search_company_info,
     call_manager,
     collect_order_info,
+    search_1c_products,
 ]
 
 # Создаем агента с использованием langgraph.prebuilt.create_react_agent
