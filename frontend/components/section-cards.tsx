@@ -3,10 +3,8 @@
 import { useQuery } from "@tanstack/react-query"
 import { IconTrendingUp, IconX } from "@tabler/icons-react"
 
-import { Badge } from "@/components/ui/badge"
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -45,12 +43,6 @@ export function SectionCards() {
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {businessMetrics?.potential_orders ?? 0}
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <IconTrendingUp />
-              ORDER_LEAD
-            </Badge>
-          </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
@@ -67,12 +59,6 @@ export function SectionCards() {
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {businessMetrics?.new_leads_today ?? 0}
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <IconTrendingUp />
-              За сегодня
-            </Badge>
-          </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
@@ -89,12 +75,6 @@ export function SectionCards() {
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
             {(businessMetrics?.conversion_rate ?? 0).toFixed(1)}%
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline" className="gap-1 whitespace-nowrap">
-              <IconTrendingUp className="size-3" />
-              Конверсия
-            </Badge>
-          </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
@@ -107,23 +87,17 @@ export function SectionCards() {
       </Card>
       <Card className="@container/card">
         <CardHeader>
-          <CardDescription>Отфильтровано спама</CardDescription>
+          <CardDescription>Сумма заказов (неделя)</CardDescription>
           <CardTitle className="text-2xl font-semibold tabular-nums @[250px]/card:text-3xl">
-            {businessMetrics?.spam_filtered ?? 0}
+            {(businessMetrics?.orders_total_amount_week ?? 0).toLocaleString('ru-RU')} ₽
           </CardTitle>
-          <CardAction>
-            <Badge variant="outline">
-              <IconX />
-              SPAM
-            </Badge>
-          </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
           <div className="line-clamp-1 flex gap-2 font-medium">
-            Количество спам-сообщений, отфильтрованных системой <IconX className="size-4" />
+            Всего заказов: {businessMetrics?.orders_count ?? 0} <IconTrendingUp className="size-4" />
           </div>
           <div className="text-muted-foreground">
-            Защита от спама
+            Всего сумма: {(businessMetrics?.orders_total_amount ?? 0).toLocaleString('ru-RU')} ₽
           </div>
         </CardFooter>
       </Card>

@@ -2,10 +2,32 @@ from sqlalchemy.future import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import func, and_, or_, desc
 from sqlalchemy.orm import selectinload
-from db.models import Lead, Thread, Message, AIStats, PromptConfig, User, Settings
+from db.models import Lead, Thread, Message, AIStats, PromptConfig, User, Settings, OrderSubmission
 from typing import Optional, List, Dict
 from datetime import datetime, timedelta
 import uuid
+
+async def get_order_submissions(
+    session: AsyncSession,
+    page: int = 1,
+    limit: int = 20,
+) -> Dict:
+    """Returns paginated bot order submissions."""
+    safe_page = max(int(page or 1), 1)
+    safe_limit = min(max(int(limit or 20), 1), 100)
+    offset = (safe_page - 1) * safe_limit
+
+    total_q = await session.execute(select(func.count(OrderSubmission.id)))
+    total = total_q.scalar() or 0
+
+    rows = await session.execute(
+        select(OrderSubmission)
+        .order_by(desc(OrderSubmission.created_at))
+        .offset(offset)
+        .limit(safe_limit)
+    )
+    orders = rows.scalars().all()
+    return {"orders": orders, "total": total, "page": safe_page, "limit": safe_limit}
 
 async def get_or_create_lead(
     session: AsyncSession, 
@@ -452,6 +474,30 @@ async def get_business_metrics(session: AsyncSession) -> Dict:
     conversion_rate = 0.0
     if total_leads_count > 0:
         conversion_rate = (leads_with_orders_count / total_leads_count) * 100
+
+    # Bot orders (OrderSubmission)
+    orders_total_count_q = await session.execute(
+        select(func.count(OrderSubmission.id)).where(OrderSubmission.status == "SENT")
+    )
+    orders_total_count = orders_total_count_q.scalar() or 0
+
+    orders_total_sum_q = await session.execute(
+        select(func.sum(OrderSubmission.total)).where(
+            and_(OrderSubmission.status == "SENT", OrderSubmission.total.isnot(None))
+        )
+    )
+    orders_total_sum = float(orders_total_sum_q.scalar() or 0.0)
+
+    orders_week_sum_q = await session.execute(
+        select(func.sum(OrderSubmission.total)).where(
+            and_(
+                OrderSubmission.status == "SENT",
+                OrderSubmission.total.isnot(None),
+                OrderSubmission.created_at >= week_start,
+            )
+        )
+    )
+    orders_week_sum = float(orders_week_sum_q.scalar() or 0.0)
     
     return {
         "potential_orders": potential_orders_count,
@@ -462,7 +508,10 @@ async def get_business_metrics(session: AsyncSession) -> Dict:
         "spam_filtered": spam_filtered_count,
         "conversion_rate": round(conversion_rate, 2),
         "total_leads": total_leads_count,
-        "leads_with_orders": leads_with_orders_count
+        "leads_with_orders": leads_with_orders_count,
+        "orders_count": orders_total_count,
+        "orders_total_amount": round(orders_total_sum, 2),
+        "orders_total_amount_week": round(orders_week_sum, 2),
     }
 
 
@@ -632,7 +681,8 @@ async def create_user(
     username: str,
     email: str,
     hashed_password: str,
-    full_name: Optional[str] = None
+    full_name: Optional[str] = None,
+    role: str = "manager",
 ) -> User:
     """Создает нового пользователя."""
     # Проверяем, что username и email уникальны
@@ -650,6 +700,7 @@ async def create_user(
         email=email,
         hashed_password=hashed_password,
         full_name=full_name
+        ,role=role
     )
     session.add(user)
     await session.commit()
@@ -665,6 +716,19 @@ async def update_user_last_login(session: AsyncSession, user_id: uuid.UUID) -> N
     if user:
         user.last_login = datetime.utcnow()
         await session.commit()
+
+
+async def update_user_password(session: AsyncSession, user_id: uuid.UUID, hashed_password: str) -> Optional[User]:
+    """Обновляет пароль пользователя (хранится как bcrypt hash)."""
+    stmt = select(User).where(User.id == user_id)
+    result = await session.execute(stmt)
+    user = result.scalar_one_or_none()
+    if not user:
+        return None
+    user.hashed_password = hashed_password
+    await session.commit()
+    await session.refresh(user)
+    return user
 
 
 # Функции для работы с настройками

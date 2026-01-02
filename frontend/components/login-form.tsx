@@ -91,12 +91,9 @@ export function LoginForm({
               <Field>
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
+                  <span className="ml-auto inline-block text-sm text-muted-foreground">
+                    Ask admin if you forgot it
+                  </span>
                 </div>
                 <Input
                   id="password"
@@ -111,9 +108,6 @@ export function LoginForm({
                 <Button type="submit" disabled={loginMutation.isPending}>
                   {loginMutation.isPending ? "Logging in..." : "Login"}
                 </Button>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account? <Link href="/signup" className="underline">Sign up</Link>
-                </FieldDescription>
               </Field>
             </FieldGroup>
           </form>

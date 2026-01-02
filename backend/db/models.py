@@ -80,6 +80,7 @@ class User(Base):
     hashed_password: Mapped[str] = mapped_column(String(255))
     full_name: Mapped[Optional[str]] = mapped_column(String(255))
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    role: Mapped[str] = mapped_column(String(32), default="manager", index=True)  # admin | manager
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
     last_login: Mapped[Optional[datetime]] = mapped_column(DateTime)
 
@@ -91,6 +92,35 @@ class Settings(Base):
     key: Mapped[str] = mapped_column(String(255), unique=True, index=True)  # "system" для системных настроек
     value: Mapped[dict] = mapped_column(JSON)  # JSON объект со всеми настройками
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class OrderSubmission(Base):
+    """
+    Orders that were formed by the bot tools (collect_order_info / call_manager).
+    We keep the payload as JSON for flexibility, plus denormalized totals for fast dashboards.
+    """
+
+    __tablename__ = "order_submissions"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, index=True)
+
+    # Who
+    client_name: Mapped[Optional[str]] = mapped_column(String(255))
+    client_contact: Mapped[Optional[str]] = mapped_column(String(255), index=True)
+
+    # Totals (denormalized)
+    currency: Mapped[str] = mapped_column(String(16), default="RUB")
+    subtotal: Mapped[Optional[float]] = mapped_column(Float)
+    total: Mapped[Optional[float]] = mapped_column(Float)
+    items_count: Mapped[Optional[int]] = mapped_column(Integer)
+
+    # Status
+    status: Mapped[str] = mapped_column(String(32), default="SENT")  # SENT / FAILED / DRAFT
+    error: Mapped[Optional[str]] = mapped_column(Text)
+
+    # Full structured payload
+    payload: Mapped[Optional[dict]] = mapped_column(JSON)
 
 
 

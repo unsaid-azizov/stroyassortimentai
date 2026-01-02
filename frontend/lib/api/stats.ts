@@ -38,6 +38,9 @@ export interface BusinessMetrics {
   conversion_rate: number
   total_leads: number
   leads_with_orders: number
+  orders_count: number
+  orders_total_amount: number
+  orders_total_amount_week: number
 }
 
 export interface ChannelDistributionItem {

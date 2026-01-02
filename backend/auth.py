@@ -79,7 +79,9 @@ def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)) 
                 detail="Invalid authentication credentials",
                 headers={"WWW-Authenticate": "Bearer"},
             )
-        return {"username": username}
+        # role в JWT считаем необязательным (для обратной совместимости),
+        # но для RBAC всегда проверяем роль по БД (см. get_current_user)
+        return {"username": username, "role": payload.get("role")}
     except JWTError:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -112,6 +114,41 @@ async def authenticate_user(username: str, password: str) -> Optional[dict]:
             "id": str(user.id),
             "username": user.username,
             "email": user.email,
-            "full_name": user.full_name
+            "full_name": user.full_name,
+            "role": getattr(user, "role", "manager"),
         }
+
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> dict:
+    """
+    Достаёт пользователя из JWT и валидирует его через БД (включая роль).
+    Это защищает RBAC даже если роль в JWT устарела/подменена.
+    """
+    token_payload = verify_token(credentials)
+    username = token_payload.get("username")
+    if not username:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid authentication credentials")
+
+    async with async_session_factory() as session:
+        user = await get_user_by_username(session, username)
+        if not user or not user.is_active:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Inactive or missing user")
+        return {
+            "id": str(user.id),
+            "username": user.username,
+            "email": user.email,
+            "full_name": user.full_name,
+            "role": getattr(user, "role", "manager"),
+        }
+
+
+def require_roles(*roles: str):
+    async def _dep(current_user: dict = Depends(get_current_user)) -> dict:
+        role = (current_user.get("role") or "manager").lower()
+        allowed = {r.lower() for r in roles}
+        if role not in allowed:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Forbidden")
+        return current_user
+
+    return _dep
 

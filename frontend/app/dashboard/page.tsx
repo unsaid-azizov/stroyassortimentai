@@ -7,7 +7,7 @@ import { ChartAreaInteractive } from "@/components/chart-area-interactive"
 import { SectionCards } from "@/components/section-cards"
 import { FunnelChart } from "@/components/funnel-chart"
 import { ChannelDistribution } from "@/components/channel-distribution"
-import { LeadsTable } from "@/components/leads-table"
+import { OrdersTable } from "@/components/orders-table"
 import { SiteHeader } from "@/components/site-header"
 import {
   SidebarInset,
@@ -15,15 +15,15 @@ import {
 } from "@/components/ui/sidebar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import { leadsApi } from "@/lib/api/leads"
+import { ordersApi } from "@/lib/api/orders"
 
 export default function Page() {
   const [page, setPage] = React.useState(1)
   const limit = 10
 
-  const { data: leadsData, isLoading } = useQuery({
-    queryKey: ['leads', 'dashboard', page, limit],
-    queryFn: () => leadsApi.getLeads({ page, limit }),
+  const { data: ordersData, isLoading } = useQuery({
+    queryKey: ['orders', 'dashboard', page, limit],
+    queryFn: () => ordersApi.getOrders({ page, limit }),
   })
 
   return (
@@ -54,9 +54,9 @@ export default function Page() {
               <div className="px-4 lg:px-6">
                 <Card>
                   <CardHeader>
-                    <CardTitle>Последние лиды</CardTitle>
+                    <CardTitle>Последние заказы</CardTitle>
                     <CardDescription>
-                      Список последних обращений и потенциальных клиентов
+                      Заявки, оформленные через бота (с рассчитанными итогами)
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -66,17 +66,17 @@ export default function Page() {
                         <Skeleton className="h-12 w-full" />
                         <Skeleton className="h-12 w-full" />
                       </div>
-                    ) : leadsData ? (
-                      <LeadsTable
-                        leads={leadsData.leads}
-                        total={leadsData.total}
+                    ) : ordersData ? (
+                      <OrdersTable
+                        orders={ordersData.orders}
+                        total={ordersData.total}
                         page={page}
                         limit={limit}
                         onPageChange={setPage}
                       />
                     ) : (
                       <div className="text-center text-muted-foreground py-8">
-                        Лиды не найдены
+                        Заказы не найдены
                       </div>
                     )}
                   </CardContent>

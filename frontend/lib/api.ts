@@ -2,10 +2,15 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios'
 import { getToken, removeToken } from './auth'
 
 // Создаем axios instance с базовым URL
-// Используем полный URL для всех запросов (клиент и SSR)
-// В браузере localhost:5537 будет работать, т.к. запрос идет с машины пользователя
+// - SSR (внутри Docker): ходим напрямую в ai_service по AI_SERVICE_URL
+// - Browser: используем same-origin и путь /api/* (Nginx или Next rewrites проксируют на backend)
+const baseURL =
+  typeof window === 'undefined'
+  ? (process.env.AI_SERVICE_URL || 'http://ai_service:5537') 
+    : undefined;
+
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5537',
+  baseURL,
   headers: {
     'Content-Type': 'application/json',
   },

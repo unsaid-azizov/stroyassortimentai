@@ -104,10 +104,11 @@ async def process_emails():
                             response.raise_for_status()
                             result = response.json()
                             
-                            ai_response = result.get("response", "")
+                            ai_response = result.get("response", "") or ""
+                            ignored = bool(result.get("ignored", False))
                             
-                            # Если агент не проигнорировал сообщение
-                            if ai_response:
+                            # Email behavior: if ignored (spam/off-topic), do not reply.
+                            if (not ignored) and ai_response:
                                 logger.info(f"AI generated response for {client_email}. Sending reply...")
                                 # Получаем Message-ID из заголовков для корректного ответа в треде
                                 # imap_tools headers - это словарь, где значения могут быть списками

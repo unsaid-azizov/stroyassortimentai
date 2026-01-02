@@ -24,7 +24,17 @@ async def create_admin_user():
         # Проверяем, существует ли уже пользователь
         existing_user = await get_user_by_username(session, username)
         if existing_user:
-            print(f"Пользователь {username} уже существует")
+            # Ensure role=admin for the configured admin user (backward compat)
+            try:
+                if getattr(existing_user, "role", "manager") != "admin":
+                    existing_user.role = "admin"
+                    await session.commit()
+                    await session.refresh(existing_user)
+                    print(f"Пользователь {username} уже существует — роль обновлена на admin")
+                else:
+                    print(f"Пользователь {username} уже существует (admin)")
+            except Exception as e:
+                print(f"Пользователь {username} уже существует, но не удалось обновить роль: {e}")
             return
         
         # Хешируем пароль
@@ -37,7 +47,8 @@ async def create_admin_user():
                 username=username,
                 email=os.getenv("ADMIN_EMAIL", f"{username}@example.com"),
                 hashed_password=hashed_password,
-                full_name="Administrator"
+                full_name="Administrator",
+                role="admin",
             )
             print(f"Администратор {username} успешно создан!")
             print(f"ID: {user.id}")

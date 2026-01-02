@@ -1,9 +1,7 @@
 'use client'
 
 import { useQuery } from "@tanstack/react-query"
-import { IconX, IconTrendingUp } from "@tabler/icons-react"
 
-import { Badge } from "@/components/ui/badge"
 import {
   Card,
   CardContent,
@@ -45,12 +43,6 @@ export function EfficiencyMetrics() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1">
-              <IconTrendingUp className="size-3" />
-              Лиды с заказами / Всего лидов
-            </Badge>
-          </div>
           <p className="text-sm text-muted-foreground mt-2">
             {businessMetrics?.leads_with_orders ?? 0} из {businessMetrics?.total_leads ?? 0} лидов совершили заказ
           </p>
@@ -64,12 +56,6 @@ export function EfficiencyMetrics() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2">
-            <Badge variant="outline" className="gap-1">
-              <IconX className="size-3" />
-              SPAM
-            </Badge>
-          </div>
           <p className="text-sm text-muted-foreground mt-2">
             Количество спам-сообщений, отфильтрованных системой
           </p>

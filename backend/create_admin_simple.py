@@ -12,7 +12,7 @@ sys.path.insert(0, '/app')
 
 from db.session import async_session_factory
 from db.repository import get_user_by_username, create_user
-import bcrypt
+from auth import get_password_hash
 
 load_dotenv()
 
@@ -25,12 +25,7 @@ async def create_admin():
         print("Ошибка: ADMIN_PASSWORD не установлен в .env")
         return
     
-    # Хешируем пароль напрямую через bcrypt
-    password_bytes = password.encode('utf-8')
-    if len(password_bytes) > 72:
-        password_bytes = password_bytes[:72]
-    
-    hashed = bcrypt.hashpw(password_bytes, bcrypt.gensalt()).decode('utf-8')
+    hashed = get_password_hash(password)
     
     async with async_session_factory() as session:
         # Проверяем, существует ли уже пользователь
@@ -46,7 +41,8 @@ async def create_admin():
                 username=username,
                 email=os.getenv("ADMIN_EMAIL", f"{username}@example.com"),
                 hashed_password=hashed,
-                full_name="Administrator"
+                full_name="Administrator",
+                role="admin",
             )
             print(f"Администратор {username} успешно создан!")
             print(f"ID: {user.id}")

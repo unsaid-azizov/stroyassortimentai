@@ -118,20 +118,6 @@ export default function SalesManagerPage() {
     },
   })
 
-  // Перезагрузка агента
-  const reloadAgentMutation = useMutation({
-    mutationFn: async () => {
-      const response = await api.post('/api/settings/reload-agent')
-      return response.data
-    },
-    onSuccess: () => {
-      toast.success('Агент успешно перезагружен')
-    },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.detail || 'Ошибка при перезагрузке агента')
-    },
-  })
-
   // Инициализация содержимого при загрузке
   useEffect(() => {
     if (promptData?.content) {
@@ -190,7 +176,7 @@ export default function SalesManagerPage() {
                       <CardHeader>
                         <CardTitle>Редактор промпта</CardTitle>
                         <CardDescription>
-                          Измените инструкции для AI агента. Изменения вступят в силу после сохранения и перезагрузки агента.
+                          Измените инструкции для AI агента. Изменения применяются сразу после сохранения.
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
@@ -219,13 +205,6 @@ export default function SalesManagerPage() {
                                 disabled={updatePromptMutation.isPending}
                               >
                                 {updatePromptMutation.isPending ? 'Сохранение...' : 'Сохранить промпт'}
-                              </Button>
-                              <Button
-                                variant="outline"
-                                onClick={() => reloadAgentMutation.mutate()}
-                                disabled={reloadAgentMutation.isPending}
-                              >
-                                {reloadAgentMutation.isPending ? 'Перезагрузка...' : 'Перезагрузить агента'}
                               </Button>
                             </div>
                           </>
@@ -267,13 +246,6 @@ export default function SalesManagerPage() {
                                 disabled={updateKBMutation.isPending}
                               >
                                 {updateKBMutation.isPending ? 'Сохранение...' : 'Сохранить базу знаний'}
-                              </Button>
-                              <Button
-                                variant="outline"
-                                onClick={() => reloadAgentMutation.mutate()}
-                                disabled={reloadAgentMutation.isPending}
-                              >
-                                {reloadAgentMutation.isPending ? 'Перезагрузка...' : 'Перезагрузить агента'}
                               </Button>
                             </div>
                           </>

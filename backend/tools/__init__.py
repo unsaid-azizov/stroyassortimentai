@@ -6,7 +6,7 @@ Tools для агента продаж.
 """
 from .search_company_info import search_company_info
 from .sales_tools import call_manager, collect_order_info
-from .search_1c_products import search_1c_products
+from .search_1c_products import search_1c_products, get_product_details
 
 # Список всех доступных tools
 __all__ = [
@@ -14,5 +14,6 @@ __all__ = [
     "call_manager",
     "collect_order_info",
     "search_1c_products",
+    "get_product_details",
 ]
 

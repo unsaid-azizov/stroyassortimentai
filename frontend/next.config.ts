@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5537'}/api/:path*`,
+        // Rewrites run on the Next.js server, so prefer AI_SERVICE_URL (docker network)
+        destination: `${process.env.AI_SERVICE_URL || 'http://ai_service:5537'}/api/:path*`,
       },
     ];
   },

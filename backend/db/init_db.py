@@ -7,8 +7,10 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from db.session import async_session_factory, engine
 from db.models import Base, User, Settings, PromptConfig  # Импортируем все модели, чтобы таблицы создались
-from db.repository import get_active_prompt_config, create_prompt_config
-from sqlalchemy import select
+from db.repository import get_active_prompt_config, create_prompt_config, get_settings, upsert_settings
+from sqlalchemy import select, text
+import json
+from pathlib import Path
 
 # Дефолтный промпт (из agent.py)
 DEFAULT_PROMPT = """Ты - Саид, ведущий менеджер по продажам компании "СтройАссортимент". 
@@ -73,6 +75,15 @@ async def init_db():
         # Для отладки можно расскомментировать следующую строку, чтобы пересоздавать таблицы
         # await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
+        # Lightweight schema migration (no Alembic in this repo yet)
+        # Ensure users.role exists for RBAC
+        try:
+            await conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS role VARCHAR(32) NOT NULL DEFAULT 'manager'"))
+            await conn.execute(text("CREATE INDEX IF NOT EXISTS ix_users_role ON users (role)"))
+            # Make sure default admin (if already exists) is admin
+            await conn.execute(text("UPDATE users SET role='admin' WHERE username='admin' AND role IS DISTINCT FROM 'admin'"))
+        except Exception as e:
+            print(f"⚠️ Не удалось применить миграцию users.role: {e}")
     print("Таблицы успешно созданы.")
     
     # Создаем дефолтный промпт, если его еще нет
@@ -85,6 +96,23 @@ async def init_db():
             print("Дефолтный промпт успешно создан.")
         else:
             print("Промпт уже существует, пропускаем создание.")
+
+        # Создаем дефолтную Базу знаний в БД, если ее еще нет
+        # (чтобы dynamic_prompt_template мог брать knowledge_base из Postgres)
+        print("Проверка базы знаний (knowledge_base)...")
+        kb_settings = await get_settings(session, "knowledge_base")
+        if not kb_settings:
+            kb_path = Path(__file__).parent.parent / "data" / "company_info.json"
+            kb_content = {}
+            try:
+                with open(kb_path, "r", encoding="utf-8") as f:
+                    kb_content = json.load(f)
+            except FileNotFoundError:
+                kb_content = {}
+            await upsert_settings(session, "knowledge_base", kb_content)
+            print("База знаний (knowledge_base) успешно создана в БД.")
+        else:
+            print("База знаний уже существует, пропускаем создание.")
     
     await engine.dispose()
 
