@@ -1,0 +1,83 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: said_redis
+    volumes:
+      - redis_data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: said_postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    env_file:
+      - .env
+
+  ai_service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.ai_service
+    container_name: said_ai_service
+    env_file:
+      - .env
+    ports:
+      # bind to localhost only; public traffic goes through nginx
+      - "127.0.0.1:15537:5537"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend/logs:/app/logs
+      - ./backend/data:/app/data
+    restart: unless-stopped
+
+  bot:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.bot
+    container_name: said_bot
+    env_file:
+      - .env
+    depends_on:
+      ai_service:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/logs:/app/logs
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: said_frontend
+    ports:
+      # bind to localhost only; public traffic goes through nginx
+      - "127.0.0.1:3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - ai_service
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
