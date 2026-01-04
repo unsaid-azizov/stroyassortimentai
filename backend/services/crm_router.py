@@ -2,7 +2,7 @@
 FastAPI микросервис для обработки сообщений через AI агента.
 Принимает запросы от Telegram бота и возвращает ответы агента.
 """
-from fastapi import FastAPI, HTTPException, Depends, Query
+from fastapi import Router, HTTPException, Depends, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
@@ -18,8 +18,10 @@ from pathlib import Path
 
 from langchain_core.messages import HumanMessage, AIMessage
 import agent as agent_module
-from agent import refresh_agent_runtime_config
-from runtime_config import refresh_runtime_config
+from params_manager import ParamsManager
+
+# Создаем глобальный инстанс ParamsManager (singleton)
+params_manager = ParamsManager()
 
 # Импорт для обработки ошибки превышения лимита токенов
 try:
@@ -29,526 +31,75 @@ except ImportError:
     LengthFinishReasonError = type('LengthFinishReasonError', (Exception,), {})
 from db.session import async_session_factory
 from db.repository import (
-    get_or_create_lead, get_or_create_thread, save_message, save_ai_stats,
-    get_leads, get_lead_by_id, get_threads, get_thread_by_id, get_messages,
-    update_thread_status, get_stats_overview, get_stats_categories,
-    get_stats_timeline, get_stats_funnel, get_stats_costs,
-    get_active_prompt_config, create_prompt_config,
-    get_user_by_username, get_user_by_email, create_user,
-    get_business_metrics, get_channel_distribution, get_enhanced_funnel,
-    get_order_leads_timeline, get_settings, upsert_settings, get_order_submissions,
+    get_leads, 
+    get_lead_by_id, 
+    get_threads, 
+    get_thread_by_id, 
+    get_messages,
+    update_thread_status, 
+    get_stats_overview, 
+    get_stats_categories,
+    get_stats_timeline, 
+    get_stats_funnel, 
+    get_stats_costs,
+    get_active_prompt_config, 
+    create_prompt_config,
+    get_user_by_username, 
+    get_business_metrics, 
+    get_channel_distribution, 
+    get_enhanced_funnel,
+    get_order_leads_timeline, 
+    get_settings, 
+    upsert_settings,
+    get_order_submissions,
     update_user_password,
 )
 from auth import authenticate_user, create_access_token, verify_token, get_password_hash, get_current_user, require_roles, verify_password
+from schemas.service_schemas import (
+    HealthResponse,
+    LoginRequest,
+    SignupRequest,
+    UserResponse,
+    ChangePasswordRequest,
+    LeadsListResponse,
+    LeadResponse,
+    OrdersListResponse,
+    ThreadResponse,
+    ThreadDetailResponse,
+    MessageResponseDetail,
+    UpdateThreadStatusRequest,
+    StatsOverviewResponse,
+    CategoryStatsResponse,
+    TimelineResponse,
+    FunnelResponse,
+    CostsResponse,
+    BusinessMetricsResponse,
+    ChannelDistributionResponse,
+    EnhancedFunnelResponse,
+    PromptConfigResponse,
+    UpdatePromptRequest,
+    KnowledgeBaseResponse,
+    UpdateKnowledgeBaseRequest,
+    SettingsResponse,
+    SettingsUpdateRequest,
+    SecretsUpdateRequest,
+    LoginResponse,
+    SignupResponse,
+    SettingsPublic, 
+    SecretStatus,
+    OrderSubmissionResponse, 
+)
+from utils.secrets import encrypt_secret, decrypt_secret
 
 # Настройка логирования
 from utils.logger import setup_logging
 logger = setup_logging("ai_service")
-from utils.secrets import encrypt_secret, decrypt_secret
 
-# Создаем FastAPI приложение
-app = FastAPI(
-    title="AI Consultant Service",
-    description="Микросервис для обработки сообщений через AI агента продаж",
-    version="0.1.0"
-)
-
-
-@app.on_event("startup")
-async def _startup_refresh_agent_runtime():
-    # Load prompt + knowledge base from DB into agent runtime cache
-    await refresh_runtime_config(force=True)
-    await refresh_agent_runtime_config(force=True)
-
-# Настройка CORS (если нужно обращаться с фронтенда)
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://localhost:3001",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:3001",
-    ],  # В продакшене указать конкретные домены
-    allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["*"],
-    expose_headers=["*"],
-)
-
-
-# Модели запросов и ответов
-class MessageRequest(BaseModel):
-    """Запрос на обработку сообщения."""
-    message: str
-    user_id: Optional[str] = None
-    chat_id: Optional[str] = None
-    context: Optional[List[dict]] = None  # История сообщений для контекста
-    metadata: Optional[dict] = None  # Метаданные пользователя (имя, телефон, канал и т.д.)
-
-
-class MessageResponse(BaseModel):
-    """Ответ от агента."""
-    response: str
-    user_id: Optional[str] = None
-    chat_id: Optional[str] = None
-    # Optional metadata for clients (Telegram/Email) to handle ignored messages differently
-    ignored: bool = False
-    category: Optional[str] = None
-    reasoning: Optional[str] = None
-
-
-def _safe_message_preview(content: Any) -> str:
-    """For logging only: avoid type errors if content is not a string."""
-    try:
-        if isinstance(content, str):
-            return content[:120]
-        return str(content)[:120]
-    except Exception:
-        return "<unprintable>"
-
-
-class HealthResponse(BaseModel):
-    """Ответ для health check."""
-    status: str
-    service: str
-
-
-# Модели для аутентификации
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
-
-class SignupRequest(BaseModel):
-    username: str
-    email: str
-    password: str
-    full_name: Optional[str] = None
-
-
-class LoginResponse(BaseModel):
-    access_token: str
-    token_type: str = "bearer"
-
-
-class SignupResponse(BaseModel):
-    access_token: str
-    token_type: str = "bearer"
-    user: dict
-
-
-class UserResponse(BaseModel):
-    username: str
-    email: Optional[str] = None
-    full_name: Optional[str] = None
-    role: Optional[str] = None
-
-
-class ChangePasswordRequest(BaseModel):
-    current_password: str
-    new_password: str
-
-
-# Модели для лидов
-class LeadResponse(BaseModel):
-    id: str
-    external_id: Optional[str]
-    channel: str
-    name: Optional[str]
-    phone: Optional[str]
-    email: Optional[str]
-    last_seen: datetime
-    
-    class Config:
-        from_attributes = True
-
-
-class LeadsListResponse(BaseModel):
-    leads: List[LeadResponse]
-    total: int
-    page: int
-    limit: int
-
-
-# Модели для заказов (заказы, сформированные ботом)
-class OrderSubmissionResponse(BaseModel):
-    id: str
-    created_at: datetime
-    client_name: Optional[str] = None
-    client_contact: Optional[str] = None
-    currency: str = "RUB"
-    subtotal: Optional[float] = None
-    total: Optional[float] = None
-    items_count: Optional[int] = None
-    status: str
-
-    class Config:
-        from_attributes = True
-
-
-class OrdersListResponse(BaseModel):
-    orders: List[OrderSubmissionResponse]
-    total: int
-    page: int
-    limit: int
-
-
-class ThreadResponse(BaseModel):
-    id: str
-    lead_id: str
-    status: str
-    created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-
-class MessageResponseDetail(BaseModel):
-    id: str
-    thread_id: str
-    sender_role: str
-    sender_id: Optional[str]
-    content: str
-    created_at: datetime
-    ai_stats: Optional[Dict] = None
-    
-    class Config:
-        from_attributes = True
-
-
-class ThreadDetailResponse(BaseModel):
-    id: str
-    lead_id: str
-    status: str
-    created_at: datetime
-    lead: LeadResponse
-    messages: List[MessageResponseDetail]
-    
-    class Config:
-        from_attributes = True
-
-
-class UpdateThreadStatusRequest(BaseModel):
-    status: str
-
-
-# Модели для статистики
-class StatsOverviewResponse(BaseModel):
-    total_leads: int
-    active_threads: int
-    total_messages: int
-    avg_cost: float
-
-
-class CategoryStatsResponse(BaseModel):
-    category: str
-    count: int
-
-
-class TimelineResponse(BaseModel):
-    date: str
-    value: float
-
-
-class FunnelResponse(BaseModel):
-    stage: str
-    count: int
-
-
-class CostsResponse(BaseModel):
-    total: float
-    average: float
-
-
-# Модели для бизнес-метрик
-class BusinessMetricsResponse(BaseModel):
-    potential_orders: int
-    new_leads_today: int
-    new_leads_week: int
-    ai_processed_messages: int
-    human_needed_count: int
-    spam_filtered: int
-    conversion_rate: float
-    total_leads: int
-    leads_with_orders: int
-    orders_count: int = 0
-    orders_total_amount: float = 0.0
-    orders_total_amount_week: float = 0.0
-
-
-class ChannelDistributionItem(BaseModel):
-    channel: str
-    leads: int
-    order_leads: int
-
-
-class ChannelDistributionResponse(BaseModel):
-    channels: List[ChannelDistributionItem]
-
-
-class EnhancedFunnelItem(BaseModel):
-    stage: str
-    count: int
-
-
-class EnhancedFunnelResponse(BaseModel):
-    funnel: List[EnhancedFunnelItem]
-
-
-# Модели для настроек
-class PromptConfigResponse(BaseModel):
-    id: str
-    name: str
-    version: int
-    content: str
-    is_active: bool
-    created_at: datetime
-    
-    class Config:
-        from_attributes = True
-
-
-class UpdatePromptRequest(BaseModel):
-    content: str
-    name: str = "default"
-
-
-class KnowledgeBaseResponse(BaseModel):
-    content: Dict
-
-
-class UpdateKnowledgeBaseRequest(BaseModel):
-    content: Dict
-
-
-class SecretStatus(BaseModel):
-    is_set: bool = False
-
-
-class SettingsPublic(BaseModel):
-    # secrets are never returned as plaintext
-    openrouter_token: SecretStatus = Field(default_factory=SecretStatus)
-    telegram_bot_token: SecretStatus = Field(default_factory=SecretStatus)
-    smtp_user: Optional[str] = None
-    smtp_password: SecretStatus = Field(default_factory=SecretStatus)
-    sales_email: Optional[str] = None
-    imap_server: Optional[str] = None
-    imap_port: Optional[int] = None
-    smtp_server: Optional[str] = None
-    smtp_port: Optional[int] = None
-
-
-class SettingsResponse(BaseModel):
-    settings: SettingsPublic
-
-
-class SettingsUpdateRequest(BaseModel):
-    # non-secret fields only
-    smtp_user: Optional[str] = None
-    sales_email: Optional[str] = None
-    imap_server: Optional[str] = None
-    imap_port: Optional[int] = None
-    smtp_server: Optional[str] = None
-    smtp_port: Optional[int] = None
-
-
-class SecretsUpdateRequest(BaseModel):
-    openrouter_token: Optional[str] = None
-    telegram_bot_token: Optional[str] = None
-    smtp_password: Optional[str] = None
-
-
-@app.get("/health", response_model=HealthResponse)
-async def health_check():
-    """Health check endpoint."""
-    return HealthResponse(status="ok", service="ai-consultant")
-
-
-async def log_interaction(request: MessageRequest, result_state: dict):
-    """
-    Фоновое логирование взаимодействия в БД PostgreSQL.
-    """
-    async with async_session_factory() as db_session:
-        try:
-            metadata = request.metadata or {}
-            channel = metadata.get("channel", "unknown")
-            external_id = request.user_id or request.chat_id or "unknown"
-
-            # 1. Лид и Тред
-            lead = await get_or_create_lead(
-                db_session, 
-                channel=channel, 
-                external_id=external_id,
-                name=metadata.get("first_name"),
-                phone=metadata.get("phone"),
-                email=metadata.get("email")
-            )
-            thread = await get_or_create_thread(db_session, lead.id)
-
-            # 2. Сообщение пользователя
-            await save_message(db_session, thread.id, "USER", request.message)
-
-            # 3. Данные ответа Бота
-            structured_data = result_state.get("structured_response")
-            if structured_data:
-                category = getattr(structured_data, "category", "UNKNOWN")
-                reasoning = getattr(structured_data, "reasoning", "")
-                agent_response = getattr(structured_data, "response", "")
-                should_ignore = getattr(structured_data, "ignore", False)
-
-                # Сохраняем ответ ИИ
-                ai_msg = await save_message(
-                    db_session,
-                    thread_id=thread.id,
-                    sender_role="AI",
-                    content=agent_response if not should_ignore else "[IGNORED]"
-                )
-                
-                # Сохраняем детальную статистику
-                await save_ai_stats(
-                    db_session,
-                    message_id=ai_msg.id,
-                    category=category,
-                    reasoning=reasoning,
-                    ignored=should_ignore,
-                    model_name="gpt-4o-mini"
-                )
-        except Exception as e:
-            logger.error(f"Error in log_interaction: {e}")
-
-@app.post("/chat", response_model=MessageResponse)
-async def chat(request: MessageRequest):
-    """
-    Обработка сообщения пользователя через AI агента.
-    """
-    try:
-        logger.info(f"Received message from user {request.user_id}: {request.message[:50]}...")
-        
-        # Подготовка сообщений для агента
-        messages = []
-        if request.context:
-            # Ограничиваем контекст последними 10 сообщениями, чтобы старое поведение не "залипало"
-            # и новые правила промпта работали эффективнее
-            context_to_use = request.context[-10:]
-            for msg in context_to_use:
-                if msg.get("role") == "user":
-                    messages.append(HumanMessage(content=msg.get("content", "")))
-                elif msg.get("role") == "assistant":
-                    messages.append(AIMessage(content=msg.get("content", "")))
-        
-        messages.append(HumanMessage(content=request.message))
-        
-        async def _run(agent_obj):
-            return await agent_obj.ainvoke({
-                "messages": messages,
-                "user_info": request.metadata or {}
-            })
-
-        # Strictly structured, with retries (no "parse JSON from text" fallback)
-        attempts = [
-            ("main", agent_module.agent),
-            ("retry_temp", None),  # built lazily
-            ("backup", agent_module.agent_backup),
-        ]
-
-        last_err: Optional[Exception] = None
-        result_state = None
-        for name, agent_obj in attempts:
-            try:
-                if name == "retry_temp":
-                    agent_obj = agent_module.build_retry_agent(temperature=0.2)
-                result_state = await asyncio.wait_for(_run(agent_obj), timeout=50.0)
-                last_err = None
-                break
-            except asyncio.TimeoutError as e:
-                last_err = e
-                logger.warning(f"/chat timed out on attempt={name}")
-            except (ValueError, ValidationError) as e:
-                last_err = e
-                logger.warning(f"Structured output failed on attempt={name}: {e}")
-            except Exception as e:
-                last_err = e
-                logger.error(f"Unexpected error on attempt={name}: {e}", exc_info=True)
-
-        if result_state is None:
-            return MessageResponse(
-                response="Извините, сервис временно перегружен. Попробуйте ещё раз через минуту.",
-                user_id=request.user_id,
-                chat_id=request.chat_id,
-                ignored=False,
-                category="TEMP_UNAVAILABLE",
-                reasoning=str(last_err) if last_err else "unknown",
-            )
-        
-        # Фоновое логирование в БД (не блокирует ответ клиенту)
-        asyncio.create_task(log_interaction(request, result_state))
-        
-        # Извлечение ответа для клиента
-        structured_data = result_state.get("structured_response")
-        agent_response = ""
-        should_ignore = False
-        category = None
-        reasoning = None
-
-        if structured_data:
-            agent_response = getattr(structured_data, "response", "")
-            should_ignore = getattr(structured_data, "ignore", False)
-            category = getattr(structured_data, "category", None)
-            reasoning = getattr(structured_data, "reasoning", None)
-        else:
-            # If we got here, provider returned something unexpected even after retries.
-            # Do NOT attempt to parse text. Return a generic response.
-            agent_response = "Извините, я не смог сформировать корректный ответ. Попробуйте переформулировать запрос."
-            should_ignore = False
-        
-        agent_response = agent_response.replace("—", "-")
-        
-        if should_ignore:
-            return MessageResponse(
-                response="",
-                user_id=request.user_id,
-                chat_id=request.chat_id,
-                ignored=True,
-                category=category,
-                reasoning=reasoning,
-            )
-        
-        return MessageResponse(
-            response=agent_response,
-            user_id=request.user_id,
-            chat_id=request.chat_id,
-            ignored=False,
-            category=category,
-            reasoning=reasoning,
-        )
-    
-    except Exception as e:
-        # Проверяем, является ли это ошибкой превышения лимита токенов
-        error_str = str(e)
-        error_type = type(e).__name__
-        
-        if "LengthFinishReasonError" in error_type or "length limit was reached" in error_str:
-            # Обработка ошибки превышения лимита токенов
-            logger.warning(f"Response length limit reached for user {request.user_id}: {error_str}")
-            return MessageResponse(
-                response="Извините, ответ получился слишком длинным. Пожалуйста, уточните ваш вопрос или запросите информацию по конкретным товарам отдельно.",
-                user_id=request.user_id,
-                chat_id=request.chat_id
-            )
-        
-        # Обработка всех остальных ошибок
-        logger.error(f"Error processing message: {error_str}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
-    
-    except Exception as e:
-        logger.error(f"Error processing message: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-# ==================== CRM API ENDPOINTS ====================
+# Создаем роутер для CRM эндпоинтов
+router = Router()
 
 # Аутентификация
-@app.post("/api/auth/login", response_model=LoginResponse)
+@router.post("/api/auth/login", response_model=LoginResponse)
 async def login(request: LoginRequest):
     """Вход в систему."""
     user = await authenticate_user(request.username, request.password)
@@ -561,19 +112,19 @@ async def login(request: LoginRequest):
     return LoginResponse(access_token=access_token)
 
 
-@app.post("/api/auth/signup", response_model=SignupResponse)
+@router.post("/api/auth/signup", response_model=SignupResponse)
 async def signup(request: SignupRequest):
     """Регистрация нового пользователя (disabled)."""
     raise HTTPException(status_code=403, detail="Signup is disabled")
 
 
-@app.get("/api/auth/me", response_model=UserResponse)
+@router.get("/api/auth/me", response_model=UserResponse)
 async def get_me(current_user: dict = Depends(get_current_user)):
     """Получить текущего пользователя."""
     return UserResponse(**current_user)
 
 
-@app.put("/api/auth/change-password")
+@router.put("/api/auth/change-password")
 async def change_password(
     request: ChangePasswordRequest,
     current_user: dict = Depends(require_roles("admin")),
@@ -597,7 +148,7 @@ async def change_password(
 
 
 # Лиды и переписки
-@app.get("/api/leads", response_model=LeadsListResponse)
+@router.get("/api/leads", response_model=LeadsListResponse)
 async def list_leads(
     channel: Optional[str] = Query(None),
     status: Optional[str] = Query(None),
@@ -648,7 +199,7 @@ async def list_leads(
         )
 
 
-@app.get("/api/leads/{lead_id}", response_model=LeadResponse)
+@router.get("/api/leads/{lead_id}", response_model=LeadResponse)
 async def get_lead(
     lead_id: str,
     current_user: dict = Depends(require_roles("admin", "manager"))
@@ -670,7 +221,7 @@ async def get_lead(
 
 
 # Заказы (сформированные ботом)
-@app.get("/api/orders", response_model=OrdersListResponse)
+@router.get("/api/orders", response_model=OrdersListResponse)
 async def list_orders(
     page: int = Query(1, ge=1),
     limit: int = Query(50, ge=1, le=100),
@@ -700,7 +251,7 @@ async def list_orders(
         return OrdersListResponse(orders=orders_data, total=total, page=res["page"], limit=res["limit"])
 
 
-@app.get("/api/threads", response_model=List[ThreadResponse])
+@router.get("/api/threads", response_model=List[ThreadResponse])
 async def list_threads(
     lead_id: Optional[str] = Query(None),
     status: Optional[str] = Query(None),
@@ -721,7 +272,7 @@ async def list_threads(
         ]
 
 
-@app.get("/api/threads/{thread_id}", response_model=ThreadDetailResponse)
+@router.get("/api/threads/{thread_id}", response_model=ThreadDetailResponse)
 async def get_thread(
     thread_id: str,
     current_user: dict = Depends(require_roles("admin", "manager"))
@@ -773,7 +324,7 @@ async def get_thread(
         )
 
 
-@app.get("/api/threads/{thread_id}/messages", response_model=List[MessageResponseDetail])
+@router.get("/api/threads/{thread_id}/messages", response_model=List[MessageResponseDetail])
 async def get_thread_messages(
     thread_id: str,
     current_user: dict = Depends(require_roles("admin", "manager"))
@@ -805,7 +356,7 @@ async def get_thread_messages(
         return messages_data
 
 
-@app.patch("/api/threads/{thread_id}", response_model=ThreadResponse)
+@router.patch("/api/threads/{thread_id}", response_model=ThreadResponse)
 async def update_thread(
     thread_id: str,
     request: UpdateThreadStatusRequest,
@@ -825,7 +376,7 @@ async def update_thread(
 
 
 # Статистика
-@app.get("/api/stats/overview", response_model=StatsOverviewResponse)
+@router.get("/api/stats/overview", response_model=StatsOverviewResponse)
 async def get_stats_overview_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -835,7 +386,7 @@ async def get_stats_overview_endpoint(
         return StatsOverviewResponse(**stats)
 
 
-@app.get("/api/stats/categories", response_model=List[CategoryStatsResponse])
+@router.get("/api/stats/categories", response_model=List[CategoryStatsResponse])
 async def get_stats_categories_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -845,7 +396,7 @@ async def get_stats_categories_endpoint(
         return [CategoryStatsResponse(**cat) for cat in categories]
 
 
-@app.get("/api/stats/timeline", response_model=List[TimelineResponse])
+@router.get("/api/stats/timeline", response_model=List[TimelineResponse])
 async def get_stats_timeline_endpoint(
     metric: str = Query(..., description="leads, messages, or costs"),
     date_from: Optional[datetime] = Query(None),
@@ -858,7 +409,7 @@ async def get_stats_timeline_endpoint(
         return [TimelineResponse(**item) for item in timeline]
 
 
-@app.get("/api/stats/funnel", response_model=List[FunnelResponse])
+@router.get("/api/stats/funnel", response_model=List[FunnelResponse])
 async def get_stats_funnel_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -868,7 +419,7 @@ async def get_stats_funnel_endpoint(
         return [FunnelResponse(**item) for item in funnel]
 
 
-@app.get("/api/stats/costs", response_model=CostsResponse)
+@router.get("/api/stats/costs", response_model=CostsResponse)
 async def get_stats_costs_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -878,7 +429,7 @@ async def get_stats_costs_endpoint(
         return CostsResponse(**costs)
 
 
-@app.get("/api/stats/business", response_model=BusinessMetricsResponse)
+@router.get("/api/stats/business", response_model=BusinessMetricsResponse)
 async def get_business_metrics_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -888,7 +439,7 @@ async def get_business_metrics_endpoint(
         return BusinessMetricsResponse(**metrics)
 
 
-@app.get("/api/stats/channels", response_model=ChannelDistributionResponse)
+@router.get("/api/stats/channels", response_model=ChannelDistributionResponse)
 async def get_channel_distribution_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -898,7 +449,7 @@ async def get_channel_distribution_endpoint(
         return ChannelDistributionResponse(channels=channels)
 
 
-@app.get("/api/stats/funnel-enhanced", response_model=EnhancedFunnelResponse)
+@router.get("/api/stats/funnel-enhanced", response_model=EnhancedFunnelResponse)
 async def get_enhanced_funnel_endpoint(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -908,7 +459,7 @@ async def get_enhanced_funnel_endpoint(
         return EnhancedFunnelResponse(funnel=funnel)
 
 
-@app.get("/api/stats/order-leads-timeline", response_model=List[TimelineResponse])
+@router.get("/api/stats/order-leads-timeline", response_model=List[TimelineResponse])
 async def get_order_leads_timeline_endpoint(
     date_from: Optional[datetime] = Query(None),
     date_to: Optional[datetime] = Query(None),
@@ -921,7 +472,7 @@ async def get_order_leads_timeline_endpoint(
 
 
 # Настройки агента
-@app.get("/api/settings/prompt", response_model=PromptConfigResponse)
+@router.get("/api/settings/prompt", response_model=PromptConfigResponse)
 async def get_prompt(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -943,7 +494,7 @@ async def get_prompt(
         )
 
 
-@app.put("/api/settings/prompt", response_model=PromptConfigResponse)
+@router.put("/api/settings/prompt", response_model=PromptConfigResponse)
 async def update_prompt(
     request: UpdatePromptRequest,
     current_user: dict = Depends(require_roles("admin", "manager"))
@@ -951,8 +502,8 @@ async def update_prompt(
     """Обновить промпт (hot reload)."""
     async with async_session_factory() as db_session:
         config = await create_prompt_config(db_session, request.content, request.name)
-        # Hot reload агента (кеш промпта/БЗ)
-        await refresh_agent_runtime_config(force=True)
+        # Force refresh ParamsManager immediately
+        await params_manager.load_prompt(force=True)
         return PromptConfigResponse(
             id=str(config.id),
             name=config.name,
@@ -963,7 +514,7 @@ async def update_prompt(
         )
 
 
-@app.get("/api/settings/knowledge-base", response_model=KnowledgeBaseResponse)
+@router.get("/api/settings/knowledge-base", response_model=KnowledgeBaseResponse)
 async def get_knowledge_base(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
@@ -974,7 +525,7 @@ async def get_knowledge_base(
     return KnowledgeBaseResponse(content=kb_data)
 
 
-@app.put("/api/settings/knowledge-base", response_model=KnowledgeBaseResponse)
+@router.put("/api/settings/knowledge-base", response_model=KnowledgeBaseResponse)
 async def update_knowledge_base(
     request: UpdateKnowledgeBaseRequest,
     current_user: dict = Depends(require_roles("admin", "manager"))
@@ -982,12 +533,12 @@ async def update_knowledge_base(
     """Обновить базу знаний (hot reload)."""
     async with async_session_factory() as db_session:
         await upsert_settings(db_session, "knowledge_base", request.content)
-    # Hot reload in agent runtime cache
-    await refresh_agent_runtime_config()
+    # Force refresh ParamsManager immediately
+    await params_manager.load_knowledge_base(force=True)
     return KnowledgeBaseResponse(content=request.content)
 
 
-@app.get("/api/settings", response_model=SettingsResponse)
+@router.get("/api/settings", response_model=SettingsResponse)
 async def get_settings_endpoint(
     current_user: dict = Depends(require_roles("admin"))
 ):
@@ -1031,7 +582,7 @@ async def get_settings_endpoint(
         return SettingsResponse(settings=public)
 
 
-@app.put("/api/settings", response_model=SettingsResponse)
+@router.put("/api/settings", response_model=SettingsResponse)
 async def update_settings_endpoint(
     request: SettingsUpdateRequest,
     current_user: dict = Depends(require_roles("admin"))
@@ -1069,7 +620,7 @@ async def update_settings_endpoint(
         return SettingsResponse(settings=public)
 
 
-@app.put("/api/settings/secrets", response_model=SettingsResponse)
+@router.put("/api/settings/secrets", response_model=SettingsResponse)
 async def update_secrets_endpoint(
     request: SecretsUpdateRequest,
     current_user: dict = Depends(require_roles("admin")),
@@ -1114,7 +665,5 @@ async def update_secrets_endpoint(
         return SettingsResponse(settings=public)
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=5537)
+# Роутер экспортируется для подключения к основному приложению
 

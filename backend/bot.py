@@ -206,17 +206,24 @@ async def handle_message(message: Message, state: FSMContext) -> None:
 
         # Собираем контекст для отправки в AI сервис
         context = data.get("context", [])
-        context.append({"role": "user", "content": message.text})
 
         # Отправляем запрос в AI сервис и получаем ответ
         response = await ai_request(message.text, user_id, chat_id, context, metadata)
 
-        # Добавляем ответ в контекст
-        context.append({"role": "assistant", "content": response.response})
+        # Используем обновленный контекст из ответа (включая ToolMessage)
+        # Если updated_context есть в ответе, используем его, иначе fallback на старый способ
+        if response.updated_context:
+            updated_context = response.updated_context
+        else:
+            # Fallback для обратной совместимости
+            updated_context = context or []
+            updated_context.append({"type": "human", "content": message.text})
+            if response.response:
+                updated_context.append({"type": "ai", "content": response.response})
 
         # Обновляем контекст для следующего сообщения
         await state.update_data(
-            context=context,
+            context=updated_context,
             metadata=metadata
         )
 
