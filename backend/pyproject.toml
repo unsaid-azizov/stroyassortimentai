@@ -1,0 +1,31 @@
+[project]
+name = "consultant"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "aiogram>=3.13.1",
+    "httpx>=0.28.1",
+    "langchain>=1.2.0",
+    "langchain-openai>=1.1.4",
+    "python-dotenv>=1.0.1",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.0.0",
+    "aiosmtplib>=3.0.1",
+    "imap-tools>=1.6.0",
+    "sqlalchemy>=2.0.45",
+    "asyncpg>=0.31.0",
+    "psycopg2-binary>=2.9.11",
+    "alembic>=1.17.2",
+    "langgraph>=0.2.0",
+    "python-jose[cryptography]>=3.3.0",
+    "cryptography>=42.0.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.6",
+    "chatgpt-md-converter>=0.3.12",
+    "redis>=5.0.0",
+    "pandas>=2.2.0",
+    "rank-bm25>=0.2.2",
+]

@@ -1,0 +1,1428 @@
+2025-12-20 18:17:36,037 - bot - INFO - Starting bot...
+2025-12-20 18:17:36,038 - bot - INFO - Bot is starting...
+2025-12-20 18:17:36,407 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-20 18:17:36,408 - aiogram.dispatcher - INFO - Start polling
+2025-12-20 18:17:36,516 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-20 18:55:03,531 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-20 18:55:03,591 - aiogram.event - INFO - Update id=84657404 is handled. Duration 160 ms by bot id=8016349214
+2025-12-20 19:24:24,199 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-20 19:24:24,200 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-20 19:24:24,200 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-20 19:24:24,200 - bot - INFO - Bot is shutting down...
+2025-12-20 19:25:08,629 - bot - INFO - Starting bot...
+2025-12-20 19:25:08,629 - bot - INFO - Bot is starting...
+2025-12-20 19:25:08,891 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-20 19:25:08,892 - aiogram.dispatcher - INFO - Start polling
+2025-12-20 19:25:08,997 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-20 19:25:09,155 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/contextlib.py", line 158, in __exit__
+    self.gen.throw(value)
+  File "/app/.venv/lib/python3.12/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-20 19:25:09,216 - aiogram.event - INFO - Update id=84657405 is handled. Duration 189 ms by bot id=8016349214
+2025-12-20 19:27:52,943 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 19:27:53,010 - aiogram.event - INFO - Update id=84657406 is handled. Duration 13527 ms by bot id=8016349214
+2025-12-20 19:28:32,436 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-20 19:28:32,496 - aiogram.event - INFO - Update id=84657407 is handled. Duration 26137 ms by bot id=8016349214
+2025-12-21 13:00:51,380 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-21 13:00:51,382 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 13:00:51,383 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-21 13:00:51,383 - bot - INFO - Bot is shutting down...
+2025-12-21 13:01:06,780 - bot - INFO - Starting bot...
+2025-12-21 13:01:06,781 - bot - INFO - Bot is starting...
+2025-12-21 13:01:07,025 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-21 13:01:07,026 - aiogram.dispatcher - INFO - Start polling
+2025-12-21 13:01:07,117 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 13:53:29,847 - bot - ERROR - Error calling AI service: [Errno -3] Temporary failure in name resolution
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno -3] Temporary failure in name resolution
+2025-12-21 13:53:29,913 - aiogram.event - INFO - Update id=84657408 is handled. Duration 197 ms by bot id=8016349214
+2025-12-21 17:00:34,758 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 17:00:34,820 - aiogram.event - INFO - Update id=84657409 is handled. Duration 10680 ms by bot id=8016349214
+2025-12-21 19:15:06,601 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-21 19:15:06,602 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 19:15:06,602 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-21 19:15:06,602 - bot - INFO - Bot is shutting down...
+2025-12-21 19:17:39,247 - bot - INFO - Starting bot...
+2025-12-21 19:17:39,252 - bot - INFO - Bot is starting...
+2025-12-21 19:17:39,541 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-21 19:17:39,542 - aiogram.dispatcher - INFO - Start polling
+2025-12-21 19:17:39,651 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 19:58:24,525 - aiogram.event - INFO - Update id=84657410 is handled. Duration 136 ms by bot id=8016349214
+2025-12-21 19:58:44,540 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:58:44,597 - aiogram.event - INFO - Update id=84657411 is handled. Duration 16416 ms by bot id=8016349214
+2025-12-21 19:59:20,314 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:59:20,371 - aiogram.event - INFO - Update id=84657412 is handled. Duration 12643 ms by bot id=8016349214
+2025-12-21 19:59:56,979 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 19:59:57,044 - aiogram.event - INFO - Update id=84657413 is handled. Duration 23443 ms by bot id=8016349214
+2025-12-21 20:03:36,551 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-21 20:03:36,627 - aiogram.event - INFO - Update id=84657414 is handled. Duration 46346 ms by bot id=8016349214
+2025-12-21 20:06:13,429 - bot - ERROR - Timeout when calling AI service for user 1636399323
+2025-12-21 20:06:13,491 - aiogram.event - INFO - Update id=84657415 is handled. Duration 60138 ms by bot id=8016349214
+2025-12-21 20:20:58,476 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-21 20:20:58,477 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 20:20:58,477 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-21 20:20:58,478 - bot - INFO - Bot is shutting down...
+2025-12-21 20:23:13,629 - bot - INFO - Starting bot...
+2025-12-21 20:23:13,631 - bot - INFO - Bot is starting...
+2025-12-21 20:23:13,878 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-21 20:23:13,878 - aiogram.dispatcher - INFO - Start polling
+2025-12-21 20:23:13,986 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-21 23:55:12,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-21 23:55:12,520 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-21 23:55:23,619 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-21 23:55:42,578 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramConflictError: Telegram server says - Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+2025-12-21 23:55:42,579 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-21 23:55:53,613 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-22 11:35:51,426 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-22 11:35:51,426 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-22 11:35:51,427 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-22 11:35:51,427 - bot - INFO - Bot is shutting down...
+2025-12-22 11:36:01,317 - bot - INFO - Starting bot...
+2025-12-22 11:36:01,318 - bot - INFO - Bot is starting...
+2025-12-22 11:36:01,583 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2025-12-22 11:36:01,588 - bot - INFO - AI service is available at http://api:5537
+2025-12-22 11:36:01,588 - aiogram.dispatcher - INFO - Start polling
+2025-12-22 11:36:01,697 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-22 12:09:38,424 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-22 12:09:38,425 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-22 12:09:38,426 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-22 12:09:38,426 - bot - INFO - Bot is shutting down...
+2025-12-22 12:09:49,592 - bot - INFO - Starting bot...
+2025-12-22 12:09:49,593 - bot - INFO - Bot is starting...
+2025-12-22 12:09:49,873 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-22 12:09:49,874 - aiogram.dispatcher - INFO - Start polling
+2025-12-22 12:09:49,979 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-26 09:16:40,532 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:16:40,532 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-26 09:17:52,536 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:17:52,536 - aiogram.dispatcher - WARNING - Sleep for 1.264504 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-26 09:19:04,536 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:19:04,536 - aiogram.dispatcher - WARNING - Sleep for 1.660692 seconds and try again... (tryings = 2, bot id = 8016349214)
+2025-12-26 09:20:16,536 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:20:16,536 - aiogram.dispatcher - WARNING - Sleep for 2.302663 seconds and try again... (tryings = 3, bot id = 8016349214)
+2025-12-26 09:20:32,610 - aiogram.dispatcher - INFO - Connection established (tryings = 4, bot id = 8016349214)
+2025-12-26 09:37:42,720 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Connection reset by peer]
+2025-12-26 09:37:42,720 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-26 09:38:54,472 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:38:54,472 - aiogram.dispatcher - WARNING - Sleep for 1.203195 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-26 09:39:05,814 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8016349214)
+2025-12-26 09:44:02,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:44:02,520 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-26 09:45:14,504 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:45:14,504 - aiogram.dispatcher - WARNING - Sleep for 1.240967 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-26 09:46:04,514 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8016349214)
+2025-12-26 09:47:47,532 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-26 09:47:47,532 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-26 09:47:49,693 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Connection reset by peer]
+2025-12-26 09:47:49,693 - aiogram.dispatcher - WARNING - Sleep for 1.328994 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-26 09:48:33,798 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8016349214)
+2025-12-26 09:50:13,342 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-26 09:50:13,343 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-26 09:50:29,443 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-26 09:50:45,860 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-26 09:50:45,861 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-26 09:50:56,887 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-27 11:28:57,093 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Connection reset by peer]
+2025-12-27 11:28:57,093 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-27 11:29:10,358 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-27 11:30:51,532 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-27 11:30:51,532 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-27 11:32:03,468 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-27 11:32:03,468 - aiogram.dispatcher - WARNING - Sleep for 1.319043 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-27 11:32:16,341 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8016349214)
+2025-12-27 19:18:50,812 - aiogram.event - INFO - Update id=84657416 is handled. Duration 230 ms by bot id=8016349214
+2025-12-27 19:19:06,084 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-27 19:19:06,085 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-27 19:19:06,176 - aiogram.event - INFO - Update id=84657417 is handled. Duration 252 ms by bot id=8016349214
+2025-12-28 11:09:39,707 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-28 11:09:39,708 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-28 11:10:51,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-28 11:10:51,520 - aiogram.dispatcher - WARNING - Sleep for 1.362733 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-28 11:11:06,303 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8016349214)
+2025-12-28 11:12:26,529 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-28 11:12:26,529 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-28 11:13:38,504 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-28 11:13:38,504 - aiogram.dispatcher - WARNING - Sleep for 1.171829 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-28 11:14:50,468 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-28 11:14:50,469 - aiogram.dispatcher - WARNING - Sleep for 1.524582 seconds and try again... (tryings = 2, bot id = 8016349214)
+2025-12-28 11:15:02,074 - aiogram.dispatcher - INFO - Connection established (tryings = 3, bot id = 8016349214)
+2025-12-28 15:23:58,799 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 15:23:58,799 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 15:23:58,800 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 15:23:58,800 - bot - INFO - Bot is shutting down...
+2025-12-28 15:24:39,881 - bot - INFO - Starting bot...
+2025-12-28 15:24:39,885 - bot - INFO - Bot is starting...
+2025-12-28 15:24:40,219 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-28 15:24:40,221 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 15:24:40,314 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 16:26:44,500 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-28 16:26:44,501 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-28 16:26:44,564 - aiogram.event - INFO - Update id=84657418 is handled. Duration 436 ms by bot id=8016349214
+2025-12-28 16:43:03,323 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-28 16:43:03,324 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-28 16:43:03,387 - aiogram.event - INFO - Update id=84657419 is handled. Duration 277 ms by bot id=8016349214
+2025-12-28 16:43:07,861 - aiogram.event - INFO - Update id=84657420 is handled. Duration 50 ms by bot id=8016349214
+2025-12-28 16:43:09,860 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-28 16:43:09,861 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-28 16:43:09,913 - aiogram.event - INFO - Update id=84657421 is handled. Duration 203 ms by bot id=8016349214
+2025-12-28 16:47:19,214 - aiogram.event - INFO - Update id=84657422 is handled. Duration 53 ms by bot id=8016349214
+2025-12-28 16:47:29,272 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 16:47:29,388 - aiogram.event - INFO - Update id=84657423 is handled. Duration 8978 ms by bot id=8016349214
+2025-12-28 16:47:47,671 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 16:47:47,727 - aiogram.event - INFO - Update id=84657424 is handled. Duration 11448 ms by bot id=8016349214
+2025-12-28 16:48:47,096 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 16:48:47,166 - aiogram.event - INFO - Update id=84657425 is handled. Duration 33361 ms by bot id=8016349214
+2025-12-28 16:50:21,657 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-28 16:50:21,658 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-28 16:50:21,900 - aiogram.event - INFO - Update id=84657426 is handled. Duration 54552 ms by bot id=8016349214
+2025-12-28 16:56:48,869 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 16:56:48,870 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 16:56:48,871 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 16:56:48,871 - bot - INFO - Bot is shutting down...
+2025-12-28 16:57:01,478 - bot - INFO - Starting bot...
+2025-12-28 16:57:01,478 - bot - INFO - Bot is starting...
+2025-12-28 16:57:01,775 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-28 16:57:01,776 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 16:57:01,870 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 17:18:15,397 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:18:15,488 - aiogram.event - INFO - Update id=84657427 is handled. Duration 23052 ms by bot id=8016349214
+2025-12-28 17:19:52,760 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:19:52,829 - aiogram.event - INFO - Update id=84657428 is handled. Duration 26236 ms by bot id=8016349214
+2025-12-28 17:21:18,224 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:21:18,310 - aiogram.event - INFO - Update id=84657429 is handled. Duration 59080 ms by bot id=8016349214
+2025-12-28 17:33:04,863 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:33:04,932 - aiogram.event - INFO - Update id=84657430 is handled. Duration 31098 ms by bot id=8016349214
+2025-12-28 17:33:59,321 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:33:59,436 - aiogram.event - INFO - Update id=84657431 is handled. Duration 27554 ms by bot id=8016349214
+2025-12-28 17:36:06,904 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:36:06,967 - aiogram.event - INFO - Update id=84657432 is handled. Duration 36213 ms by bot id=8016349214
+2025-12-28 17:51:07,987 - aiogram.event - INFO - Update id=84657433 is handled. Duration 215 ms by bot id=8016349214
+2025-12-28 17:51:10,299 - aiogram.event - INFO - Update id=84657434 is handled. Duration 112 ms by bot id=8016349214
+2025-12-28 17:58:37,366 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:58:37,462 - aiogram.event - INFO - Update id=84657435 is handled. Duration 12842 ms by bot id=8016349214
+2025-12-28 17:59:35,130 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 17:59:35,205 - aiogram.event - INFO - Update id=84657436 is handled. Duration 45063 ms by bot id=8016349214
+2025-12-28 18:03:27,213 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 18:03:27,275 - aiogram.event - INFO - Update id=84657437 is handled. Duration 29261 ms by bot id=8016349214
+2025-12-28 18:04:27,309 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 18:04:27,440 - aiogram.event - INFO - Update id=84657438 is handled. Duration 45236 ms by bot id=8016349214
+2025-12-28 18:05:21,392 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 18:05:21,525 - aiogram.event - INFO - Update id=84657439 is handled. Duration 27911 ms by bot id=8016349214
+2025-12-28 18:09:27,433 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 18:09:27,492 - aiogram.event - INFO - Update id=84657440 is handled. Duration 54749 ms by bot id=8016349214
+2025-12-28 18:11:50,092 - bot - ERROR - Timeout when calling AI service for user 1103652370
+2025-12-28 18:11:50,192 - aiogram.event - INFO - Update id=84657441 is handled. Duration 60130 ms by bot id=8016349214
+2025-12-28 18:38:50,729 - aiogram.event - INFO - Update id=84657442 is handled. Duration 104 ms by bot id=8016349214
+2025-12-28 18:39:15,060 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 18:39:15,114 - aiogram.event - INFO - Update id=84657443 is handled. Duration 15150 ms by bot id=8016349214
+2025-12-28 18:59:34,394 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-28 18:59:34,395 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-28 18:59:34,493 - aiogram.event - INFO - Update id=84657444 is handled. Duration 1804 ms by bot id=8016349214
+2025-12-28 18:59:38,943 - aiogram.event - INFO - Update id=84657445 is handled. Duration 48 ms by bot id=8016349214
+2025-12-28 19:00:10,559 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-28 19:00:10,560 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-28 19:00:10,621 - aiogram.event - INFO - Update id=84657446 is handled. Duration 1377 ms by bot id=8016349214
+2025-12-28 19:09:40,637 - aiogram.event - INFO - Update id=84657447 is handled. Duration 89 ms by bot id=8016349214
+2025-12-28 19:09:57,881 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 19:09:57,948 - aiogram.event - INFO - Update id=84657448 is handled. Duration 11517 ms by bot id=8016349214
+2025-12-28 20:31:56,929 - aiogram.event - INFO - Update id=84657449 is handled. Duration 125 ms by bot id=8016349214
+2025-12-28 20:32:05,638 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:32:05,718 - aiogram.event - INFO - Update id=84657450 is handled. Duration 6951 ms by bot id=8016349214
+2025-12-28 20:33:11,369 - aiogram.event - INFO - Update id=84657452 is handled. Duration 56 ms by bot id=8016349214
+2025-12-28 20:33:15,735 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:33:15,792 - aiogram.event - INFO - Update id=84657451 is handled. Duration 6370 ms by bot id=8016349214
+2025-12-28 20:33:30,652 - aiogram.event - INFO - Update id=84657453 is handled. Duration 53 ms by bot id=8016349214
+2025-12-28 20:33:43,044 - aiogram.event - INFO - Update id=84657454 is handled. Duration 60 ms by bot id=8016349214
+2025-12-28 20:34:19,679 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:34:19,728 - aiogram.event - INFO - Update id=84657455 is handled. Duration 6811 ms by bot id=8016349214
+2025-12-28 20:36:09,804 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:36:09,869 - aiogram.event - INFO - Update id=84657456 is handled. Duration 10073 ms by bot id=8016349214
+2025-12-28 20:37:23,211 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:37:23,298 - aiogram.event - INFO - Update id=84657457 is handled. Duration 26789 ms by bot id=8016349214
+2025-12-28 20:41:29,110 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:41:29,165 - aiogram.event - INFO - Update id=84657458 is handled. Duration 14022 ms by bot id=8016349214
+2025-12-28 20:43:06,934 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:43:07,080 - aiogram.event - INFO - Update id=84657459 is handled. Duration 16961 ms by bot id=8016349214
+2025-12-28 20:44:58,197 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:44:58,255 - aiogram.event - INFO - Update id=84657460 is handled. Duration 22257 ms by bot id=8016349214
+2025-12-28 20:45:53,649 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:45:53,709 - aiogram.event - INFO - Update id=84657461 is handled. Duration 15888 ms by bot id=8016349214
+2025-12-28 20:46:40,810 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:46:40,860 - aiogram.event - INFO - Update id=84657462 is handled. Duration 27836 ms by bot id=8016349214
+2025-12-28 20:47:21,865 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:47:21,925 - aiogram.event - INFO - Update id=84657463 is handled. Duration 15841 ms by bot id=8016349214
+2025-12-28 20:48:19,345 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:48:19,405 - aiogram.event - INFO - Update id=84657464 is handled. Duration 26339 ms by bot id=8016349214
+2025-12-28 20:48:43,959 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 20:48:44,008 - aiogram.event - INFO - Update id=84657465 is handled. Duration 11775 ms by bot id=8016349214
+2025-12-28 21:15:10,906 - aiogram.event - INFO - Update id=84657466 is handled. Duration 146 ms by bot id=8016349214
+2025-12-28 21:15:21,374 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:15:21,434 - aiogram.event - INFO - Update id=84657467 is handled. Duration 8378 ms by bot id=8016349214
+2025-12-28 21:15:47,622 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:15:47,772 - aiogram.event - INFO - Update id=84657468 is handled. Duration 10448 ms by bot id=8016349214
+2025-12-28 21:16:58,817 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:16:58,874 - aiogram.event - INFO - Update id=84657469 is handled. Duration 51178 ms by bot id=8016349214
+2025-12-28 21:18:04,413 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:18:04,473 - aiogram.event - INFO - Update id=84657470 is handled. Duration 43578 ms by bot id=8016349214
+2025-12-28 21:18:57,376 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:18:57,437 - aiogram.event - INFO - Update id=84657471 is handled. Duration 23852 ms by bot id=8016349214
+2025-12-28 21:19:44,243 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:19:44,307 - aiogram.event - INFO - Update id=84657472 is handled. Duration 26173 ms by bot id=8016349214
+2025-12-28 21:20:41,338 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:20:41,418 - aiogram.event - INFO - Update id=84657473 is handled. Duration 32631 ms by bot id=8016349214
+2025-12-28 21:37:59,522 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 21:37:59,522 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:37:59,523 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 21:37:59,523 - bot - INFO - Bot is shutting down...
+2025-12-28 21:45:44,984 - bot - INFO - Starting bot...
+2025-12-28 21:45:44,985 - bot - INFO - Bot is starting...
+2025-12-28 21:45:45,305 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-28 21:45:45,306 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 21:45:45,415 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:46:43,626 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:46:43,750 - aiogram.event - INFO - Update id=84657474 is handled. Duration 7562 ms by bot id=8016349214
+2025-12-28 21:46:58,556 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:46:58,710 - aiogram.event - INFO - Update id=84657475 is handled. Duration 9193 ms by bot id=8016349214
+2025-12-28 21:47:42,923 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:47:42,981 - aiogram.event - INFO - Update id=84657476 is handled. Duration 32273 ms by bot id=8016349214
+2025-12-28 21:49:57,374 - aiogram.event - INFO - Update id=84657478 is handled. Duration 54 ms by bot id=8016349214
+2025-12-28 21:50:01,705 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:50:01,762 - aiogram.event - INFO - Update id=84657477 is handled. Duration 7889 ms by bot id=8016349214
+2025-12-28 21:50:05,856 - aiogram.event - INFO - Update id=84657479 is handled. Duration 199 ms by bot id=8016349214
+2025-12-28 21:50:09,663 - aiogram.event - INFO - Update id=84657480 is handled. Duration 71 ms by bot id=8016349214
+2025-12-28 21:50:18,030 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:50:18,102 - aiogram.event - INFO - Update id=84657481 is handled. Duration 6389 ms by bot id=8016349214
+2025-12-28 21:50:38,413 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:50:38,471 - aiogram.event - INFO - Update id=84657482 is handled. Duration 11772 ms by bot id=8016349214
+2025-12-28 21:51:08,179 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 21:51:08,179 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:51:08,180 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 21:51:08,180 - bot - INFO - Bot is shutting down...
+2025-12-28 21:51:18,947 - bot - INFO - Starting bot...
+2025-12-28 21:51:18,948 - bot - INFO - Bot is starting...
+2025-12-28 21:51:19,207 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-28 21:51:19,208 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 21:51:19,304 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:52:27,314 - aiogram.event - INFO - Update id=84657483 is handled. Duration 139 ms by bot id=8016349214
+2025-12-28 21:52:31,666 - aiogram.event - INFO - Update id=84657484 is handled. Duration 59 ms by bot id=8016349214
+2025-12-28 21:52:39,768 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:52:39,815 - aiogram.event - INFO - Update id=84657485 is handled. Duration 6866 ms by bot id=8016349214
+2025-12-28 21:52:51,775 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 21:52:51,827 - aiogram.event - INFO - Update id=84657486 is handled. Duration 9548 ms by bot id=8016349214
+2025-12-28 21:55:12,153 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 21:55:12,154 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:55:12,154 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 21:55:12,154 - bot - INFO - Bot is shutting down...
+2025-12-28 21:55:47,372 - bot - INFO - Starting bot...
+2025-12-28 21:55:47,373 - bot - INFO - Bot is starting...
+2025-12-28 21:55:47,656 - bot - WARNING - AI service is not available at http://localhost:5537. Bot will still start but may fail.
+2025-12-28 21:55:47,657 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 21:55:47,743 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:59:50,740 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 21:59:50,741 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 21:59:50,741 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 21:59:50,741 - bot - INFO - Bot is shutting down...
+2025-12-28 22:00:00,325 - bot - INFO - Starting bot...
+2025-12-28 22:00:00,326 - bot - INFO - Bot is starting...
+2025-12-28 22:00:00,620 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2025-12-28 22:00:00,621 - bot - INFO - AI service is available at http://api:5537
+2025-12-28 22:00:00,622 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 22:00:00,724 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 22:02:55,463 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-28 22:02:55,464 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 22:02:55,465 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-28 22:02:55,465 - bot - INFO - Bot is shutting down...
+2025-12-28 22:03:06,066 - bot - INFO - Starting bot...
+2025-12-28 22:03:06,066 - bot - INFO - Bot is starting...
+2025-12-28 22:03:06,310 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-28 22:03:06,311 - aiogram.dispatcher - INFO - Start polling
+2025-12-28 22:03:06,420 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-28 22:19:02,112 - aiogram.event - INFO - Update id=84657487 is handled. Duration 169 ms by bot id=8016349214
+2025-12-28 22:19:04,973 - aiogram.event - INFO - Update id=84657488 is handled. Duration 54 ms by bot id=8016349214
+2025-12-28 22:19:18,990 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 22:19:19,039 - aiogram.event - INFO - Update id=84657489 is handled. Duration 9723 ms by bot id=8016349214
+2025-12-28 22:19:39,465 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-28 22:19:39,530 - aiogram.event - INFO - Update id=84657490 is handled. Duration 13872 ms by bot id=8016349214
+2025-12-29 06:37:58,245 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 06:37:58,333 - aiogram.event - INFO - Update id=84657491 is handled. Duration 26621 ms by bot id=8016349214
+2025-12-29 06:53:52,779 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-29 06:53:52,779 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 06:53:52,780 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-29 06:53:52,781 - bot - INFO - Bot is shutting down...
+2025-12-29 07:13:45,745 - bot - INFO - Starting bot...
+2025-12-29 07:13:45,750 - bot - INFO - Bot is starting...
+2025-12-29 07:13:46,016 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-29 07:13:46,017 - aiogram.dispatcher - INFO - Start polling
+2025-12-29 07:13:46,133 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 07:13:46,310 - aiogram.event - INFO - Update id=84657492 is handled. Duration 131 ms by bot id=8016349214
+2025-12-29 07:13:46,344 - aiogram.event - INFO - Update id=84657493 is handled. Duration 163 ms by bot id=8016349214
+2025-12-29 07:13:49,821 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-29 07:13:49,882 - aiogram.event - INFO - Update id=84657494 is handled. Duration 80 ms by bot id=8016349214
+2025-12-29 07:15:23,537 - aiogram.event - INFO - Update id=84657495 is handled. Duration 82 ms by bot id=8016349214
+2025-12-29 07:15:29,946 - aiogram.event - INFO - Update id=84657496 is handled. Duration 60 ms by bot id=8016349214
+2025-12-29 07:15:32,465 - aiogram.event - INFO - Update id=84657497 is handled. Duration 72 ms by bot id=8016349214
+2025-12-29 07:15:33,817 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-29 07:15:33,946 - aiogram.event - INFO - Update id=84657498 is handled. Duration 164 ms by bot id=8016349214
+2025-12-29 07:16:01,831 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 07:16:01,892 - aiogram.event - INFO - Update id=84657499 is handled. Duration 8972 ms by bot id=8016349214
+2025-12-29 07:16:33,233 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 07:16:33,339 - aiogram.event - INFO - Update id=84657500 is handled. Duration 18342 ms by bot id=8016349214
+2025-12-29 08:12:08,593 - aiogram.event - INFO - Update id=84657501 is handled. Duration 115 ms by bot id=8016349214
+2025-12-29 08:12:10,867 - aiogram.event - INFO - Update id=84657502 is handled. Duration 97 ms by bot id=8016349214
+2025-12-29 08:12:12,097 - bot - ERROR - Error calling AI service: All connection attempts failed
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: All connection attempts failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 65, in get_ai_response
+    response = await client.post(
+               ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "/usr/local/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/app/.venv/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: All connection attempts failed
+2025-12-29 08:12:12,236 - aiogram.event - INFO - Update id=84657503 is handled. Duration 162 ms by bot id=8016349214
+2025-12-29 08:12:35,682 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:12:35,758 - aiogram.event - INFO - Update id=84657504 is handled. Duration 6044 ms by bot id=8016349214
+2025-12-29 08:13:04,231 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:13:04,303 - aiogram.event - INFO - Update id=84657505 is handled. Duration 12648 ms by bot id=8016349214
+2025-12-29 08:19:45,849 - aiogram.event - INFO - Update id=84657506 is handled. Duration 75 ms by bot id=8016349214
+2025-12-29 08:19:48,401 - aiogram.event - INFO - Update id=84657507 is handled. Duration 84 ms by bot id=8016349214
+2025-12-29 08:19:53,458 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:19:53,521 - aiogram.event - INFO - Update id=84657508 is handled. Duration 3790 ms by bot id=8016349214
+2025-12-29 08:20:58,716 - bot - ERROR - Timeout when calling AI service for user 1103652370
+2025-12-29 08:21:16,148 - bot - ERROR - Error handling message: Telegram server says - Bad Gateway
+Traceback (most recent call last):
+  File "/app/bot.py", line 238, in handle_message
+    await message.answer(response, parse_mode="HTML")
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 177, in make_request
+    response = self.check_response(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 135, in check_response
+    raise TelegramServerError(method=method, message=description)
+aiogram.exceptions.TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 08:21:21,681 - aiogram.event - INFO - Update id=84657509 is handled. Duration 82988 ms by bot id=8016349214
+2025-12-29 08:21:28,779 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:21:55,961 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-29 08:21:55,961 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 08:21:55,962 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-29 08:21:55,962 - bot - INFO - Bot is shutting down...
+2025-12-29 08:21:55,962 - bot - ERROR - Error handling message: HTTP Client says - ServerDisconnectedError: Server disconnected
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 167, in make_request
+    async with session.post(
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 1510, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client.py", line 757, in _connect_and_send_request
+    await resp.start(conn)
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 539, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiohttp/streams.py", line 680, in read
+    await self._waiter
+aiohttp.client_exceptions.ServerDisconnectedError: Server disconnected
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/bot.py", line 238, in handle_message
+    await message.answer(response, parse_mode="HTML")
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/methods/base.py", line 84, in emit
+    return await bot(self)
+           ^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/bot.py", line 485, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/session/base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.11/site-packages/aiogram/client/session/aiohttp.py", line 176, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}")
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-12-29 08:21:56,218 - aiogram.event - INFO - Update id=84657510 is not handled. Duration 40520 ms by bot id=8016349214
+2025-12-29 08:22:35,322 - bot - INFO - Starting bot...
+2025-12-29 08:22:35,322 - bot - INFO - Bot is starting...
+2025-12-29 08:22:35,597 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-29 08:22:35,599 - aiogram.dispatcher - INFO - Start polling
+2025-12-29 08:22:38,778 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 08:25:50,215 - aiogram.event - INFO - Update id=84657511 is handled. Duration 160 ms by bot id=8016349214
+2025-12-29 08:25:55,457 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:25:55,517 - aiogram.event - INFO - Update id=84657512 is handled. Duration 3733 ms by bot id=8016349214
+2025-12-29 08:26:10,373 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-29 08:26:10,374 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-29 08:26:10,432 - aiogram.event - INFO - Update id=84657513 is handled. Duration 10672 ms by bot id=8016349214
+2025-12-29 08:34:37,396 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-29 08:34:37,397 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 08:34:37,397 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-29 08:34:37,397 - bot - INFO - Bot is shutting down...
+2025-12-29 08:34:59,033 - bot - INFO - Starting bot...
+2025-12-29 08:34:59,034 - bot - INFO - Bot is starting...
+2025-12-29 08:34:59,295 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-29 08:34:59,296 - aiogram.dispatcher - INFO - Start polling
+2025-12-29 08:34:59,379 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 08:42:57,808 - aiogram.event - INFO - Update id=84657514 is handled. Duration 156 ms by bot id=8016349214
+2025-12-29 08:42:59,239 - aiogram.event - INFO - Update id=84657515 is handled. Duration 112 ms by bot id=8016349214
+2025-12-29 08:43:29,350 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:43:29,443 - aiogram.event - INFO - Update id=84657516 is handled. Duration 20089 ms by bot id=8016349214
+2025-12-29 08:44:04,407 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:44:04,457 - aiogram.event - INFO - Update id=84657517 is handled. Duration 7574 ms by bot id=8016349214
+2025-12-29 08:44:19,003 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:44:19,066 - aiogram.event - INFO - Update id=84657518 is handled. Duration 9095 ms by bot id=8016349214
+2025-12-29 08:44:36,340 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:44:36,429 - aiogram.event - INFO - Update id=84657519 is handled. Duration 4978 ms by bot id=8016349214
+2025-12-29 08:44:44,353 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:44:44,404 - aiogram.event - INFO - Update id=84657520 is handled. Duration 4964 ms by bot id=8016349214
+2025-12-29 08:44:59,052 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:44:59,109 - aiogram.event - INFO - Update id=84657521 is handled. Duration 5737 ms by bot id=8016349214
+2025-12-29 08:45:22,502 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:45:22,566 - aiogram.event - INFO - Update id=84657522 is handled. Duration 6638 ms by bot id=8016349214
+2025-12-29 08:45:37,316 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:45:37,397 - aiogram.event - INFO - Update id=84657523 is handled. Duration 5826 ms by bot id=8016349214
+2025-12-29 08:46:12,650 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:46:12,713 - aiogram.event - INFO - Update id=84657524 is handled. Duration 11578 ms by bot id=8016349214
+2025-12-29 08:47:04,186 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:47:04,238 - aiogram.event - INFO - Update id=84657525 is handled. Duration 24843 ms by bot id=8016349214
+2025-12-29 08:47:29,324 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:47:29,384 - aiogram.event - INFO - Update id=84657526 is handled. Duration 6444 ms by bot id=8016349214
+2025-12-29 08:48:11,143 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 08:48:11,202 - aiogram.event - INFO - Update id=84657527 is handled. Duration 19587 ms by bot id=8016349214
+2025-12-29 09:21:15,961 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-29 09:21:15,961 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 09:21:15,962 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-29 09:21:15,962 - bot - INFO - Bot is shutting down...
+2025-12-29 09:21:39,369 - bot - INFO - Starting bot...
+2025-12-29 09:21:39,370 - bot - INFO - Bot is starting...
+2025-12-29 09:21:39,618 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-29 09:21:39,619 - aiogram.dispatcher - INFO - Start polling
+2025-12-29 09:21:39,704 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 09:28:20,370 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-29 09:28:20,371 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 09:28:20,371 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-29 09:28:20,371 - bot - INFO - Bot is shutting down...
+2025-12-29 09:28:40,812 - bot - INFO - Starting bot...
+2025-12-29 09:28:40,813 - bot - INFO - Bot is starting...
+2025-12-29 09:28:41,065 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-29 09:28:41,066 - aiogram.dispatcher - INFO - Start polling
+2025-12-29 09:28:41,159 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-29 09:31:31,815 - aiogram.event - INFO - Update id=84657528 is handled. Duration 132 ms by bot id=8016349214
+2025-12-29 09:31:33,799 - aiogram.event - INFO - Update id=84657529 is handled. Duration 90 ms by bot id=8016349214
+2025-12-29 09:31:40,210 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:31:40,270 - aiogram.event - INFO - Update id=84657530 is handled. Duration 5020 ms by bot id=8016349214
+2025-12-29 09:31:54,944 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:31:55,010 - aiogram.event - INFO - Update id=84657531 is handled. Duration 4731 ms by bot id=8016349214
+2025-12-29 09:32:21,174 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:32:21,261 - aiogram.event - INFO - Update id=84657532 is handled. Duration 17391 ms by bot id=8016349214
+2025-12-29 09:33:29,268 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:33:29,328 - aiogram.event - INFO - Update id=84657533 is handled. Duration 17932 ms by bot id=8016349214
+2025-12-29 09:34:25,005 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:34:25,072 - aiogram.event - INFO - Update id=84657534 is handled. Duration 37903 ms by bot id=8016349214
+2025-12-29 09:34:58,752 - bot - ERROR - Timeout when calling AI service for user 1103652370
+2025-12-29 09:34:58,810 - aiogram.event - INFO - Update id=84657535 is handled. Duration 60082 ms by bot id=8016349214
+2025-12-29 09:38:00,935 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:38:01,050 - aiogram.event - INFO - Update id=84657536 is handled. Duration 7050 ms by bot id=8016349214
+2025-12-29 09:38:15,791 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:38:15,846 - aiogram.event - INFO - Update id=84657537 is handled. Duration 7756 ms by bot id=8016349214
+2025-12-29 09:39:08,545 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:39:08,609 - aiogram.event - INFO - Update id=84657538 is handled. Duration 25023 ms by bot id=8016349214
+2025-12-29 09:41:22,048 - bot - ERROR - Timeout when calling AI service for user 1103652370
+2025-12-29 09:41:22,108 - aiogram.event - INFO - Update id=84657539 is handled. Duration 60086 ms by bot id=8016349214
+2025-12-29 09:43:08,950 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:43:09,044 - aiogram.event - INFO - Update id=84657540 is handled. Duration 5045 ms by bot id=8016349214
+2025-12-29 09:43:27,699 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:43:27,768 - aiogram.event - INFO - Update id=84657541 is handled. Duration 9116 ms by bot id=8016349214
+2025-12-29 09:44:03,914 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:44:03,970 - aiogram.event - INFO - Update id=84657542 is handled. Duration 12276 ms by bot id=8016349214
+2025-12-29 09:45:15,772 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:45:15,967 - aiogram.event - INFO - Update id=84657543 is handled. Duration 9218 ms by bot id=8016349214
+2025-12-29 09:45:35,115 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:45:35,181 - aiogram.event - INFO - Update id=84657544 is handled. Duration 7679 ms by bot id=8016349214
+2025-12-29 09:46:26,800 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-29 09:46:26,858 - aiogram.event - INFO - Update id=84657545 is handled. Duration 12608 ms by bot id=8016349214
+2025-12-29 14:57:56,144 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 14:57:56,145 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-29 14:58:19,783 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-29 14:59:30,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-29 14:59:30,520 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-29 14:59:41,785 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-29 23:44:26,842 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 23:44:26,842 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-29 23:44:27,875 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 23:44:27,875 - aiogram.dispatcher - WARNING - Sleep for 1.223769 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-29 23:44:29,133 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 23:44:29,133 - aiogram.dispatcher - WARNING - Sleep for 1.485213 seconds and try again... (tryings = 2, bot id = 8016349214)
+2025-12-29 23:44:30,652 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 23:44:30,652 - aiogram.dispatcher - WARNING - Sleep for 2.013520 seconds and try again... (tryings = 3, bot id = 8016349214)
+2025-12-29 23:44:32,699 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 23:44:32,699 - aiogram.dispatcher - WARNING - Sleep for 2.740556 seconds and try again... (tryings = 4, bot id = 8016349214)
+2025-12-29 23:44:35,485 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-29 23:44:35,486 - aiogram.dispatcher - WARNING - Sleep for 3.565747 seconds and try again... (tryings = 5, bot id = 8016349214)
+2025-12-29 23:45:46,921 - aiogram.dispatcher - INFO - Connection established (tryings = 6, bot id = 8016349214)
+2025-12-29 23:54:18,661 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ServerDisconnectedError: Server disconnected
+2025-12-29 23:54:18,662 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-29 23:54:29,743 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-30 00:29:55,429 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
+Original description: Too Many Requests: retry after 5
+(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+2025-12-30 00:29:55,429 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-30 00:29:56,462 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
+Original description: Too Many Requests: retry after 5
+(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+2025-12-30 00:29:56,462 - aiogram.dispatcher - WARNING - Sleep for 1.331497 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-30 00:29:57,828 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
+Original description: Too Many Requests: retry after 5
+(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+2025-12-30 00:29:57,828 - aiogram.dispatcher - WARNING - Sleep for 1.630299 seconds and try again... (tryings = 2, bot id = 8016349214)
+2025-12-30 00:29:59,896 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-30 00:29:59,896 - aiogram.dispatcher - WARNING - Sleep for 2.173669 seconds and try again... (tryings = 3, bot id = 8016349214)
+2025-12-30 00:30:44,047 - aiogram.dispatcher - INFO - Connection established (tryings = 4, bot id = 8016349214)
+2025-12-30 10:13:56,236 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 10:13:56,237 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 10:13:56,237 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 10:13:56,237 - bot - INFO - Bot is shutting down...
+2025-12-30 10:18:07,674 - bot - INFO - Starting bot...
+2025-12-30 10:18:07,674 - bot - INFO - Bot is starting...
+2025-12-30 10:18:07,946 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 10:18:07,946 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 10:18:08,038 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 10:21:57,744 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 10:21:57,745 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 10:21:57,746 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 10:21:57,746 - bot - INFO - Bot is shutting down...
+2025-12-30 10:22:29,400 - bot - INFO - Starting bot...
+2025-12-30 10:22:29,401 - bot - INFO - Bot is starting...
+2025-12-30 10:22:29,657 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 10:22:29,658 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 10:22:29,742 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 10:43:14,167 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 10:43:14,170 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 10:43:14,170 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 10:43:14,171 - bot - INFO - Bot is shutting down...
+2025-12-30 10:43:53,194 - bot - INFO - Starting bot...
+2025-12-30 10:43:53,195 - bot - INFO - Bot is starting...
+2025-12-30 10:43:53,484 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 10:43:53,485 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 10:43:53,595 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 12:18:09,006 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 12:18:09,010 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 12:18:09,010 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 12:18:09,011 - bot - INFO - Bot is shutting down...
+2025-12-30 12:18:20,469 - bot - INFO - Starting bot...
+2025-12-30 12:18:20,470 - bot - INFO - Bot is starting...
+2025-12-30 12:18:20,762 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 12:18:20,763 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 12:18:20,849 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 13:14:04,791 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 13:14:04,792 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 13:14:04,792 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 13:14:04,792 - bot - INFO - Bot is shutting down...
+2025-12-30 13:16:24,956 - bot - INFO - Starting bot...
+2025-12-30 13:16:24,958 - bot - INFO - Bot is starting...
+2025-12-30 13:16:25,295 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 13:16:25,296 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 13:16:25,412 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 13:50:03,476 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 13:50:03,478 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 13:50:03,478 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 13:50:03,479 - bot - INFO - Bot is shutting down...
+2025-12-30 13:50:55,429 - bot - INFO - Starting bot...
+2025-12-30 13:50:55,429 - bot - INFO - Bot is starting...
+2025-12-30 13:50:55,718 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 13:50:55,719 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 13:50:55,827 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 13:51:15,312 - aiogram.event - INFO - Update id=84657546 is handled. Duration 117 ms by bot id=8016349214
+2025-12-30 13:51:16,940 - aiogram.event - INFO - Update id=84657547 is handled. Duration 69 ms by bot id=8016349214
+2025-12-30 13:51:23,299 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 13:51:23,300 - bot - INFO - AI decided to ignore message from user 1103652370
+2025-12-30 13:51:23,301 - aiogram.event - INFO - Update id=84657548 is handled. Duration 3502 ms by bot id=8016349214
+2025-12-30 13:53:35,914 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 13:53:35,916 - bot - INFO - AI decided to ignore message from user 1103652370
+2025-12-30 13:53:35,916 - aiogram.event - INFO - Update id=84657549 is handled. Duration 3948 ms by bot id=8016349214
+2025-12-30 14:04:20,767 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 14:04:20,768 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 14:04:20,768 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 14:04:20,769 - bot - INFO - Bot is shutting down...
+2025-12-30 14:04:32,763 - bot - INFO - Starting bot...
+2025-12-30 14:04:32,764 - bot - INFO - Bot is starting...
+2025-12-30 14:04:33,070 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 14:04:33,071 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 14:04:33,187 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 14:06:42,734 - aiogram.event - INFO - Update id=84657550 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 14:06:47,759 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 14:06:55,798 - aiogram.event - INFO - Update id=84657551 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 14:07:10,589 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 14:40:45,006 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 14:40:45,010 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 14:40:45,011 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 14:40:45,011 - bot - INFO - Bot is shutting down...
+2025-12-30 14:40:56,802 - bot - INFO - Starting bot...
+2025-12-30 14:40:56,803 - bot - INFO - Bot is starting...
+2025-12-30 14:40:57,109 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 14:40:57,110 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 14:40:57,218 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 15:27:12,968 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 15:27:12,970 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 15:27:12,970 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 15:27:12,970 - bot - INFO - Bot is shutting down...
+2025-12-30 15:27:24,441 - bot - INFO - Starting bot...
+2025-12-30 15:27:24,442 - bot - INFO - Bot is starting...
+2025-12-30 15:27:24,725 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 15:27:24,726 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 15:27:24,903 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 15:45:59,408 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-30 15:45:59,410 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-30 15:46:25,493 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-30 19:37:00,643 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 19:37:00,644 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 19:37:00,644 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 19:37:00,644 - bot - INFO - Bot is shutting down...
+2025-12-30 19:37:11,756 - bot - INFO - Starting bot...
+2025-12-30 19:37:11,758 - bot - INFO - Bot is starting...
+2025-12-30 19:37:12,078 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 19:37:12,079 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 19:37:12,169 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 20:14:03,216 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2025-12-30 20:14:03,218 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 20:14:03,219 - aiogram.dispatcher - INFO - Polling stopped
+2025-12-30 20:14:03,219 - bot - INFO - Bot is shutting down...
+2025-12-30 20:14:14,216 - bot - INFO - Starting bot...
+2025-12-30 20:14:14,217 - bot - INFO - Bot is starting...
+2025-12-30 20:14:14,492 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2025-12-30 20:14:14,492 - aiogram.dispatcher - INFO - Start polling
+2025-12-30 20:14:14,582 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2025-12-30 21:09:53,753 - aiogram.event - INFO - Update id=84657552 is handled. Duration 99 ms by bot id=8016349214
+2025-12-30 21:09:55,809 - aiogram.event - INFO - Update id=84657553 is handled. Duration 121 ms by bot id=8016349214
+2025-12-30 21:09:58,796 - aiogram.event - INFO - Update id=84657554 is handled. Duration 49 ms by bot id=8016349214
+2025-12-30 21:10:01,511 - aiogram.event - INFO - Update id=84657555 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 21:10:07,049 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-30 21:10:07,050 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-30 21:32:37,075 - aiogram.event - INFO - Update id=84657556 is handled. Duration 103 ms by bot id=8016349214
+2025-12-30 21:32:40,338 - aiogram.event - INFO - Update id=84657557 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 21:33:40,360 - bot - ERROR - Timeout when calling AI service for user 1103652370
+2025-12-30 21:37:31,512 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-30 21:37:31,512 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-30 21:37:42,591 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-30 21:47:32,875 - aiogram.event - INFO - Update id=84657558 is handled. Duration 104 ms by bot id=8016349214
+2025-12-30 21:47:34,241 - aiogram.event - INFO - Update id=84657559 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 21:47:38,229 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 21:47:46,483 - aiogram.event - INFO - Update id=84657560 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 21:48:32,990 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2025-12-30 21:48:32,991 - bot - ERROR - HTTP error when calling AI service: 500
+2025-12-30 21:58:58,223 - aiogram.event - INFO - Update id=84657561 is handled. Duration 101 ms by bot id=8016349214
+2025-12-30 21:59:01,347 - aiogram.event - INFO - Update id=84657562 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 21:59:16,389 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 21:59:34,473 - aiogram.event - INFO - Update id=84657563 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 21:59:40,465 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 21:59:56,471 - aiogram.event - INFO - Update id=84657564 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:00:00,800 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:00:46,324 - aiogram.event - INFO - Update id=84657565 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:01:27,263 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:01:40,221 - aiogram.event - INFO - Update id=84657566 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:01:43,847 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:02:10,671 - aiogram.event - INFO - Update id=84657567 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:02:20,870 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:02:53,413 - aiogram.event - INFO - Update id=84657568 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:02:56,108 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:03:14,568 - aiogram.event - INFO - Update id=84657569 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:03:22,762 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:03:38,160 - aiogram.event - INFO - Update id=84657570 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:03:43,281 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 22:03:57,686 - aiogram.event - INFO - Update id=84657571 is handled. Duration 0 ms by bot id=8016349214
+2025-12-30 22:04:05,687 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2025-12-30 23:14:13,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-30 23:14:13,521 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-30 23:14:18,623 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Connection reset by peer]
+2025-12-30 23:14:18,624 - aiogram.dispatcher - WARNING - Sleep for 1.231147 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-30 23:14:45,727 - aiogram.dispatcher - INFO - Connection established (tryings = 2, bot id = 8016349214)
+2025-12-30 23:16:36,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-30 23:16:36,521 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-30 23:16:47,681 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2025-12-30 23:25:29,807 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
+Original description: Too Many Requests: retry after 5
+(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+2025-12-30 23:25:29,808 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-30 23:25:30,841 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
+Original description: Too Many Requests: retry after 5
+(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+2025-12-30 23:25:30,842 - aiogram.dispatcher - WARNING - Sleep for 1.275391 seconds and try again... (tryings = 1, bot id = 8016349214)
+2025-12-30 23:25:32,151 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramRetryAfter: Telegram server says - Flood control exceeded on method 'GetUpdates'. Retry in 5 seconds.
+Original description: Too Many Requests: retry after 5
+(background on this error at: https://core.telegram.org/bots/faq#my-bot-is-hitting-limits-how-do-i-avoid-this)
+2025-12-30 23:25:32,152 - aiogram.dispatcher - WARNING - Sleep for 1.573097 seconds and try again... (tryings = 2, bot id = 8016349214)
+2025-12-30 23:25:42,575 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-30 23:25:42,575 - aiogram.dispatcher - WARNING - Sleep for 1.987014 seconds and try again... (tryings = 3, bot id = 8016349214)
+2025-12-30 23:25:44,595 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramServerError: Telegram server says - Bad Gateway
+2025-12-30 23:25:44,595 - aiogram.dispatcher - WARNING - Sleep for 2.604871 seconds and try again... (tryings = 4, bot id = 8016349214)
+2025-12-30 23:26:24,166 - aiogram.dispatcher - INFO - Connection established (tryings = 5, bot id = 8016349214)
+2025-12-31 06:47:52,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2025-12-31 06:47:52,520 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2025-12-31 06:48:03,959 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2026-01-01 09:21:06,515 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-01 09:21:06,516 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 09:21:06,516 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-01 09:21:06,516 - bot - INFO - Bot is shutting down...
+2026-01-01 10:35:54,404 - bot - INFO - Starting bot...
+2026-01-01 10:35:54,406 - bot - INFO - Bot is starting...
+2026-01-01 10:35:54,461 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2026-01-01 10:35:54,462 - bot - INFO - AI service is available at http://api:5537
+2026-01-01 10:35:54,462 - aiogram.dispatcher - INFO - Start polling
+2026-01-01 10:35:54,554 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 10:43:03,380 - aiogram.event - INFO - Update id=84657572 is handled. Duration 111 ms by bot id=8016349214
+2026-01-01 10:43:08,281 - aiogram.event - INFO - Update id=84657573 is handled. Duration 63 ms by bot id=8016349214
+2026-01-01 10:43:17,567 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 10:43:17,568 - bot - ERROR - Error when calling AI service for user 1103652370: 1 validation error for MessageResponse
+  JSON input should be string, bytes or bytearray [type=json_type, input_value={'response': 'Приве...l', 'reasoning': 'none'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/json_type
+2026-01-01 10:43:17,625 - aiogram.event - INFO - Update id=84657574 is handled. Duration 6795 ms by bot id=8016349214
+2026-01-01 10:46:44,707 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-01 10:46:44,707 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 10:46:44,708 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-01 10:46:44,709 - bot - INFO - Bot is shutting down...
+2026-01-01 10:47:00,269 - bot - INFO - Starting bot...
+2026-01-01 10:47:00,270 - bot - INFO - Bot is starting...
+2026-01-01 10:47:00,327 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2026-01-01 10:47:00,328 - bot - INFO - AI service is available at http://api:5537
+2026-01-01 10:47:00,329 - aiogram.dispatcher - INFO - Start polling
+2026-01-01 10:47:00,425 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 10:54:33,095 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-01 10:54:33,096 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 10:54:33,097 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-01 10:54:33,097 - bot - INFO - Bot is shutting down...
+2026-01-01 10:54:48,415 - bot - INFO - Starting bot...
+2026-01-01 10:54:48,415 - bot - INFO - Bot is starting...
+2026-01-01 10:54:48,463 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2026-01-01 10:54:48,464 - bot - INFO - AI service is available at http://api:5537
+2026-01-01 10:54:48,464 - aiogram.dispatcher - INFO - Start polling
+2026-01-01 10:54:48,561 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 10:58:19,935 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 10:58:19,937 - bot - INFO - AI service response: 
+{'response': 'Привет! Чем могу помочь?', 'user_id': '1103652370', 'chat_id': '1103652370', 'ignored': False, 'category': 'SMALL_TALK', 'reasoning': 'User greets the bot, typical small talk.'}
+2026-01-01 10:58:19,937 - bot - ERROR - Error when calling AI service for user 1103652370: 1 validation error for MessageResponse
+  JSON input should be string, bytes or bytearray [type=json_type, input_value={'response': 'Приве...t, typical small talk.'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/json_type
+2026-01-01 10:58:20,053 - aiogram.event - INFO - Update id=84657575 is handled. Duration 5226 ms by bot id=8016349214
+2026-01-01 11:00:15,976 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-01 11:00:15,979 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 11:00:15,979 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-01 11:00:15,980 - bot - INFO - Bot is shutting down...
+2026-01-01 11:00:31,732 - bot - INFO - Starting bot...
+2026-01-01 11:00:31,734 - bot - INFO - Bot is starting...
+2026-01-01 11:00:31,783 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2026-01-01 11:00:31,784 - bot - INFO - AI service is available at http://api:5537
+2026-01-01 11:00:31,784 - aiogram.dispatcher - INFO - Start polling
+2026-01-01 11:00:31,881 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 11:00:37,150 - aiogram.event - INFO - Update id=84657576 is handled. Duration 141 ms by bot id=8016349214
+2026-01-01 11:00:42,598 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 11:00:42,599 - bot - INFO - AI service response: 
+{'response': 'Привет! Как я могу помочь?', 'user_id': '1103652370', 'chat_id': '1103652370', 'ignored': False, 'category': 'final', 'reasoning': 'final'}
+2026-01-01 11:00:42,600 - bot - ERROR - Error when calling AI service for user 1103652370: 1 validation error for MessageResponse
+  Input should be a valid dictionary or instance of MessageResponse [type=model_type, input_value=<Response [200 OK]>, input_type=Response]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-01-01 11:00:42,673 - aiogram.event - INFO - Update id=84657577 is handled. Duration 4191 ms by bot id=8016349214
+2026-01-01 11:03:17,714 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-01 11:03:17,716 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 11:03:17,716 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-01 11:03:17,717 - bot - INFO - Bot is shutting down...
+2026-01-01 11:03:33,187 - bot - INFO - Starting bot...
+2026-01-01 11:03:33,188 - bot - INFO - Bot is starting...
+2026-01-01 11:03:33,234 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2026-01-01 11:03:33,235 - bot - INFO - AI service is available at http://api:5537
+2026-01-01 11:03:33,236 - aiogram.dispatcher - INFO - Start polling
+2026-01-01 11:03:33,624 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 11:04:18,416 - aiogram.event - INFO - Update id=84657578 is handled. Duration 161 ms by bot id=8016349214
+2026-01-01 11:05:21,118 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 11:05:21,121 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 11:05:21,121 - bot - ERROR - Error when calling AI service for user 1103652370: 1 validation error for MessageResponse
+  Input should be a valid dictionary or instance of MessageResponse [type=model_type, input_value=<Response [200 OK]>, input_type=Response]
+    For further information visit https://errors.pydantic.dev/2.12/v/model_type
+2026-01-01 11:05:21,182 - aiogram.event - INFO - Update id=84657579 is handled. Duration 5427 ms by bot id=8016349214
+2026-01-01 11:31:40,603 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-01 11:31:40,607 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 11:31:40,608 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-01 11:31:40,608 - bot - INFO - Bot is shutting down...
+2026-01-01 11:31:57,150 - bot - INFO - Starting bot...
+2026-01-01 11:31:57,152 - bot - INFO - Bot is starting...
+2026-01-01 11:31:57,217 - httpx - INFO - HTTP Request: GET http://api:5537/health "HTTP/1.1 200 OK"
+2026-01-01 11:31:57,218 - bot - INFO - AI service is available at http://api:5537
+2026-01-01 11:31:57,218 - aiogram.dispatcher - INFO - Start polling
+2026-01-01 11:31:57,334 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-01 11:33:40,331 - aiogram.event - INFO - Update id=84657580 is handled. Duration 145 ms by bot id=8016349214
+2026-01-01 11:34:01,302 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 11:34:01,303 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 11:34:01,404 - aiogram.event - INFO - Update id=84657581 is handled. Duration 17791 ms by bot id=8016349214
+2026-01-01 11:34:17,215 - aiogram.event - INFO - Update id=84657583 is handled. Duration 69 ms by bot id=8016349214
+2026-01-01 11:34:53,005 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 11:34:53,006 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 11:34:53,075 - aiogram.event - INFO - Update id=84657582 is handled. Duration 42856 ms by bot id=8016349214
+2026-01-01 12:07:07,646 - aiogram.event - INFO - Update id=84657584 is handled. Duration 97 ms by bot id=8016349214
+2026-01-01 12:07:10,232 - aiogram.event - INFO - Update id=84657585 is handled. Duration 156 ms by bot id=8016349214
+2026-01-01 12:07:15,304 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 12:07:15,359 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 12:07:15,423 - aiogram.event - INFO - Update id=84657586 is handled. Duration 4138 ms by bot id=8016349214
+2026-01-01 12:09:45,134 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 12:09:45,137 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 12:09:45,211 - aiogram.event - INFO - Update id=84657587 is handled. Duration 78608 ms by bot id=8016349214
+2026-01-01 12:21:25,917 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 12:21:25,918 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 12:21:26,025 - aiogram.event - INFO - Update id=84657588 is handled. Duration 11485 ms by bot id=8016349214
+2026-01-01 12:22:30,170 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 12:22:30,172 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 12:22:30,268 - aiogram.event - INFO - Update id=84657589 is handled. Duration 10467 ms by bot id=8016349214
+2026-01-01 12:22:58,184 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-01 12:22:58,185 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-01 12:22:58,255 - aiogram.event - INFO - Update id=84657590 is handled. Duration 5001 ms by bot id=8016349214
+2026-01-01 13:49:42,532 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-01 13:49:42,532 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2026-01-01 13:49:53,836 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2026-01-02 00:16:02,520 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - Request timeout error
+2026-01-02 00:16:02,520 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2026-01-02 00:16:27,288 - aiogram.dispatcher - INFO - Connection established (tryings = 1, bot id = 8016349214)
+2026-01-15 20:43:59,867 - bot - INFO - Starting bot...
+2026-01-15 20:43:59,869 - bot - INFO - Bot is starting...
+2026-01-15 20:43:59,895 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 20:43:59,896 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 20:43:59,984 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 21:03:18,876 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 21:03:18,887 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 21:03:18,888 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 21:03:18,888 - bot - INFO - Bot is shutting down...
+2026-01-15 21:03:59,361 - bot - INFO - Starting bot...
+2026-01-15 21:03:59,362 - bot - INFO - Bot is starting...
+2026-01-15 21:03:59,390 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 21:03:59,392 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 21:03:59,483 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 21:36:47,223 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 21:36:47,224 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 21:36:47,224 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 21:36:47,225 - bot - INFO - Bot is shutting down...
+2026-01-15 21:37:27,910 - bot - INFO - Starting bot...
+2026-01-15 21:37:27,911 - bot - INFO - Bot is starting...
+2026-01-15 21:37:27,936 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 21:37:27,937 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 21:37:28,114 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:00:05,684 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 22:00:05,686 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:00:05,686 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 22:00:05,686 - bot - INFO - Bot is shutting down...
+2026-01-15 22:00:46,159 - bot - INFO - Starting bot...
+2026-01-15 22:00:46,160 - bot - INFO - Bot is starting...
+2026-01-15 22:00:46,193 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 22:00:46,193 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 22:00:46,302 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:26:42,083 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 22:26:42,084 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:26:42,084 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 22:26:42,085 - bot - INFO - Bot is shutting down...
+2026-01-15 22:27:22,429 - bot - INFO - Starting bot...
+2026-01-15 22:27:22,435 - bot - INFO - Bot is starting...
+2026-01-15 22:27:22,464 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 22:27:22,465 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 22:27:22,573 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:34:42,214 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 22:34:42,215 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:34:42,215 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 22:34:42,215 - bot - INFO - Bot is shutting down...
+2026-01-15 22:35:17,159 - bot - INFO - Starting bot...
+2026-01-15 22:35:17,160 - bot - INFO - Bot is starting...
+2026-01-15 22:35:17,182 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 22:35:17,182 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 22:35:17,289 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:36:25,855 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 22:36:25,856 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:36:25,856 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 22:36:25,857 - bot - INFO - Bot is shutting down...
+2026-01-15 22:37:01,334 - bot - INFO - Starting bot...
+2026-01-15 22:37:01,336 - bot - INFO - Bot is starting...
+2026-01-15 22:37:01,359 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-15 22:37:01,361 - aiogram.dispatcher - INFO - Start polling
+2026-01-15 22:37:01,455 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:44:39,671 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-15 22:44:39,673 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-15 22:44:39,673 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-15 22:44:39,673 - bot - INFO - Bot is shutting down...
+2026-01-19 08:24:26,906 - bot - INFO - Starting bot...
+2026-01-19 08:24:26,907 - bot - INFO - Bot is starting...
+2026-01-19 08:24:27,133 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-19 08:24:27,134 - aiogram.dispatcher - INFO - Start polling
+2026-01-19 08:24:27,219 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 08:26:05,910 - aiogram.event - INFO - Update id=84657593 is handled. Duration 109 ms by bot id=8016349214
+2026-01-19 08:26:15,134 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 08:26:15,136 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 08:26:15,234 - aiogram.event - INFO - Update id=84657594 is handled. Duration 3592 ms by bot id=8016349214
+2026-01-19 08:26:43,457 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2026-01-19 08:26:43,458 - bot - ERROR - Error when calling AI service for user 1103652370: Server error '500 Internal Server Error' for url 'http://api:5537/chat'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2026-01-19 08:26:43,517 - aiogram.event - INFO - Update id=84657595 is handled. Duration 1963 ms by bot id=8016349214
+2026-01-19 08:32:15,162 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 08:32:15,163 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 08:32:15,229 - aiogram.event - INFO - Update id=84657596 is handled. Duration 5173 ms by bot id=8016349214
+2026-01-19 08:40:42,463 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2026-01-19 08:40:42,464 - bot - ERROR - Error when calling AI service for user 1103652370: Server error '500 Internal Server Error' for url 'http://api:5537/chat'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2026-01-19 08:40:42,518 - aiogram.event - INFO - Update id=84657597 is handled. Duration 2090 ms by bot id=8016349214
+2026-01-19 08:44:25,439 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-19 08:44:25,440 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 08:44:25,441 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-19 08:44:25,441 - bot - INFO - Bot is shutting down...
+2026-01-19 08:44:52,173 - bot - INFO - Starting bot...
+2026-01-19 08:44:52,173 - bot - INFO - Bot is starting...
+2026-01-19 08:44:52,374 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-19 08:44:52,374 - aiogram.dispatcher - INFO - Start polling
+2026-01-19 08:44:52,461 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 08:52:41,309 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 08:52:41,310 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 08:52:41,445 - aiogram.event - INFO - Update id=84657598 is handled. Duration 2808 ms by bot id=8016349214
+2026-01-19 08:52:49,392 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 08:52:49,393 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 08:52:49,463 - aiogram.event - INFO - Update id=84657599 is handled. Duration 6477 ms by bot id=8016349214
+2026-01-19 08:53:28,912 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2026-01-19 08:53:28,913 - bot - ERROR - Error when calling AI service for user 1103652370: Server error '500 Internal Server Error' for url 'http://api:5537/chat'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2026-01-19 08:53:28,981 - aiogram.event - INFO - Update id=84657600 is handled. Duration 32612 ms by bot id=8016349214
+2026-01-19 09:13:15,162 - bot - ERROR - Error when calling AI service for user 1103652370: All connection attempts failed
+2026-01-19 09:13:15,301 - aiogram.event - INFO - Update id=84657601 is handled. Duration 157 ms by bot id=8016349214
+2026-01-19 09:13:17,179 - aiogram.event - INFO - Update id=84657602 is handled. Duration 55 ms by bot id=8016349214
+2026-01-19 09:13:24,338 - bot - ERROR - Error when calling AI service for user 1103652370: All connection attempts failed
+2026-01-19 09:13:24,465 - aiogram.event - INFO - Update id=84657603 is handled. Duration 141 ms by bot id=8016349214
+2026-01-19 09:16:44,476 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-19 09:16:44,476 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 09:16:44,476 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-19 09:16:44,477 - bot - INFO - Bot is shutting down...
+2026-01-19 09:19:03,545 - bot - INFO - Starting bot...
+2026-01-19 09:19:03,546 - bot - INFO - Bot is starting...
+2026-01-19 09:19:03,793 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-19 09:19:03,793 - aiogram.dispatcher - INFO - Start polling
+2026-01-19 09:19:03,898 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 09:23:56,560 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-19 09:23:56,561 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 09:23:56,561 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-19 09:23:56,561 - bot - INFO - Bot is shutting down...
+2026-01-19 09:26:01,597 - bot - INFO - Starting bot...
+2026-01-19 09:26:01,598 - bot - INFO - Bot is starting...
+2026-01-19 09:26:01,807 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-19 09:26:01,808 - aiogram.dispatcher - INFO - Start polling
+2026-01-19 09:26:01,918 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 09:34:40,328 - aiogram.event - INFO - Update id=84657604 is handled. Duration 114 ms by bot id=8016349214
+2026-01-19 09:34:59,641 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 09:34:59,642 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 09:34:59,705 - aiogram.event - INFO - Update id=84657605 is handled. Duration 18218 ms by bot id=8016349214
+2026-01-19 09:35:34,996 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 09:35:34,997 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 09:35:35,068 - aiogram.event - INFO - Update id=84657606 is handled. Duration 26853 ms by bot id=8016349214
+2026-01-19 09:36:16,869 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 09:36:16,870 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 09:36:16,952 - aiogram.event - INFO - Update id=84657607 is handled. Duration 10793 ms by bot id=8016349214
+2026-01-19 09:38:56,580 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 09:38:56,581 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 09:38:56,718 - aiogram.event - INFO - Update id=84657608 is handled. Duration 27933 ms by bot id=8016349214
+2026-01-19 10:33:53,346 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-19 10:33:53,347 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 10:33:53,347 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-19 10:33:53,348 - bot - INFO - Bot is shutting down...
+2026-01-19 10:34:31,865 - bot - INFO - Starting bot...
+2026-01-19 10:34:31,866 - bot - INFO - Bot is starting...
+2026-01-19 10:34:32,120 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-19 10:34:32,121 - aiogram.dispatcher - INFO - Start polling
+2026-01-19 10:34:32,207 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-19 10:35:52,649 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 10:35:52,650 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 10:35:52,724 - aiogram.event - INFO - Update id=84657609 is handled. Duration 34034 ms by bot id=8016349214
+2026-01-19 10:37:25,855 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 10:37:25,856 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 10:37:25,923 - aiogram.event - INFO - Update id=84657610 is handled. Duration 31420 ms by bot id=8016349214
+2026-01-19 10:39:56,330 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 10:39:56,331 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 10:39:56,429 - aiogram.event - INFO - Update id=84657611 is handled. Duration 101550 ms by bot id=8016349214
+2026-01-19 10:56:56,288 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 10:56:56,289 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 10:56:56,374 - aiogram.event - INFO - Update id=84657612 is handled. Duration 28788 ms by bot id=8016349214
+2026-01-19 10:57:11,015 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-19 10:57:11,016 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-19 10:57:11,125 - aiogram.event - INFO - Update id=84657613 is handled. Duration 4029 ms by bot id=8016349214

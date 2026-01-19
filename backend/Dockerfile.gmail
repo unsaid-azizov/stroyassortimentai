@@ -1,0 +1,22 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Установка uv
+RUN pip install --no-cache-dir uv
+
+# Копируем файлы зависимостей
+COPY pyproject.toml uv.lock ./
+
+# Установка зависимостей
+RUN uv pip install --system -e .
+
+# Копируем код
+COPY . .
+
+# Создаем папку для логов
+RUN mkdir -p logs
+
+# Запуск Gmail сервиса
+CMD ["uv", "run", "python", "gmail_service.py"]
+

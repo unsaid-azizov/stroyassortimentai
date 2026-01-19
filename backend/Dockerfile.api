@@ -1,0 +1,33 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Установка WireGuard и необходимых утилит
+RUN apt-get update && apt-get install -y \
+    wireguard-tools \
+    iproute2 \
+    iptables \
+    openresolv \
+    && rm -rf /var/lib/apt/lists/*
+
+# Установка uv для управления зависимостями
+RUN pip install --no-cache-dir uv
+
+# Копируем файлы зависимостей
+COPY pyproject.toml uv.lock ./
+
+# Установка зависимостей
+RUN uv pip install --system -e .
+
+# Копируем код приложения
+COPY . .
+
+# Создаем папку для логов
+RUN mkdir -p logs
+
+# Копируем entrypoint скрипт
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+
+# Запуск через entrypoint (автоматически инициализирует БД)
+ENTRYPOINT ["/app/docker-entrypoint.sh"]
+
