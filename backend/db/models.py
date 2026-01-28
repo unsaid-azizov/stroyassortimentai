@@ -14,6 +14,7 @@ class Lead(Base):
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     external_id: Mapped[Optional[str]] = mapped_column(String(255), index=True)  # ID в ТГ/Авито
     channel: Mapped[str] = mapped_column(String(50))  # telegram/email/avito
+    username: Mapped[Optional[str]] = mapped_column(String(255), index=True)  # @username в Telegram
     name: Mapped[Optional[str]] = mapped_column(String(255))
     phone: Mapped[Optional[str]] = mapped_column(String(50), index=True)
     email: Mapped[Optional[str]] = mapped_column(String(255), index=True)

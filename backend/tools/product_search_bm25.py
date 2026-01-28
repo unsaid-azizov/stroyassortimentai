@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 """
 Dynamic product search with BM25 ranking and LangChain tool integration.
-Categories are extracted dynamically from CSV on each load.
+Catalog is loaded from Redis (synced from 1C API).
 """
 
 from typing import Optional, List, Dict, Any
 from dataclasses import dataclass, asdict
-from pathlib import Path
+import os
+import json
+import logging
 import pandas as pd
 from rank_bm25 import BM25Okapi
 from langchain.tools import tool
+import redis
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -55,16 +60,48 @@ def normalize_dimension(value: Any) -> float:
     return float(normalized)
 
 
-def load_catalog(csv_path: str = "1c_catalog_full_20260118_201417.csv") -> pd.DataFrame:
-    """Load catalog from CSV."""
-    # В Docker контейнере файл монтируется в /app
-    # В локальной разработке ищем в корне проекта
-    full_path = Path("/app") / csv_path
-    if not full_path.exists():
-        # Fallback для локальной разработки
-        full_path = Path(__file__).parent.parent.parent / csv_path
-    df = pd.read_csv(full_path, encoding='utf-8', low_memory=False)
-    return df
+def load_catalog() -> pd.DataFrame:
+    """
+    Load catalog from Redis.
+
+    Redis содержит JSON массив объектов с полной структурой каталога
+    (синхронизируется из 1C API каждый час).
+
+    Returns:
+        DataFrame с каталогом товаров
+    """
+    redis_url = os.getenv("REDIS_URL", "redis://localhost:6379")  # localhost для локальной разработки, переопределяется на redis:6379 в Docker
+    redis_key = "catalog:products"
+
+    try:
+        # Подключаемся к Redis
+        r = redis.from_url(redis_url, encoding="utf-8", decode_responses=True)
+
+        # Получаем каталог
+        catalog_json = r.get(redis_key)
+
+        if not catalog_json:
+            logger.warning("⚠️  Catalog not found in Redis, returning empty DataFrame")
+            return pd.DataFrame()
+
+        # Парсим JSON в список объектов
+        catalog_data = json.loads(catalog_json)
+
+        # Создаем DataFrame
+        df = pd.DataFrame(catalog_data)
+
+        logger.info(f"✅ Loaded {len(df)} items from Redis")
+        return df
+
+    except Exception as e:
+        logger.error(f"❌ Error loading catalog from Redis: {e}")
+        # Возвращаем пустой DataFrame в случае ошибки
+        return pd.DataFrame()
+    finally:
+        try:
+            r.close()
+        except:
+            pass
 
 
 def get_available_categories(df: pd.DataFrame) -> Dict[str, List[str]]:
@@ -253,14 +290,58 @@ def search_products_tool(
     if not results:
         return "Товары не найдены. Попробуйте изменить параметры поиска."
 
-    # Format results
+    # Format results with full product details
     output = f"Найдено товаров: {len(results)}\n\n"
-    for i, item in enumerate(results[:10], 1):
+    for i, item in enumerate(results[:15], 1):
         output += f"{i}. {item.get('Наименованиедлясайта', item.get('item_name', 'N/A'))}\n"
+
+        # Основная информация - используем group_code который работает с 1С API
+        output += f"   Код: {item.get('group_code', 'N/A')}\n"
         output += f"   Цена: {item.get('Цена', 'N/A')} руб.\n"
-        output += f"   Остаток: {item.get('Остаток', 'N/A')}\n"
+
+        # Параметры материала
+        if pd.notna(item.get('Порода')):
+            output += f"   Порода: {item.get('Порода')}\n"
+        if pd.notna(item.get('Влажность')):
+            output += f"   Влажность: {item.get('Влажность')}\n"
+        if pd.notna(item.get('Сорт')):
+            output += f"   Сорт: {item.get('Сорт')}\n"
+        if pd.notna(item.get('Класс')):
+            output += f"   Класс: {item.get('Класс')}\n"
+        if pd.notna(item.get('Видпиломатериала')):
+            output += f"   Вид: {item.get('Видпиломатериала')}\n"
+        if pd.notna(item.get('Типобработки')):
+            output += f"   Обработка: {item.get('Типобработки')}\n"
+
+        # Размеры
+        dimensions = []
+        if pd.notna(item.get('Толщина')):
+            dimensions.append(f"{item.get('Толщина')}")
+        if pd.notna(item.get('Ширина')):
+            dimensions.append(f"{item.get('Ширина')}")
+        if pd.notna(item.get('Длина')):
+            dimensions.append(f"{item.get('Длина')}")
+        if dimensions:
+            output += f"   Размеры (мм): {' x '.join(dimensions)}\n"
+
+        # Дополнительные параметры
+        if pd.notna(item.get('Допсвойство')):
+            output += f"   Доп. свойство: {item.get('Допсвойство')}\n"
+        if pd.notna(item.get('Плотностькгм3Общие')):
+            output += f"   Плотность: {item.get('Плотностькгм3Общие')} кг/м³\n"
+        if pd.notna(item.get('Количествовм2Общие')):
+            output += f"   В 1 шт: {item.get('Количествовм2Общие')} м²\n"
+        if pd.notna(item.get('Количествовм3Общие')):
+            output += f"   В 1 шт: {item.get('Количествовм3Общие')} м³\n"
+        if pd.notna(item.get('СрокпроизводстваднОбщие')):
+            output += f"   Срок производства: {item.get('СрокпроизводстваднОбщие')} дней\n"
+        if pd.notna(item.get('ПопулярностьОбщие')) and float(item.get('ПопулярностьОбщие', 0)) > 0:
+            output += f"   ⭐ Популярность: {item.get('ПопулярностьОбщие')}\n"
+
+        # Релевантность (если есть)
         if 'bm25_score' in item:
             output += f"   Релевантность: {item['bm25_score']:.2f}\n"
+
         output += "\n"
 
     return output

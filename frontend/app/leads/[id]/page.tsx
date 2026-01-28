@@ -166,6 +166,15 @@ export default function LeadDetailPage() {
                           {channelLabels[lead.channel] || lead.channel}
                         </Badge>
                       </div>
+                      {lead.username && (
+                        <div className="flex items-center gap-2">
+                          <IconMessage className="h-4 w-4 text-muted-foreground" />
+                          <span className="text-sm text-muted-foreground">Username:</span>
+                          <span className="text-sm font-medium text-blue-600">
+                            @{lead.username.replace(/^@/, '')}
+                          </span>
+                        </div>
+                      )}
                       {lead.phone && (
                         <div className="flex items-center gap-2">
                           <IconPhone className="h-4 w-4 text-muted-foreground" />

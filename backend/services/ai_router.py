@@ -47,11 +47,17 @@ async def log_interaction(request: MessageRequest, result_state: dict):
             external_id = request.user_id or request.chat_id or "unknown"
 
             # 1. Лид и Тред
+            # Формируем полное имя из first_name и last_name
+            first_name = metadata.get("first_name", "")
+            last_name = metadata.get("last_name", "")
+            full_name = " ".join(filter(None, [first_name, last_name])) or None
+
             lead = await get_or_create_lead(
-                db_session, 
-                channel=channel, 
+                db_session,
+                channel=channel,
                 external_id=external_id,
-                name=metadata.get("first_name"),
+                username=metadata.get("username"),
+                name=full_name,
                 phone=metadata.get("phone"),
                 email=metadata.get("email")
             )
@@ -94,10 +100,10 @@ async def chat(request: MessageRequest):
     Обработка сообщения пользователя через AI агента.
     """
     logger.info(f"Received message from user {request.user_id}: {request.message[:50]}...")
-    
+
     # Refresh params if needed (checks versions, updates only if changed)
     await params_manager.refresh_if_needed()
-    
+
     # Подготовка сообщений для агента
     # Десериализуем контекст из формата словарей в объекты LangChain используя native LangChain load()
     messages = []
@@ -107,17 +113,21 @@ async def chat(request: MessageRequest):
                 msg = load(msg_dict)
                 if isinstance(msg, BaseMessage) and not isinstance(msg, SystemMessage):
                     messages.append(msg)
-    
+
     # Добавляем новое сообщение пользователя
     messages.append(HumanMessage(content=request.message))
-    
+
     # Вызов агента (fallback уже встроен в main_llm через .with_fallbacks())
+    # Просто передаем metadata как есть: bot -> api -> agent
     try:
         result_state = await asyncio.wait_for(
-            agent_module.agent.ainvoke({
-                "messages": messages,
-                "user_info": request.metadata or {}
-            }),
+            agent_module.get_agent().ainvoke(
+                {
+                    "messages": messages,
+                    "user_info": request.metadata or {}
+                },
+                config={"configurable": {"user_info": request.metadata or {}}}
+            ),
             timeout=180.0
         )
     except asyncio.TimeoutError:

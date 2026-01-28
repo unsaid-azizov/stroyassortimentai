@@ -5,6 +5,7 @@ export interface Lead {
   id: string
   external_id: string | null
   channel: string
+  username: string | null
   name: string | null
   phone: string | null
   email: string | null

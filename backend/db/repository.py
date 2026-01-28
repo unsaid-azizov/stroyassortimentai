@@ -29,26 +29,40 @@ async def get_order_submissions(
     orders = rows.scalars().all()
     return {"orders": orders, "total": total, "page": safe_page, "limit": safe_limit}
 
+
+async def get_order_submission_by_id(
+    session: AsyncSession,
+    order_id: uuid.UUID
+) -> Optional[OrderSubmission]:
+    """Get order submission by ID."""
+    result = await session.execute(
+        select(OrderSubmission).where(OrderSubmission.id == order_id)
+    )
+    return result.scalar_one_or_none()
+
+
 async def get_or_create_lead(
-    session: AsyncSession, 
-    channel: str, 
-    external_id: str, 
+    session: AsyncSession,
+    channel: str,
+    external_id: str,
+    username: Optional[str] = None,
     name: Optional[str] = None,
     phone: Optional[str] = None,
     email: Optional[str] = None
 ) -> Lead:
     """Находит лида строго по ID канала. Никакой склейки на этом этапе."""
     stmt = select(Lead).where(
-        Lead.external_id == external_id, 
+        Lead.external_id == external_id,
         Lead.channel == channel
     )
     result = await session.execute(stmt)
     lead = result.scalar_one_or_none()
-    
+
     if not lead:
         lead = Lead(
-            channel=channel, 
-            external_id=external_id, 
+            channel=channel,
+            external_id=external_id,
+            username=username,
             name=name,
             phone=phone,
             email=email
@@ -56,7 +70,25 @@ async def get_or_create_lead(
         session.add(lead)
         await session.commit()
         await session.refresh(lead)
-    
+    else:
+        # Обновляем username, name, phone, email если они пришли и изменились
+        updated = False
+        if username and lead.username != username:
+            lead.username = username
+            updated = True
+        if name and lead.name != name:
+            lead.name = name
+            updated = True
+        if phone and lead.phone != phone:
+            lead.phone = phone
+            updated = True
+        if email and lead.email != email:
+            lead.email = email
+            updated = True
+        if updated:
+            await session.commit()
+            await session.refresh(lead)
+
     return lead
 
 async def get_or_create_thread(session: AsyncSession, lead_id: uuid.UUID) -> Thread:
@@ -159,6 +191,7 @@ async def get_leads(
         conditions.append(
             or_(
                 Lead.name.ilike(search_pattern),
+                Lead.username.ilike(search_pattern),
                 Lead.phone.ilike(search_pattern),
                 Lead.email.ilike(search_pattern)
             )

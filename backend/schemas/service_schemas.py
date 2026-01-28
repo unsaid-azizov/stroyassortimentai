@@ -69,11 +69,12 @@ class LeadResponse(BaseModel):
     id: str
     external_id: Optional[str]
     channel: str
+    username: Optional[str]
     name: Optional[str]
     phone: Optional[str]
     email: Optional[str]
     last_seen: datetime
-    
+
     class Config:
         from_attributes = True
 
@@ -106,6 +107,23 @@ class OrdersListResponse(BaseModel):
     total: int
     page: int
     limit: int
+
+
+class OrderSubmissionDetailResponse(BaseModel):
+    """Детальная информация о заказе с полным payload."""
+    id: str
+    created_at: datetime
+    client_name: Optional[str] = None
+    client_contact: Optional[str] = None
+    currency: str = "RUB"
+    subtotal: Optional[float] = None
+    total: Optional[float] = None
+    items_count: Optional[int] = None
+    status: str
+    payload: Dict  # Полный OrderInfo со всеми деталями
+
+    class Config:
+        from_attributes = True
 
 
 class ThreadResponse(BaseModel):
@@ -229,11 +247,11 @@ class UpdatePromptRequest(BaseModel):
 
 
 class KnowledgeBaseResponse(BaseModel):
-    content: Dict
+    content: str  # Plain text format
 
 
 class UpdateKnowledgeBaseRequest(BaseModel):
-    content: Dict
+    content: str  # Plain text format
 
 
 class SecretStatus(BaseModel):

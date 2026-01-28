@@ -29,149 +29,85 @@ class ParamsManager:
     def __init__(self):
         if self._initialized:
             return
-        
+
         # Cache storage
         self._prompt_text: Optional[str] = None
-        self._kb_content: Optional[dict] = None
-        self._kb_text: Optional[str] = None
-        
+        self._kb_text: Optional[str] = None  # Raw text from DB
+        self._kb_parsed: Optional[dict] = None  # Parsed dict for BM25
+
         # Change tracking
         self._prompt_id: Optional[str] = None
         self._prompt_version: Optional[int] = None
         self._kb_hash: Optional[str] = None
-        
+
         self._initialized = True
     
-    def _format_kb_text(self, kb_content: Optional[dict]) -> str:
+    def _format_kb_for_prompt(self, kb_parsed: Optional[dict]) -> str:
         """
-        Format KB content for system prompt - COMPACT version.
-        Only includes minimal info: available sections and product groups summary.
-        Full content is available via search_company_info tool.
+        Форматирует parsed KB в компактный формат для system prompt.
+        Включает только список доступных разделов.
         """
-        if not kb_content:
+        if not kb_parsed or "sections" not in kb_parsed:
             return ""
-        
-        if "metadata" not in kb_content or "sections" not in kb_content:
+
+        sections = kb_parsed.get("sections", {})
+        if not sections:
             return ""
-        
-        return self._format_kb_compact(kb_content)
-    
-    def _format_kb_compact(self, kb_content: dict) -> str:
-        """
-        Форматирует KB в компактный формат для system prompt.
-        Включает только:
-        - Список доступных разделов
-        - Краткий список кодов групп товаров
-        """
-        sections = kb_content.get("sections", {})
-        
+
         lines = [
             "ДОСТУПНЫЕ РАЗДЕЛЫ БАЗЫ ЗНАНИЙ (используй search_company_info для получения детальной информации):"
         ]
-        
-        # Список разделов с описанием
+
+        # Список разделов с ключевыми словами
         for section_key, section_data in sections.items():
             title = section_data.get("title", section_key)
             keywords = section_data.get("keywords", [])
             keywords_str = ", ".join(keywords[:5])  # Первые 5 keywords
             lines.append(f"  - {section_key}: {title} (ключевые слова: {keywords_str})")
-        
-        # Компактный список кодов групп товаров
-        if "product_groups" in sections:
-            pg_content = sections["product_groups"].get("content", {})
-            groups = pg_content.get("groups", [])
-            
-            lines.append("\nКОДЫ ГРУПП ТОВАРОВ (для search_1c_products):")
-            lines.append("Используй эти коды для поиска товаров в 1С. Полный список доступен через search_company_info('product_groups').")
-            
-            # Показываем только первые 20 групп для компактности
-            for group in groups[:20]:
-                code = group.get("code", "")
-                descr = group.get("description", "")[:60]  # Обрезаем описание
-                lines.append(f"  {code} — {descr}")
-            
-            if len(groups) > 20:
-                lines.append(f"  ... и еще {len(groups) - 20} групп (используй search_company_info('product_groups') для полного списка)")
-        
+
         return "\n".join(lines)
     
     def get_available_sections(self) -> list[str]:
         """Возвращает список доступных разделов KB."""
-        if not self._kb_content:
+        if not self._kb_parsed or "sections" not in self._kb_parsed:
             return []
-        
-        if "metadata" not in self._kb_content or "sections" not in self._kb_content:
-            return []
-        
-        return list(self._kb_content["sections"].keys())
-    
+
+        return list(self._kb_parsed["sections"].keys())
+
     def get_section_metadata(self, section: str) -> Optional[dict]:
-        """Возвращает метаданные раздела (title, source_url, keywords)."""
-        if not self._kb_content:
+        """Возвращает метаданные раздела (title, keywords)."""
+        if not self._kb_parsed or "sections" not in self._kb_parsed:
             return None
-        
-        if "metadata" not in self._kb_content or "sections" not in self._kb_content:
-            return None
-        
-        section_data = self._kb_content["sections"].get(section)
+
+        section_data = self._kb_parsed["sections"].get(section)
         if section_data:
             return {
                 "title": section_data.get("title"),
-                "source_url": section_data.get("source_url"),
                 "keywords": section_data.get("keywords", []),
-                "last_updated": section_data.get("last_updated")
             }
-        
+
         return None
-    
-    def get_section_content(self, section: str) -> Optional[dict]:
-        """Возвращает содержимое раздела."""
-        if not self._kb_content:
+
+    def get_section_content(self, section: str) -> Optional[str]:
+        """Возвращает текстовое содержимое раздела."""
+        if not self._kb_parsed or "sections" not in self._kb_parsed:
             return None
-        
-        if "metadata" not in self._kb_content or "sections" not in self._kb_content:
-            return None
-        
-        section_data = self._kb_content["sections"].get(section)
+
+        section_data = self._kb_parsed["sections"].get(section)
         if section_data:
             return section_data.get("content")
-        
+
         return None
     
-    def get_product_groups_summary(self) -> list[dict]:
-        """Возвращает компактный список групп товаров (код + описание)."""
-        if not self._kb_content:
-            return []
-        
-        if "metadata" not in self._kb_content or "sections" not in self._kb_content:
-            return []
-        
-        pg_section = self._kb_content["sections"].get("product_groups")
-        if pg_section:
-            groups = pg_section.get("content", {}).get("groups", [])
-            return [{"code": g.get("code"), "description": g.get("description")} for g in groups]
-        
-        return []
-    
-    def _compute_kb_hash(self, kb_content: Optional[dict]) -> str:
-        """Compute hash of KB content for change detection."""
-        if not kb_content:
+    def _compute_kb_hash(self, kb_text: Optional[str]) -> str:
+        """Compute hash of KB text for change detection."""
+        if not kb_text:
             return ""
         try:
-            content_str = json.dumps(kb_content, sort_keys=True, ensure_ascii=False)
-            return hashlib.md5(content_str.encode('utf-8')).hexdigest()
+            return hashlib.md5(kb_text.encode('utf-8')).hexdigest()
         except Exception:
             return ""
     
-    def _fallback_kb_from_files(self) -> str:
-        """Load KB from fallback file."""
-        kb_path = Path(__file__).parent / "data" / "kb.json"
-        try:
-            with open(kb_path, "r", encoding="utf-8") as f:
-                kb_content = json.load(f)
-                return self._format_kb_text(kb_content)
-        except FileNotFoundError:
-            return ""
     
     async def load_prompt(self, force: bool = False) -> None:
         """
@@ -215,41 +151,54 @@ class ParamsManager:
     
     async def load_knowledge_base(self, force: bool = False) -> None:
         """
-        Load knowledge base from DB. Updates cache only if changed or force=True.
+        Load knowledge base from DB (as text). Updates cache only if changed or force=True.
         """
         try:
             from db.session import async_session_factory
             from db.repository import get_settings
+            from utils.kb_parser import parse_text_kb
         except Exception as e:
             logger.warning(f"Could not import DB helpers: {e}")
             return
-        
+
         async with self._lock:
             async with async_session_factory() as session:
                 kb_settings = await get_settings(session, "knowledge_base")
-                
+
                 if kb_settings and kb_settings.value:
-                    kb_content = kb_settings.value
-                    kb_hash = self._compute_kb_hash(kb_content)
-                    
+                    # KB хранится как текст (строка) в БД
+                    kb_text = kb_settings.value
+
+                    # Если в БД еще старый JSON формат, конвертируем
+                    if isinstance(kb_text, dict):
+                        from utils.kb_parser import kb_dict_to_text
+                        kb_text = kb_dict_to_text(kb_text)
+                        logger.info("Конвертирован старый JSON формат KB в текст")
+
+                    if not isinstance(kb_text, str):
+                        kb_text = str(kb_text)
+
+                    kb_hash = self._compute_kb_hash(kb_text)
+
                     # Check if KB changed
                     kb_changed = (
                         force or
-                        not self._kb_content or
+                        not self._kb_text or
                         self._kb_hash != kb_hash
                     )
-                    
+
                     if kb_changed:
-                        self._kb_content = kb_content
-                        self._kb_text = self._format_kb_text(kb_content)
+                        self._kb_text = kb_text
+                        # Парсим текст в dict для BM25
+                        self._kb_parsed = parse_text_kb(kb_text)
                         self._kb_hash = kb_hash
                         logger.info("База знаний обновлена")
                 else:
                     # No KB in DB, clear cache
-                    if self._kb_content:
+                    if self._kb_text:
                         logger.warning("База знаний не найдена в БД, очищаем кеш")
-                        self._kb_content = None
                         self._kb_text = None
+                        self._kb_parsed = None
                         self._kb_hash = None
     
     async def load_all(self, force: bool = False) -> None:
@@ -296,20 +245,37 @@ class ParamsManager:
                 # Check KB
                 kb_settings = await get_settings(session, "knowledge_base")
                 if kb_settings and kb_settings.value:
-                    kb_content = kb_settings.value
-                    kb_hash = self._compute_kb_hash(kb_content)
-                    
-                    if not self._kb_content or self._kb_hash != kb_hash:
+                    # KB хранится как текст в БД
+                    kb_text = kb_settings.value
+
+                    # Конвертируем старый JSON формат если нужно
+                    if isinstance(kb_text, dict):
+                        try:
+                            from utils.kb_parser import kb_dict_to_text
+                            kb_text = kb_dict_to_text(kb_text)
+                        except Exception:
+                            kb_text = ""
+
+                    if not isinstance(kb_text, str):
+                        kb_text = str(kb_text)
+
+                    kb_hash = self._compute_kb_hash(kb_text)
+
+                    if not self._kb_text or self._kb_hash != kb_hash:
                         # KB changed, update cache
-                        self._kb_content = kb_content
-                        self._kb_text = self._format_kb_text(kb_content)
-                        self._kb_hash = kb_hash
-                        logger.info("База знаний обновлена")
+                        try:
+                            from utils.kb_parser import parse_text_kb
+                            self._kb_text = kb_text
+                            self._kb_parsed = parse_text_kb(kb_text)
+                            self._kb_hash = kb_hash
+                            logger.info("База знаний обновлена")
+                        except Exception as e:
+                            logger.error(f"Ошибка парсинга KB: {e}")
                 else:
                     # No KB, clear if we had one
-                    if self._kb_content:
-                        self._kb_content = None
+                    if self._kb_text:
                         self._kb_text = None
+                        self._kb_parsed = None
                         self._kb_hash = None
     
     def get_prompt(self) -> str:
@@ -323,19 +289,28 @@ class ParamsManager:
     
     def get_knowledge_base_text(self) -> str:
         """
-        Get formatted KB text from cache (sync getter for middleware).
-        Returns fallback from file if cache is empty.
+        Get raw KB text from cache (sync getter).
+        Returns empty string if cache is empty.
         """
         if self._kb_text:
             return self._kb_text
-        return self._fallback_kb_from_files()
-    
+        return ""
+
     def get_knowledge_base_dict(self) -> dict:
         """
-        Get raw KB dict from cache (sync getter).
+        Get parsed KB dict from cache (sync getter for BM25).
         Returns empty dict if cache is empty.
         """
-        if self._kb_content:
-            return self._kb_content
-        return {}
+        if self._kb_parsed:
+            return self._kb_parsed
+        return {"metadata": {}, "sections": {}}
+
+    def get_knowledge_base_for_prompt(self) -> str:
+        """
+        Get formatted KB summary for system prompt.
+        Returns compact summary of available sections.
+        """
+        if self._kb_parsed:
+            return self._format_kb_for_prompt(self._kb_parsed)
+        return ""
 

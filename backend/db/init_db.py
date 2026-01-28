@@ -87,6 +87,14 @@ async def init_db():
             await conn.execute(text("UPDATE users SET role='admin' WHERE username='admin' AND role IS DISTINCT FROM 'admin'"))
         except Exception as e:
             print(f"Не удалось применить миграцию users.role: {e}")
+
+        # Add username column to leads table for Telegram username persistence
+        try:
+            await conn.execute(text("ALTER TABLE leads ADD COLUMN IF NOT EXISTS username VARCHAR(255)"))
+            await conn.execute(text("CREATE INDEX IF NOT EXISTS ix_leads_username ON leads (username)"))
+            print("Миграция leads.username успешно применена.")
+        except Exception as e:
+            print(f"Не удалось применить миграцию leads.username: {e}")
     print("Таблицы успешно созданы.")
     
     # Создаем дефолтный промпт, если его еще нет
@@ -105,7 +113,7 @@ async def init_db():
         kb_settings = await get_settings(session, "knowledge_base")
         if not kb_settings:
             kb_path = Path(__file__).parent.parent / "data" / "kb.json"
-            
+
             if not kb_path.exists():
                 print(f"Ошибка: файл {kb_path.name} не найден. База знаний не будет загружена.")
                 kb_content = {}
@@ -117,11 +125,84 @@ async def init_db():
                 except Exception as e:
                     print(f"Ошибка загрузки базы знаний: {e}")
                     kb_content = {}
-            
+
             await upsert_settings(session, "knowledge_base", kb_content)
             print("База знаний (knowledge_base) успешно создана в БД.")
         else:
             print("База знаний уже существует, пропускаем создание.")
+
+        # Инициализируем системные настройки из .env, если их еще нет
+        print("Проверка системных настроек (system)...")
+        system_settings = await get_settings(session, "system")
+        if not system_settings:
+            print("Создание дефолтных системных настроек из .env...")
+            system_data = {}
+
+            # Загружаем настройки email из .env
+            smtp_user = os.getenv("SMTP_USER")
+            sales_email = os.getenv("SALES_EMAIL")
+            imap_server = os.getenv("IMAP_SERVER")
+            imap_port = os.getenv("IMAP_PORT")
+            smtp_server = os.getenv("SMTP_SERVER")
+            smtp_port = os.getenv("SMTP_PORT")
+
+            if smtp_user:
+                system_data["smtp_user"] = smtp_user
+            if sales_email:
+                system_data["sales_email"] = sales_email
+            if imap_server:
+                system_data["imap_server"] = imap_server
+            if imap_port:
+                system_data["imap_port"] = int(imap_port)
+            if smtp_server:
+                system_data["smtp_server"] = smtp_server
+            if smtp_port:
+                system_data["smtp_port"] = int(smtp_port)
+
+            if system_data:
+                await upsert_settings(session, "system", system_data)
+                print(f"Системные настройки успешно созданы: {list(system_data.keys())}")
+            else:
+                print("Настройки не найдены в .env, создана пустая запись system.")
+                await upsert_settings(session, "system", {})
+        else:
+            print("Системные настройки уже существуют, пропускаем создание.")
+
+        # Инициализируем секреты из .env, если их еще нет
+        print("Проверка секретов (secrets)...")
+        secrets_settings = await get_settings(session, "secrets")
+        if not secrets_settings:
+            print("Создание дефолтных секретов из .env...")
+            secrets_data = {}
+
+            try:
+                from utils.secrets import encrypt_secret
+
+                # Загружаем секреты из .env
+                openai_api_key = os.getenv("OPENAI_API_KEY")
+                bot_token = os.getenv("BOT_TOKEN")
+                smtp_password = os.getenv("SMTP_PASSWORD")
+
+                if openai_api_key:
+                    secrets_data["openrouter_token"] = encrypt_secret(openai_api_key)
+                if bot_token:
+                    secrets_data["telegram_bot_token"] = encrypt_secret(bot_token)
+                if smtp_password:
+                    secrets_data["smtp_password"] = encrypt_secret(smtp_password)
+
+                if secrets_data:
+                    await upsert_settings(session, "secrets", secrets_data)
+                    print(f"Секреты успешно зашифрованы и сохранены: {list(secrets_data.keys())}")
+                else:
+                    print("Секреты не найдены в .env, создана пустая запись secrets.")
+                    await upsert_settings(session, "secrets", {})
+            except RuntimeError as e:
+                print(f"Ошибка: {e}")
+                print("SECRETS_MASTER_KEY не настроен, секреты не могут быть зашифрованы.")
+                print("Создана пустая запись secrets.")
+                await upsert_settings(session, "secrets", {})
+        else:
+            print("Секреты уже существуют, пропускаем создание.")
     
     await engine.dispose()
 

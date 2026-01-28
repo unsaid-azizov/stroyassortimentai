@@ -1,5 +1,5 @@
 """
-Tool для получения актуальной информации о товаре из 1С API.
+Tool для получения актуальной информации о товаре через API.
 Используется после того, как клиент определился с конкретным товаром.
 """
 import os
@@ -12,10 +12,10 @@ import json
 
 def fetch_live_product_details(item_codes: List[str]) -> List[Dict[str, Any]]:
     """
-    Получить актуальную информацию о товарах из 1С через API GetDetailedItems.
+    Получить актуальную информацию о товарах через ERP API.
 
     Args:
-        item_codes: Список кодов товаров (из CSV или из предыдущего поиска)
+        item_codes: Список кодов товаров (из каталога или из предыдущего поиска)
 
     Returns:
         Список товаров с актуальной информацией (цена, остаток, характеристики)
@@ -50,7 +50,7 @@ def fetch_live_product_details(item_codes: List[str]) -> List[Dict[str, Any]]:
 @tool
 def get_product_live_details(item_codes: str) -> str:
     """
-    Получить актуальную информацию о конкретном товаре из 1С (цена, остаток на складе).
+    Получить актуальную информацию о конкретном товаре (цена, остаток на складе).
 
     ВАЖНО: Используй этот инструмент ПОСЛЕ того, как клиент определился с конкретным товаром
     и хочет узнать актуальную цену и наличие.
@@ -78,10 +78,10 @@ def get_product_live_details(item_codes: str) -> str:
     items = fetch_live_product_details(codes)
 
     if not items:
-        return f"Товары с кодами {item_codes} не найдены в 1С или временно недоступны."
+        return f"Товары с кодами {item_codes} не найдены или временно недоступны."
 
     # Format response
-    response_lines = [f"Актуальная информация о {len(items)} товаре(ах) из 1С:", ""]
+    response_lines = [f"Актуальная информация о {len(items)} товаре(ах):", ""]
 
     for i, item in enumerate(items, 1):
         name = item.get("Наименованиедлясайта") or item.get("Наименование") or item.get("item_name", "N/A")
@@ -98,41 +98,85 @@ def get_product_live_details(item_codes: str) -> str:
         material_type = item.get("Видпиломатериала")
         wood = item.get("Порода")
         grade = item.get("Сорт")
+        klass = item.get("Класс")
         thickness = item.get("Толщина")
         width = item.get("Ширина")
         length = item.get("Длина")
         moisture = item.get("Влажность")
         treatment = item.get("Типобработки")
+        density = item.get("Плотностькгм3Общие")
+        extra_property = item.get("Допсвойство")
+        popularity = item.get("ПопулярностьОбщие")
 
-        if any([material_type, wood, grade, thickness, width, length]):
-            response_lines.append("   ")
-            response_lines.append("   📋 Характеристики:")
-            if material_type:
-                response_lines.append(f"      Вид: {material_type}")
-            if wood:
-                response_lines.append(f"      Порода: {wood}")
-            if grade:
-                response_lines.append(f"      Сорт/Класс: {grade}")
-            if thickness and width and length:
-                response_lines.append(f"      Размеры: {thickness}х{width}х{length} мм")
-            elif any([thickness, width, length]):
-                dims = []
-                if thickness:
-                    dims.append(f"толщина {thickness}")
-                if width:
-                    dims.append(f"ширина {width}")
-                if length:
-                    dims.append(f"длина {length}")
-                response_lines.append(f"      Размеры: {', '.join(dims)}")
-            if moisture:
-                response_lines.append(f"      Влажность: {moisture}")
-            if treatment:
-                response_lines.append(f"      Обработка: {treatment}")
+        response_lines.append("   ")
+        response_lines.append("   📋 Характеристики:")
 
-        # Дополнительно
+        if material_type:
+            response_lines.append(f"      Вид: {material_type}")
+        if wood:
+            response_lines.append(f"      Порода: {wood}")
+
+        # Сорт или Класс
+        if grade and klass:
+            response_lines.append(f"      Сорт/Класс: {grade} ({klass})")
+        elif grade:
+            response_lines.append(f"      Сорт: {grade}")
+        elif klass:
+            response_lines.append(f"      Класс: {klass}")
+
+        # Размеры
+        if thickness and width and length:
+            response_lines.append(f"      Размеры: {thickness}х{width}х{length} мм")
+        elif any([thickness, width, length]):
+            dims = []
+            if thickness:
+                dims.append(f"толщина {thickness}")
+            if width:
+                dims.append(f"ширина {width}")
+            if length:
+                dims.append(f"длина {length}")
+            response_lines.append(f"      Размеры: {', '.join(dims)}")
+
+        if moisture:
+            response_lines.append(f"      Влажность: {moisture}")
+        if treatment:
+            response_lines.append(f"      Обработка: {treatment}")
+        if density:
+            response_lines.append(f"      Плотность: {density} кг/м³")
+        if extra_property:
+            response_lines.append(f"      Доп. свойство: {extra_property}")
+        if popularity and float(popularity) > 0:
+            response_lines.append(f"      ⭐ Популярность: {popularity}")
+
+        # Дополнительная информация
         production_days = item.get("СрокпроизводстваднОбщие")
+        qty_m2 = item.get("Количествовм2Общие")
+        qty_m3 = item.get("Количествовм3Общие")
+        qty_pack = item.get("КоличествовупаковкеОбщие")
+        extra_unit1 = item.get("Дополнительнаяедизмерения1")
+        extra_unit2 = item.get("Дополнительнаяедизмерения2")
+        extra_unit3 = item.get("Дополнительнаяедизмерения3Общие")
+
+        additional_info = []
         if production_days:
-            response_lines.append(f"   ⏱️ Срок производства: {production_days} дней")
+            additional_info.append(f"⏱️ Срок производства: {production_days} дней")
+        if qty_m2:
+            additional_info.append(f"📐 В 1 шт: {qty_m2} м²")
+        if qty_m3:
+            additional_info.append(f"📦 В 1 шт: {qty_m3} м³")
+        if qty_pack:
+            additional_info.append(f"📦 В упаковке: {qty_pack} шт")
+        if extra_unit1:
+            additional_info.append(f"Ед.изм.1: {extra_unit1}")
+        if extra_unit2:
+            additional_info.append(f"Ед.изм.2: {extra_unit2}")
+        if extra_unit3:
+            additional_info.append(f"Ед.изм.3: {extra_unit3}")
+
+        if additional_info:
+            response_lines.append("   ")
+            for info in additional_info:
+                response_lines.append(f"   {info}")
 
         response_lines.append("")
 

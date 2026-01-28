@@ -33,14 +33,6 @@ logger = logging.getLogger(__name__)
 MAIN_LLM = getenv("MAIN_LLM")
 BACKUP_LLM = getenv("BACKUP_LLM")
 
-# Cache for LLM instances - will be recreated when token changes
-_llm_cache = {
-    "main_llm": None,
-    "backup_llm": None,
-    "summarization_llm": None,
-    "last_token_hash": None
-}
-
 def get_llm_config():
     """Get LLM config with API key from DB (with fallback to env)."""
     # Попробуем взять из БД, если не получится - fallback на .env
@@ -59,46 +51,19 @@ def get_llm_config():
         },
     }
 
-def _get_token_hash():
-    """Get hash of current token for cache invalidation."""
-    config = get_llm_config()
-    token = config.get("api_key", "")
-    return hash(token) if token else None
+llm_config = get_llm_config()
+backup_llm = ChatOpenAI(model=BACKUP_LLM, **llm_config)
+main_llm = ChatOpenAI(model=MAIN_LLM, **llm_config).with_fallbacks([backup_llm])
 
-def get_main_llm():
-    """Get or create main LLM with current token."""
-    global _llm_cache
-
-    current_hash = _get_token_hash()
-
-    # Recreate if token changed or not cached
-    if _llm_cache["last_token_hash"] != current_hash or _llm_cache["main_llm"] is None:
-        logger.info("Creating new LLM instances with updated token")
-        llm_config = get_llm_config()
-        _llm_cache["backup_llm"] = ChatOpenAI(model=BACKUP_LLM, **llm_config)
-        _llm_cache["main_llm"] = ChatOpenAI(model=MAIN_LLM, **llm_config).with_fallbacks([_llm_cache["backup_llm"]])
-        _llm_cache["summarization_llm"] = ChatOpenAI(
-            model=BACKUP_LLM,
-            temperature=0.0,
-            base_url=getenv("OPENAI_BASE_URL"),
-            timeout=30,
-            max_retries=3,
-        )
-        _llm_cache["last_token_hash"] = current_hash
-
-    return _llm_cache["main_llm"]
-
-def get_backup_llm():
-    """Get or create backup LLM with current token."""
-    # Ensure cache is populated
-    get_main_llm()
-    return _llm_cache["backup_llm"]
-
-def get_summarization_llm():
-    """Get or create summarization LLM with current token."""
-    # Ensure cache is populated
-    get_main_llm()
-    return _llm_cache["summarization_llm"]
+# Model for summarization (use cheaper/faster model for summarization tasks)
+# Use backup_llm or a dedicated summarization model
+summarization_llm = ChatOpenAI(
+    model=BACKUP_LLM,  # Use backup model for summarization (usually cheaper)
+    temperature=0.0,
+    base_url=getenv("OPENAI_BASE_URL"),
+    timeout=30,
+    max_retries=3,
+)
 
 # Модель структурированного ответа для классификации и ответа клиенту
 class AgentStructuredResponse(BaseModel):
@@ -126,7 +91,7 @@ def build_agent_prompt(req: ModelRequest) -> str:
     Gets prompt and KB from ParamsManager (sync getters).
     """
     state = req.state
-
+    
     # Устанавливаем часовой пояс МСК (UTC+3)
     current_time = datetime.now(ZoneInfo("Europe/Moscow"))
     current_time_str = current_time.strftime("%H:%M")
@@ -136,7 +101,7 @@ def build_agent_prompt(req: ModelRequest) -> str:
         "Thursday": "Четверг", "Friday": "Пятница", "Saturday": "Суббота",
         "Sunday": "Воскресенье"
     }.get(weekday, weekday)
-
+    
     # Извлекаем метаданные пользователя для персонализации
     user_info = state.get("user_info", {})
     user_name = user_info.get("first_name", user_info.get("username", "Клиент"))
@@ -161,7 +126,7 @@ def build_agent_prompt(req: ModelRequest) -> str:
         + "\n\nВАЖНО: Для получения детальной информации используй инструмент search_company_info с нужным разделом."
         + " Не выдумывай данные - всегда запрашивай их через инструменты!"
     )
-
+    
     return system_prompt
 
 # Backward-compatibility: api.py imports this symbol.
@@ -180,49 +145,34 @@ agent_tools = [
 
 # SummarizationMiddleware для автоматического сжатия контекста при превышении лимита токенов
 # Суммаризирует старые сообщения, сохраняя последние N сообщений
-def get_summarization_middleware():
-    """Get summarization middleware with current LLM."""
-    return SummarizationMiddleware(
-        model=get_summarization_llm(),
-        trigger=("tokens", 20000),  # Суммаризировать когда превышено 20000 токенов
-        keep=("messages", 20),  # Сохранять последние 20 сообщений без суммаризации
-    )
+summarization_middleware = SummarizationMiddleware(
+    model=summarization_llm,
+    trigger=("tokens", 6000),  # Суммаризировать когда превышено 6000 токенов
+    keep=("messages", 20),  # Сохранять последние 20 сообщений без суммаризации
+)
 
-def get_middleware_stack():
-    """Get middleware stack with current summarization LLM."""
-    return [
-        build_agent_prompt,  # Dynamic prompt middleware
-        get_summarization_middleware(),  # Automatic context compression
-    ]
+# Middleware stack: сначала промпт, потом суммаризация
+middleware_stack = [
+    build_agent_prompt,  # Dynamic prompt middleware
+    summarization_middleware,  # Automatic context compression
+]
 
-def get_agent():
-    """Get or create agent with current LLM and middleware."""
-    return create_agent(
-        model=get_main_llm(),
-        tools=agent_tools,
-        state_schema=AgentState,
-        response_format=AgentStructuredResponse,
-        middleware=get_middleware_stack(),
-    )
+agent = create_agent(
+    model=main_llm,
+    tools=agent_tools,
+    state_schema=AgentState,
+    response_format=AgentStructuredResponse,
+    middleware=middleware_stack,
+)
 
-def get_agent_backup():
-    """Get or create backup agent."""
-    return create_agent(
-        model=get_backup_llm(),
-        tools=agent_tools,
-        state_schema=AgentState,
-        response_format=AgentStructuredResponse,
-        middleware=get_middleware_stack(),
-    )
-
-# For backward compatibility - create lazy properties
-@property
-def agent():
-    return get_agent()
-
-@property
-def agent_backup():
-    return get_agent_backup()
+# Backup agent (uses backup_llm with fallback)
+agent_backup = create_agent(
+    model=backup_llm,
+    tools=agent_tools,
+    state_schema=AgentState,
+    response_format=AgentStructuredResponse,
+    middleware=middleware_stack,
+)
 
 def build_retry_agent(temperature: float):
     """
@@ -237,24 +187,24 @@ def build_retry_agent(temperature: float):
         tools=agent_tools,
         state_schema=AgentState,
         response_format=AgentStructuredResponse,
-        middleware=get_middleware_stack(),
+        middleware=middleware_stack,  # Use same middleware stack
     )
 
 
 async def main():
-    while True:
+    while True: 
         query = input("> ")
-        if query.lower() == "/exit":
+        if query.lower() == "/exit": 
             break
 
         # Используем astream для поддержки асинхронных инструментов
-        async for step in get_agent().astream(
+        async for step in agent.astream(
             {"messages": [HumanMessage(content=query)]},
             stream_mode="values"
         ):
             step["messages"][-1].pretty_print()
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     import asyncio
     try:
         asyncio.run(main())

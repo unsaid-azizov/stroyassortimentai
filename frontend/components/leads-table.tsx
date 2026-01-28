@@ -56,6 +56,7 @@ export function LeadsTable({
           <TableHeader>
             <TableRow>
               <TableHead>Имя</TableHead>
+              <TableHead>Username</TableHead>
               <TableHead>Телефон</TableHead>
               <TableHead>Email</TableHead>
               <TableHead>Канал</TableHead>
@@ -66,7 +67,7 @@ export function LeadsTable({
           <TableBody>
             {leads.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={6} className="text-center text-muted-foreground">
+                <TableCell colSpan={7} className="text-center text-muted-foreground">
                   Лиды не найдены
                 </TableCell>
               </TableRow>
@@ -79,6 +80,13 @@ export function LeadsTable({
                 >
                   <TableCell className="font-medium">
                     {lead.name || 'Без имени'}
+                  </TableCell>
+                  <TableCell>
+                    {lead.username ? (
+                      <span className="text-blue-600">@{lead.username.replace(/^@/, '')}</span>
+                    ) : (
+                      <span className="text-muted-foreground text-sm">Не указан</span>
+                    )}
                   </TableCell>
                   <TableCell>{lead.phone || '-'}</TableCell>
                   <TableCell>{lead.email || '-'}</TableCell>

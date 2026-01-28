@@ -37,6 +37,57 @@ def build_searchable_text(section_data: dict) -> str:
     return " ".join(parts)
 
 
+def format_section_content(content: Any, indent: int = 0) -> str:
+    """
+    Рекурсивно форматирует содержимое раздела в читаемый текст.
+    """
+    if content is None:
+        return ""
+
+    indent_str = "  " * indent
+    lines = []
+
+    if isinstance(content, dict):
+        for key, value in content.items():
+            # Пропускаем служебные ключи
+            if key in ("metadata", "last_updated"):
+                continue
+
+            # Форматируем заголовок
+            header = key.replace("_", " ").capitalize()
+            lines.append(f"{indent_str}**{header}:**")
+
+            # Рекурсивно форматируем содержимое
+            formatted_value = format_section_content(value, indent + 1)
+            if formatted_value:
+                lines.append(formatted_value)
+            lines.append("")
+
+    elif isinstance(content, list):
+        for item in content:
+            if isinstance(item, dict):
+                # Если это объект, форматируем его поля
+                item_lines = []
+                for k, v in item.items():
+                    if v:
+                        item_lines.append(f"{k}: {v}")
+                if item_lines:
+                    lines.append(f"{indent_str}- {', '.join(item_lines)}")
+            else:
+                # Простой элемент списка
+                lines.append(f"{indent_str}- {item}")
+
+    elif isinstance(content, str):
+        # Текстовое содержимое
+        lines.append(f"{indent_str}{content}")
+
+    else:
+        # Другие типы (число, bool и т.д.)
+        lines.append(f"{indent_str}{content}")
+
+    return "\n".join(lines)
+
+
 def search_knowledge_base_bm25(query: str, top_k: int = 3) -> List[Dict[str, Any]]:
     """
     Search knowledge base using BM25 ranking.
@@ -96,23 +147,27 @@ def search_knowledge_base_bm25(query: str, top_k: int = 3) -> List[Dict[str, Any
 @tool
 def search_company_info(query: str) -> str:
     """
-    Search company knowledge base using natural language query with BM25 ranking.
+    Поиск информации о компании через базу знаний с использованием BM25.
 
-    Use this tool when customer asks about:
-    - адрес, контакты, склад, проезд, карту, видео-инструкцию
-    - доставку, самовывоз, транспорт, автопарк
-    - услуги, производство, распил, индивидуальные заказы
-    - способы оплаты, наличные, безналичный расчет
-    - возврат, гарантию, условия
-    - акции, скидки, спецпредложения
-    - часто задаваемые вопросы
-    - общую информацию о компании
+    Используй этот инструмент когда клиент спрашивает про:
+    - АДРЕС, КОНТАКТЫ, СКЛАД, ПРОЕЗД - как добраться, где находится, телефон
+    - ДОСТАВКУ - условия доставки, стоимость, зоны доставки, самовывоз
+    - УСЛУГИ - производство, распил, индивидуальные заказы, антисептирование
+    - ОПЛАТУ - способы оплаты, наличные, безналичный расчет
+    - ВОЗВРАТ, ГАРАНТИЮ - условия возврата, гарантийные обязательства
+    - АКЦИИ, СКИДКИ - текущие спецпредложения
+    - ОБЩУЮ ИНФОРМАЦИЮ - о компании, время работы, FAQ
 
     Args:
-        query: Natural language search query (e.g. "как добраться до склада", "способы оплаты")
+        query: Поисковый запрос на естественном языке (например, "как добраться до склада", "способы оплаты")
 
     Returns:
-        Top-3 relevant sections with content
+        Топ-3 наиболее релевантных раздела с форматированным содержимым
+
+    Примеры:
+        - "адрес склада" → вернет контакты с адресом и картой проезда
+        - "доставка в мытищи" → вернет условия доставки
+        - "способы оплаты" → вернет информацию об оплате
     """
     if not query or not query.strip():
         from params_manager import ParamsManager
@@ -124,24 +179,34 @@ def search_company_info(query: str) -> str:
     results = search_knowledge_base_bm25(query, top_k=3)
 
     if not results:
-        return "Информация не найдена. Телефон: +7 (499) 302-55-01"
+        return "Информация не найдена в базе знаний. Для получения точной информации позовите менеджера через call_manager."
 
     # Format response
-    response_lines = [f"Найдено {len(results)} раздела(ов) по запросу '{query}':", ""]
+    response_lines = []
 
     for i, result in enumerate(results, 1):
-        response_lines.append(f"### {i}. {result['title']} (релевантность: {result['score']:.2f})")
+        # Пропускаем результаты с очень низкой релевантностью
+        if result['score'] < 0.5 and i > 1:
+            continue
+
+        response_lines.append(f"## {result['title']}")
         response_lines.append("")
 
         # Format content
         content = result.get("content", {})
-        content_str = json.dumps(content, indent=2, ensure_ascii=False)
-        response_lines.append(content_str)
+        if content:
+            formatted_content = format_section_content(content)
+            response_lines.append(formatted_content)
+        else:
+            response_lines.append("(Информация не доступна)")
 
         # Add source
         if result.get("source_url"):
-            response_lines.append(f"\nИсточник: {result['source_url']}")
+            response_lines.append("")
+            response_lines.append(f"Подробнее: {result['source_url']}")
 
         response_lines.append("")
+        response_lines.append("---")
+        response_lines.append("")
 
-    return "\n".join(response_lines)
+    return "\n".join(response_lines).strip()

@@ -19,6 +19,7 @@ from pathlib import Path
 from langchain_core.messages import HumanMessage, AIMessage
 import agent as agent_module
 from params_manager import ParamsManager
+from runtime_config import refresh_runtime_config
 
 # Создаем глобальный инстанс ParamsManager (singleton)
 params_manager = ParamsManager()
@@ -64,6 +65,7 @@ from schemas.service_schemas import (
     LeadsListResponse,
     LeadResponse,
     OrdersListResponse,
+    OrderSubmissionDetailResponse,
     ThreadResponse,
     ThreadDetailResponse,
     MessageResponseDetail,
@@ -184,6 +186,7 @@ async def list_leads(
                 "id": str(lead.id),
                 "external_id": lead.external_id,
                 "channel": lead.channel,
+                "username": lead.username,
                 "name": lead.name,
                 "phone": lead.phone,
                 "email": lead.email,
@@ -213,6 +216,7 @@ async def get_lead(
             id=str(lead.id),
             external_id=lead.external_id,
             channel=lead.channel,
+            username=lead.username,
             name=lead.name,
             phone=lead.phone,
             email=lead.email,
@@ -249,6 +253,33 @@ async def list_orders(
             )
 
         return OrdersListResponse(orders=orders_data, total=total, page=res["page"], limit=res["limit"])
+
+
+@router.get("/api/orders/{order_id}", response_model=OrderSubmissionDetailResponse)
+async def get_order(
+    order_id: str,
+    current_user: dict = Depends(require_roles("admin", "manager")),
+):
+    """Получить детали заказа."""
+    async with async_session_factory() as db_session:
+        from db.repository import get_order_submission_by_id
+
+        order = await get_order_submission_by_id(db_session, uuid.UUID(order_id))
+        if not order:
+            raise HTTPException(status_code=404, detail="Order not found")
+
+        return OrderSubmissionDetailResponse(
+            id=str(order.id),
+            created_at=order.created_at,
+            client_name=order.client_name,
+            client_contact=order.client_contact,
+            currency=order.currency,
+            subtotal=order.subtotal,
+            total=order.total,
+            items_count=order.items_count,
+            status=order.status,
+            payload=order.payload or {}
+        )
 
 
 @router.get("/api/threads", response_model=List[ThreadResponse])
@@ -315,6 +346,7 @@ async def get_thread(
                 id=str(thread.lead.id),
                 external_id=thread.lead.external_id,
                 channel=thread.lead.channel,
+                username=thread.lead.username,
                 name=thread.lead.name,
                 phone=thread.lead.phone,
                 email=thread.lead.email,
@@ -518,10 +550,20 @@ async def update_prompt(
 async def get_knowledge_base(
     current_user: dict = Depends(require_roles("admin", "manager"))
 ):
-    """Получить базу знаний."""
+    """Получить базу знаний (в текстовом формате)."""
     async with async_session_factory() as db_session:
         kb_settings = await get_settings(db_session, "knowledge_base")
-        kb_data = kb_settings.value if kb_settings and kb_settings.value else {}
+        kb_data = kb_settings.value if kb_settings and kb_settings.value else ""
+
+        # Если KB еще в старом JSON формате, конвертируем в текст
+        if isinstance(kb_data, dict):
+            from utils.kb_parser import kb_dict_to_text
+            kb_data = kb_dict_to_text(kb_data)
+
+        # Убеждаемся, что это строка
+        if not isinstance(kb_data, str):
+            kb_data = ""
+
     return KnowledgeBaseResponse(content=kb_data)
 
 
@@ -663,6 +705,36 @@ async def update_secrets_endpoint(
             smtp_password=SecretStatus(is_set=bool(secrets_dict.get("smtp_password"))),
         )
         return SettingsResponse(settings=public)
+
+
+@router.post("/api/catalog/sync")
+async def trigger_catalog_sync(current_user: dict = Depends(require_roles("admin"))):
+    """
+    Запустить синхронизацию каталога из 1C вручную.
+    Доступно только администраторам.
+    """
+    from services.catalog_sync import catalog_sync_service
+
+    logger.info(f"Manual catalog sync triggered by user: {current_user.get('username')}")
+
+    # Запускаем синхронизацию в фоне
+    asyncio.create_task(catalog_sync_service.sync_catalog())
+
+    return {
+        "status": "started",
+        "message": "Catalog sync started in background"
+    }
+
+
+@router.get("/api/catalog/sync/status")
+async def get_catalog_sync_status(current_user: dict = Depends(require_roles("admin", "manager"))):
+    """
+    Получить статус синхронизации каталога.
+    """
+    from services.catalog_sync import catalog_sync_service
+
+    status = await catalog_sync_service.get_sync_status()
+    return status
 
 
 # Роутер экспортируется для подключения к основному приложению
