@@ -205,6 +205,33 @@ class CatalogSyncService:
         logger.info(f"   ✅ Created {len(flat_items)} flat records")
         return flat_items
 
+    def clean_numeric_fields(self, item: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Очищает числовые поля от неразрывных пробелов.
+        
+        1C API возвращает числа с неразрывными пробелами (\xa0): "1 250", "2 500"
+        Очищаем их для корректной работы парсинга.
+        """
+        # Поля которые могут содержать числа с пробелами
+        numeric_fields = [
+            'Толщина', 'Ширина', 'Длина',  # Размеры в мм
+            'Остаток',  # Остаток на складе
+            'ПлотностькгмОбщие',  # кг/м³
+            'СрокпроизводстваднОбщие',  # Срок производства в днях
+            'ПопулярностьОбщие',  # Популярность (рейтинг)
+        ]
+
+        cleaned = item.copy()
+
+        for field in numeric_fields:
+            if field in cleaned and cleaned[field]:
+                value = cleaned[field]
+                if isinstance(value, str):
+                    # Удаляем все пробелы (включая неразрывные \xa0)
+                    cleaned[field] = value.replace(' ', '').replace('\xa0', '')
+
+        return cleaned
+
     def merge_data(
         self,
         flat_items: List[Dict[str, Any]],
@@ -253,6 +280,8 @@ class CatalogSyncService:
                     **flat,  # group_name, group_code, item_code, item_name
                     **detailed  # все поля из API
                 }
+                # Очищаем числовые поля от неразрывных пробелов
+                merged_item = self.clean_numeric_fields(merged_item)
                 merged.append(merged_item)
             else:
                 # Если деталей нет - добавляем базовую информацию

@@ -14,6 +14,9 @@ from langchain_core.tools import InjectedToolArg
 from pydantic import BaseModel, Field
 from typing import Annotated
 
+# Импортируем утилиты для расчета цен с учетом единиц измерения
+from utils.price_calculator import parse_unit, calculate_price_per_piece
+
 logger = logging.getLogger(__name__)
 
 # Цвета бренда
@@ -164,7 +167,9 @@ def _fetch_products_from_1c_sync(product_codes: List[str]) -> Dict[str, dict]:
     """
     Синхронная версия получения данных из 1С.
     Использует ту же логику что и get_product_live_details.
-    Returns map: code -> {"price": float|None, "stock": str|None}
+    Returns map: code -> {all_1c_fields...}
+
+    Возвращает ВСЕ данные из 1C без фильтрации!
     """
     if not product_codes:
         return {}
@@ -181,13 +186,9 @@ def _fetch_products_from_1c_sync(product_codes: List[str]) -> Dict[str, dict]:
             if not code:
                 continue
 
-            price = item.get("Цена")
-            stock = item.get("Остаток")
-
-            out[code] = {
-                "price": float(price) if price and price != "N/A" else None,
-                "stock": str(stock) if stock and stock != "N/A" else None,
-            }
+            # ✅ Возвращаем ВСЕ данные из 1C как есть
+            # Не фильтруем поля - нам может понадобиться любое из них
+            out[code] = item
 
         return out
     except Exception as e:
@@ -232,6 +233,7 @@ def enrich_and_calculate_order_sync(order: "OrderInfo") -> "OrderInfo":
     """
     Синхронное обогащение + подсчет итогов.
     - Если items имеют product_code но нет unit_price, запрашивает из 1С
+    - Правильно конвертирует цены с учетом единиц измерения
     - Считает итоги по позициям и общий итог
     """
     if not order.items:
@@ -245,27 +247,73 @@ def enrich_and_calculate_order_sync(order: "OrderInfo") -> "OrderInfo":
             f"Нет кода у: {', '.join(missing_codes[:5])}"
         )
 
-    # Получаем данные из 1С
+    # Получаем данные из 1С (теперь получаем ВСЕ поля)
     need_codes = [it.product_code for it in order.items if it.product_code]
     codes_unique = list(dict.fromkeys([c for c in need_codes if c]))
 
     if codes_unique:
         products = _fetch_products_from_1c_sync(codes_unique)
+
         for it in order.items:
             if not it.product_code:
                 continue
-            p = products.get(it.product_code)
-            if not p:
+
+            product_data = products.get(it.product_code)
+            if not product_data:
                 logger.warning(f"Товар {it.product_code} не найден в 1С")
                 continue
 
-            # Заполняем unit_price из 1С если его нет
-            if it.unit_price is None and p.get("price") is not None:
-                it.unit_price = p["price"]
+            # Получаем базовую цену и единицу из 1C
+            base_price = product_data.get("Цена")
+            product_unit = product_data.get("ЕдИзмерения", "шт")
+            stock = product_data.get("Остаток")
 
             # Заполняем availability
-            if p.get("stock"):
-                it.availability = f"{p['stock']}"
+            if stock:
+                it.availability = str(stock)
+
+            # ✅ ПРАВИЛЬНЫЙ РАСЧЕТ ЦЕНЫ С УЧЕТОМ ЕДИНИЦ ИЗМЕРЕНИЯ
+            if it.unit_price is None and base_price is not None:
+                base_price_float = float(base_price)
+
+                # Парсим единицу измерения из 1C
+                base_unit, pieces_per_unit = parse_unit(product_unit)
+
+                # Нормализуем единицу клиента
+                client_unit = (it.unit or "шт").lower().strip()
+                client_unit_normalized = client_unit if client_unit not in ["штук", "штука", "шт."] else "шт"
+
+                logger.info(f"💰 Price conversion for {it.product_name} ({it.product_code}):")
+                logger.info(f"   Base price from 1C: {base_price_float} ₽/{base_unit}")
+                logger.info(f"   Product unit: {product_unit}")
+                logger.info(f"   Client wants: {it.quantity} {client_unit}")
+
+                # Случай 1: Клиент заказывает в штуках, а товар в м³/м²
+                if client_unit_normalized == "шт" and base_unit in ["м3", "м2", "м³", "м²"]:
+                    if pieces_per_unit and pieces_per_unit > 0:
+                        # Рассчитываем цену за штуку
+                        price_per_piece = base_price_float / pieces_per_unit
+                        it.unit_price = round(price_per_piece, 2)
+                        logger.info(f"   ✅ Converted: {base_price_float}/{pieces_per_unit:.4f} = {it.unit_price} ₽/шт")
+                    else:
+                        # Нет коэффициента конверсии - используем базовую цену
+                        it.unit_price = base_price_float
+                        logger.warning(f"   ⚠️  No conversion coefficient, using base price")
+
+                # Случай 2: Единицы совпадают или клиент заказывает в той же ЕИ
+                elif client_unit_normalized == base_unit or client_unit_normalized in ["м3", "м2", "м³", "м²"] and base_unit in ["м3", "м2", "м³", "м²"]:
+                    it.unit_price = base_price_float
+                    logger.info(f"   ✅ Units match, using base price: {it.unit_price} ₽/{base_unit}")
+
+                # Случай 3: Товар продается просто в штуках
+                elif base_unit == "шт":
+                    it.unit_price = base_price_float
+                    logger.info(f"   ✅ Product priced per piece: {it.unit_price} ₽/шт")
+
+                # Случай 4: Неизвестная конвертация - используем базовую цену с предупреждением
+                else:
+                    it.unit_price = base_price_float
+                    logger.warning(f"   ⚠️  Unknown conversion {client_unit} -> {base_unit}, using base price")
 
     return _calculate_order_totals(order)
 

@@ -2969,3 +2969,112 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-01-28 12:42:40,517 - bot - INFO - AI service response: 
 <Response [200 OK]>
 2026-01-28 12:42:40,651 - aiogram.event - INFO - Update id=84657689 is handled. Duration 31893 ms by bot id=8016349214
+2026-01-28 18:02:48,140 - aiogram.event - INFO - Update id=84657690 is handled. Duration 151 ms by bot id=8016349214
+2026-01-28 18:02:58,963 - aiogram.event - INFO - Update id=84657691 is handled. Duration 207 ms by bot id=8016349214
+2026-01-28 18:03:04,081 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 500 Internal Server Error"
+2026-01-28 18:03:04,082 - bot - ERROR - HTTP error when calling AI service for user 1103652370: 500 - Server error '500 Internal Server Error' for url 'http://api:5537/chat'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500
+2026-01-28 18:03:04,159 - aiogram.event - INFO - Update id=84657692 is handled. Duration 3307 ms by bot id=8016349214
+2026-01-28 18:56:30,232 - aiogram.event - INFO - Update id=84657693 is handled. Duration 226 ms by bot id=8016349214
+2026-01-28 18:56:31,999 - aiogram.event - INFO - Update id=84657694 is handled. Duration 101 ms by bot id=8016349214
+2026-01-28 18:56:48,102 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-28 18:56:48,102 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-28 18:56:48,228 - aiogram.event - INFO - Update id=84657695 is handled. Duration 10720 ms by bot id=8016349214
+2026-01-29 06:59:25,381 - aiogram.event - INFO - Update id=84657696 is handled. Duration 153 ms by bot id=8016349214
+2026-01-29 06:59:26,438 - aiogram.event - INFO - Update id=84657697 is handled. Duration 74 ms by bot id=8016349214
+2026-01-29 06:59:36,537 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 06:59:36,538 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 06:59:36,622 - aiogram.event - INFO - Update id=84657698 is handled. Duration 7841 ms by bot id=8016349214
+2026-01-29 07:00:18,229 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 07:00:18,230 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 07:00:18,344 - aiogram.event - INFO - Update id=84657699 is handled. Duration 10120 ms by bot id=8016349214
+2026-01-29 07:54:19,113 - aiogram.event - INFO - Update id=84657700 is handled. Duration 137 ms by bot id=8016349214
+2026-01-29 07:54:21,206 - aiogram.event - INFO - Update id=84657701 is handled. Duration 141 ms by bot id=8016349214
+2026-01-29 07:54:30,200 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 07:54:30,201 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 07:54:30,305 - aiogram.event - INFO - Update id=84657702 is handled. Duration 8447 ms by bot id=8016349214
+2026-01-29 07:55:53,570 - aiogram.event - INFO - Update id=84657703 is handled. Duration 65 ms by bot id=8016349214
+2026-01-29 07:55:55,520 - aiogram.event - INFO - Update id=84657704 is handled. Duration 217 ms by bot id=8016349214
+2026-01-29 07:56:02,809 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 07:56:02,811 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 07:56:02,881 - aiogram.event - INFO - Update id=84657705 is handled. Duration 6650 ms by bot id=8016349214
+2026-01-29 07:57:33,957 - aiogram.event - INFO - Update id=84657706 is handled. Duration 64 ms by bot id=8016349214
+2026-01-29 07:57:35,273 - aiogram.event - INFO - Update id=84657707 is handled. Duration 63 ms by bot id=8016349214
+2026-01-29 07:57:48,265 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 07:57:48,267 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 07:57:48,361 - aiogram.event - INFO - Update id=84657708 is handled. Duration 12223 ms by bot id=8016349214
+2026-01-29 08:01:27,877 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 08:01:27,878 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 08:01:27,952 - aiogram.event - INFO - Update id=84657709 is handled. Duration 23129 ms by bot id=8016349214
+2026-01-29 08:01:49,217 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 08:01:49,218 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 08:01:49,341 - aiogram.event - INFO - Update id=84657710 is handled. Duration 11062 ms by bot id=8016349214
+2026-01-29 08:03:47,501 - httpx - INFO - HTTP Request: POST http://api:5537/chat "HTTP/1.1 200 OK"
+2026-01-29 08:03:47,503 - bot - INFO - AI service response: 
+<Response [200 OK]>
+2026-01-29 08:03:47,589 - aiogram.event - INFO - Update id=84657711 is handled. Duration 13260 ms by bot id=8016349214
+2026-01-29 08:52:57,747 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-29 08:52:57,748 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-29 08:52:57,748 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-29 08:52:57,749 - bot - INFO - Bot is shutting down...
+2026-01-29 08:53:13,554 - bot - INFO - Starting bot...
+2026-01-29 08:53:13,555 - bot - INFO - Bot is starting...
+2026-01-29 08:53:13,795 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-29 08:53:13,796 - aiogram.dispatcher - INFO - Start polling
+2026-01-29 08:53:13,887 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-29 09:11:31,866 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-29 09:11:31,868 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-29 09:11:31,868 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-29 09:11:31,868 - bot - INFO - Bot is shutting down...
+2026-01-29 09:11:50,947 - bot - INFO - Starting bot...
+2026-01-29 09:11:50,948 - bot - INFO - Bot is starting...
+2026-01-29 09:11:51,243 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-29 09:11:51,244 - aiogram.dispatcher - INFO - Start polling
+2026-01-29 09:11:51,331 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-29 09:22:44,794 - aiogram.dispatcher - WARNING - Received SIGTERM signal
+2026-01-29 09:22:44,797 - aiogram.dispatcher - INFO - Polling stopped for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-29 09:22:44,798 - aiogram.dispatcher - INFO - Polling stopped
+2026-01-29 09:22:44,798 - bot - INFO - Bot is shutting down...
+2026-01-29 09:23:09,838 - bot - INFO - Starting bot...
+2026-01-29 09:23:09,839 - bot - INFO - Bot is starting...
+2026-01-29 09:23:10,263 - bot - WARNING - AI service is not available at http://api:5537. Bot will still start but may fail.
+2026-01-29 09:23:10,264 - aiogram.dispatcher - INFO - Start polling
+2026-01-29 09:23:10,380 - aiogram.dispatcher - INFO - Run polling for bot @StroyAssortimentBot id=8016349214 - 'StroyAssortimentBot'
+2026-01-29 10:30:11,825 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:30:11,826 - aiogram.dispatcher - WARNING - Sleep for 1.000000 seconds and try again... (tryings = 0, bot id = 8016349214)
+2026-01-29 10:30:28,837 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:30:28,837 - aiogram.dispatcher - WARNING - Sleep for 1.292439 seconds and try again... (tryings = 1, bot id = 8016349214)
+2026-01-29 10:30:46,142 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:30:46,143 - aiogram.dispatcher - WARNING - Sleep for 1.816321 seconds and try again... (tryings = 2, bot id = 8016349214)
+2026-01-29 10:31:03,970 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:31:03,970 - aiogram.dispatcher - WARNING - Sleep for 2.241593 seconds and try again... (tryings = 3, bot id = 8016349214)
+2026-01-29 10:31:22,223 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:31:22,223 - aiogram.dispatcher - WARNING - Sleep for 2.952964 seconds and try again... (tryings = 4, bot id = 8016349214)
+2026-01-29 10:31:41,188 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:31:41,189 - aiogram.dispatcher - WARNING - Sleep for 3.861358 seconds and try again... (tryings = 5, bot id = 8016349214)
+2026-01-29 10:32:01,068 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:32:01,069 - aiogram.dispatcher - WARNING - Sleep for 4.941200 seconds and try again... (tryings = 6, bot id = 8016349214)
+2026-01-29 10:32:22,029 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:32:22,029 - aiogram.dispatcher - WARNING - Sleep for 4.875489 seconds and try again... (tryings = 7, bot id = 8016349214)
+2026-01-29 10:32:42,919 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:32:42,920 - aiogram.dispatcher - WARNING - Sleep for 5.067581 seconds and try again... (tryings = 8, bot id = 8016349214)
+2026-01-29 10:33:04,011 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:33:04,011 - aiogram.dispatcher - WARNING - Sleep for 5.034338 seconds and try again... (tryings = 9, bot id = 8016349214)
+2026-01-29 10:33:25,062 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:33:25,062 - aiogram.dispatcher - WARNING - Sleep for 5.136500 seconds and try again... (tryings = 10, bot id = 8016349214)
+2026-01-29 10:33:46,213 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:33:46,213 - aiogram.dispatcher - WARNING - Sleep for 4.909649 seconds and try again... (tryings = 11, bot id = 8016349214)
+2026-01-29 10:34:07,137 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:34:07,138 - aiogram.dispatcher - WARNING - Sleep for 5.117035 seconds and try again... (tryings = 12, bot id = 8016349214)
+2026-01-29 10:34:28,268 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:34:28,268 - aiogram.dispatcher - WARNING - Sleep for 5.034076 seconds and try again... (tryings = 13, bot id = 8016349214)
+2026-01-29 10:34:49,315 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:34:49,316 - aiogram.dispatcher - WARNING - Sleep for 4.895539 seconds and try again... (tryings = 14, bot id = 8016349214)

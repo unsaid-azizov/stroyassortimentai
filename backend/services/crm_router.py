@@ -737,5 +737,128 @@ async def get_catalog_sync_status(current_user: dict = Depends(require_roles("ad
     return status
 
 
+@router.get("/api/redis/catalog")
+async def get_redis_catalog(
+    limit: int = Query(100, ge=1, le=1000),
+    offset: int = Query(0, ge=0),
+    search: Optional[str] = Query(None, description="Search in item names"),
+    current_user: dict = Depends(require_roles("admin", "manager"))
+):
+    """
+    Получить данные каталога из Redis с пагинацией.
+    """
+    from services.catalog_sync import catalog_sync_service
+
+    catalog = await catalog_sync_service.get_catalog_from_redis()
+
+    if not catalog:
+        return {
+            "items": [],
+            "total": 0,
+            "limit": limit,
+            "offset": offset,
+            "search": search
+        }
+
+    # Фильтрация по поиску
+    if search:
+        search_lower = search.lower()
+        catalog = [
+            item for item in catalog
+            if search_lower in item.get('item_name', '').lower() or
+               search_lower in item.get('group_name', '').lower() or
+               search_lower in str(item.get('Код', '')).lower()
+        ]
+
+    total = len(catalog)
+    items = catalog[offset:offset + limit]
+
+    return {
+        "items": items,
+        "total": total,
+        "limit": limit,
+        "offset": offset,
+        "search": search
+    }
+
+
+@router.get("/api/redis/keys")
+async def get_redis_keys(
+    pattern: str = Query("*", description="Redis key pattern"),
+    current_user: dict = Depends(require_roles("admin"))
+):
+    """
+    Получить список ключей из Redis (только для администраторов).
+    """
+    from services.catalog_sync import catalog_sync_service
+    import redis.asyncio as redis
+
+    await catalog_sync_service.init_redis()
+
+    keys = []
+    async for key in catalog_sync_service.redis_client.scan_iter(match=pattern):
+        # Получаем информацию о ключе
+        key_type = await catalog_sync_service.redis_client.type(key)
+        ttl = await catalog_sync_service.redis_client.ttl(key)
+
+        keys.append({
+            "key": key,
+            "type": key_type,
+            "ttl": ttl if ttl > 0 else None
+        })
+
+    return {
+        "keys": keys,
+        "total": len(keys),
+        "pattern": pattern
+    }
+
+
+@router.get("/api/redis/key/{key:path}")
+async def get_redis_key_value(
+    key: str,
+    current_user: dict = Depends(require_roles("admin"))
+):
+    """
+    Получить значение конкретного ключа из Redis.
+    """
+    from services.catalog_sync import catalog_sync_service
+
+    await catalog_sync_service.init_redis()
+
+    key_type = await catalog_sync_service.redis_client.type(key)
+
+    if key_type == "none":
+        raise HTTPException(status_code=404, detail=f"Key '{key}' not found")
+
+    ttl = await catalog_sync_service.redis_client.ttl(key)
+
+    # Получаем значение в зависимости от типа
+    if key_type == "string":
+        value = await catalog_sync_service.redis_client.get(key)
+        # Пробуем распарсить как JSON
+        try:
+            value = json.loads(value)
+        except:
+            pass  # Оставляем как строку
+    elif key_type == "hash":
+        value = await catalog_sync_service.redis_client.hgetall(key)
+    elif key_type == "list":
+        value = await catalog_sync_service.redis_client.lrange(key, 0, -1)
+    elif key_type == "set":
+        value = await catalog_sync_service.redis_client.smembers(key)
+    elif key_type == "zset":
+        value = await catalog_sync_service.redis_client.zrange(key, 0, -1, withscores=True)
+    else:
+        value = None
+
+    return {
+        "key": key,
+        "type": key_type,
+        "ttl": ttl if ttl > 0 else None,
+        "value": value
+    }
+
+
 # Роутер экспортируется для подключения к основному приложению
 

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
 import Editor from '@monaco-editor/react'
 import { AppSidebar } from "@/components/app-sidebar"
 import { SiteHeader } from "@/components/site-header"
@@ -20,8 +19,40 @@ import {
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Skeleton } from "@/components/ui/skeleton"
+import { Input } from "@/components/ui/input"
+import { Badge } from "@/components/ui/badge"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { Search, RefreshCw, Eye } from "lucide-react"
 import { toast } from "sonner"
 import api from '@/lib/api'
+
+interface CatalogItem {
+  group_name: string
+  group_code: string
+  item_name: string
+  item_code: string
+  Код?: string
+  Наименование?: string
+  Остаток?: string
+  Толщина?: string
+  Ширина?: string
+  Длина?: string
+  [key: string]: any
+}
 
 // Функция для форматирования времени в МСК
 function formatMoscowTime(isoString: string): string {
@@ -86,10 +117,23 @@ function useTheme() {
 }
 
 export default function SalesManagerPage() {
-  const router = useRouter()
   const [promptContent, setPromptContent] = useState('')
   const [knowledgeBaseContent, setKnowledgeBaseContent] = useState('')
+  const [catalogSearch, setCatalogSearch] = useState('')
+  const [catalogPage, setCatalogPage] = useState(0)
+  const [debouncedSearch, setDebouncedSearch] = useState('')
+  const [selectedItem, setSelectedItem] = useState<CatalogItem | null>(null)
   const theme = useTheme()
+  const catalogLimit = 50
+
+  // Debounce search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(catalogSearch)
+      setCatalogPage(0) // Reset to first page on search
+    }, 500)
+    return () => clearTimeout(timer)
+  }, [catalogSearch])
 
   // Загрузка статуса синхронизации каталога
   const { data: catalogSyncStatus, isLoading: isLoadingCatalogStatus, refetch: refetchCatalogStatus } = useQuery({
@@ -114,6 +158,21 @@ export default function SalesManagerPage() {
     },
     onError: (error: any) => {
       toast.error(error.response?.data?.detail || 'Ошибка при запуске синхронизации')
+    },
+  })
+
+  // Загрузка данных каталога из Redis
+  const { data: catalogData, isLoading: catalogLoading, refetch: refetchCatalog } = useQuery({
+    queryKey: ['redis-catalog', catalogPage, debouncedSearch],
+    queryFn: async () => {
+      const response = await api.get('/api/redis/catalog', {
+        params: {
+          limit: catalogLimit,
+          offset: catalogPage * catalogLimit,
+          search: debouncedSearch || undefined,
+        },
+      })
+      return response.data
     },
   })
 
@@ -444,6 +503,160 @@ export default function SalesManagerPage() {
                         )}
                       </CardContent>
                     </Card>
+
+                    {/* Просмотр данных каталога */}
+                    <Card className="mt-4">
+                      <CardHeader>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <CardTitle>Данные каталога в Redis</CardTitle>
+                            <CardDescription>
+                              {catalogData
+                                ? `Найдено ${catalogData.total.toLocaleString('ru-RU')} товаров`
+                                : 'Загрузка...'}
+                            </CardDescription>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            onClick={() => refetchCatalog()}
+                          >
+                            <RefreshCw className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        {/* Search */}
+                        <div className="mb-4">
+                          <div className="relative">
+                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                            <Input
+                              type="search"
+                              placeholder="Поиск по названию, группе, коду..."
+                              className="pl-8"
+                              value={catalogSearch}
+                              onChange={(e) => setCatalogSearch(e.target.value)}
+                            />
+                          </div>
+                        </div>
+
+                        {/* Table */}
+                        {catalogLoading ? (
+                          <div className="space-y-2">
+                            <Skeleton className="h-12 w-full" />
+                            <Skeleton className="h-12 w-full" />
+                            <Skeleton className="h-12 w-full" />
+                          </div>
+                        ) : catalogData && catalogData.items.length > 0 ? (
+                          <>
+                            <div className="rounded-md border overflow-auto max-h-[500px]">
+                              <Table>
+                                <TableHeader>
+                                  <TableRow>
+                                    <TableHead>Код</TableHead>
+                                    <TableHead>Название</TableHead>
+                                    <TableHead>Группа</TableHead>
+                                    <TableHead>Ед. изм.</TableHead>
+                                    <TableHead>Цена</TableHead>
+                                    <TableHead>Остаток</TableHead>
+                                    <TableHead>Размеры</TableHead>
+                                    <TableHead></TableHead>
+                                  </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                  {catalogData.items.map((item: CatalogItem, idx: number) => (
+                                    <TableRow
+                                      key={idx}
+                                      className="cursor-pointer hover:bg-muted/50"
+                                      onClick={() => setSelectedItem(item)}
+                                    >
+                                      <TableCell className="font-mono text-xs">
+                                        {item.item_code || item.Код || '-'}
+                                      </TableCell>
+                                      <TableCell className="font-medium">
+                                        {item.item_name || item.Наименование || '-'}
+                                      </TableCell>
+                                      <TableCell className="text-sm text-muted-foreground">
+                                        {item.group_name || '-'}
+                                      </TableCell>
+                                      <TableCell className="text-sm">
+                                        {item.ЕдИзмерения || item.Дополнительнаяедизмерения1 || 'шт'}
+                                      </TableCell>
+                                      <TableCell className="font-medium">
+                                        {item.Цена ? (
+                                          `${Number(item.Цена).toLocaleString('ru-RU')} ₽`
+                                        ) : (
+                                          '-'
+                                        )}
+                                      </TableCell>
+                                      <TableCell>
+                                        {item.Остаток ? (
+                                          <Badge variant="secondary">{item.Остаток}</Badge>
+                                        ) : (
+                                          '-'
+                                        )}
+                                      </TableCell>
+                                      <TableCell className="text-xs text-muted-foreground">
+                                        {[
+                                          item.Толщина && `${item.Толщина}мм`,
+                                          item.Ширина && `${item.Ширина}мм`,
+                                          item.Длина && `${item.Длина}мм`,
+                                        ]
+                                          .filter(Boolean)
+                                          .join(' × ') || '-'}
+                                      </TableCell>
+                                      <TableCell>
+                                        <Button
+                                          variant="ghost"
+                                          size="icon"
+                                          className="h-8 w-8"
+                                          onClick={(e) => {
+                                            e.stopPropagation()
+                                            setSelectedItem(item)
+                                          }}
+                                        >
+                                          <Eye className="h-4 w-4" />
+                                        </Button>
+                                      </TableCell>
+                                    </TableRow>
+                                  ))}
+                                </TableBody>
+                              </Table>
+                            </div>
+
+                            {/* Pagination */}
+                            <div className="flex items-center justify-between mt-4">
+                              <div className="text-sm text-muted-foreground">
+                                Страница {catalogPage + 1} из {Math.ceil(catalogData.total / catalogLimit)} (показано{' '}
+                                {catalogData.items.length} из {catalogData.total.toLocaleString('ru-RU')})
+                              </div>
+                              <div className="flex gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => setCatalogPage((p) => Math.max(0, p - 1))}
+                                  disabled={catalogPage === 0}
+                                >
+                                  Назад
+                                </Button>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  onClick={() => setCatalogPage((p) => p + 1)}
+                                  disabled={catalogPage >= Math.ceil(catalogData.total / catalogLimit) - 1}
+                                >
+                                  Вперёд
+                                </Button>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <div className="text-center text-muted-foreground py-8">
+                            Данные не найдены
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
                   </TabsContent>
                 </Tabs>
               </div>
@@ -451,6 +664,163 @@ export default function SalesManagerPage() {
           </div>
         </div>
       </SidebarInset>
+
+      {/* Product Detail Dialog */}
+      <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
+        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl">
+              {selectedItem?.item_name || selectedItem?.Наименование}
+            </DialogTitle>
+            <DialogDescription>
+              Код: {selectedItem?.item_code || selectedItem?.Код}
+            </DialogDescription>
+          </DialogHeader>
+
+          {selectedItem && (
+            <div className="space-y-4">
+              {/* Main Info */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-muted-foreground">Группа</div>
+                  <div>{selectedItem.group_name || '-'}</div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-muted-foreground">Остаток</div>
+                  <div>
+                    {selectedItem.Остаток ? (
+                      <Badge variant="secondary">{selectedItem.Остаток}</Badge>
+                    ) : (
+                      '-'
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Price & Unit */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-muted-foreground">Цена</div>
+                  <div className="text-2xl font-bold">
+                    {selectedItem.Цена
+                      ? `${Number(selectedItem.Цена).toLocaleString('ru-RU')} ₽`
+                      : '-'}
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-muted-foreground">
+                    Единица измерения
+                  </div>
+                  <div>{selectedItem.ЕдИзмерения || selectedItem.Дополнительнаяедизмерения1 || 'шт'}</div>
+                </div>
+              </div>
+
+              {/* Dimensions */}
+              {(selectedItem.Толщина || selectedItem.Ширина || selectedItem.Длина) && (
+                <div className="space-y-2">
+                  <div className="text-sm font-medium text-muted-foreground">Размеры</div>
+                  <div className="grid grid-cols-3 gap-2">
+                    {selectedItem.Толщина && (
+                      <div className="text-sm">
+                        <span className="text-muted-foreground">Толщина:</span>{' '}
+                        {selectedItem.Толщина} мм
+                      </div>
+                    )}
+                    {selectedItem.Ширина && (
+                      <div className="text-sm">
+                        <span className="text-muted-foreground">Ширина:</span>{' '}
+                        {selectedItem.Ширина} мм
+                      </div>
+                    )}
+                    {selectedItem.Длина && (
+                      <div className="text-sm">
+                        <span className="text-muted-foreground">Длина:</span>{' '}
+                        {selectedItem.Длина} мм
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              {/* Material Properties */}
+              <div className="grid grid-cols-2 gap-4">
+                {selectedItem.Влажность && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">Влажность</div>
+                    <div>{selectedItem.Влажность}</div>
+                  </div>
+                )}
+                {selectedItem.Сорт && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">Сорт</div>
+                    <div>{selectedItem.Сорт}</div>
+                  </div>
+                )}
+                {selectedItem.Порода && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">Порода</div>
+                    <div>{selectedItem.Порода}</div>
+                  </div>
+                )}
+                {selectedItem.ПлотностькгмОбщие && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">Плотность</div>
+                    <div>{selectedItem.ПлотностькгмОбщие} кг/м³</div>
+                  </div>
+                )}
+              </div>
+
+              {/* Additional Info */}
+              <div className="grid grid-cols-2 gap-4">
+                {selectedItem.СрокпроизводстваднОбщие && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">
+                      Срок производства
+                    </div>
+                    <div>{selectedItem.СрокпроизводстваднОбщие} дней</div>
+                  </div>
+                )}
+                {selectedItem.Количествовм2Общие && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">
+                      Количество в м²
+                    </div>
+                    <div>{selectedItem.Количествовм2Общие}</div>
+                  </div>
+                )}
+                {selectedItem.Коэфдополнительнаяедизмерения1 && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">
+                      Коэффициент ед. изм.
+                    </div>
+                    <div>{selectedItem.Коэфдополнительнаяедизмерения1}</div>
+                  </div>
+                )}
+                {selectedItem.ПопулярностьОбщие && (
+                  <div className="space-y-2">
+                    <div className="text-sm font-medium text-muted-foreground">
+                      Популярность
+                    </div>
+                    <div>
+                      <Badge>{selectedItem.ПопулярностьОбщие}</Badge>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* All Fields (Debug) */}
+              <details className="mt-4">
+                <summary className="text-sm font-medium text-muted-foreground cursor-pointer hover:text-foreground">
+                  Все поля (для разработки)
+                </summary>
+                <pre className="mt-2 p-4 bg-muted rounded-md text-xs overflow-auto max-h-60">
+                  {JSON.stringify(selectedItem, null, 2)}
+                </pre>
+              </details>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </SidebarProvider>
   )
 }
