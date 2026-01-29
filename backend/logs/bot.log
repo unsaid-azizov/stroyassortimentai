@@ -3078,3 +3078,5 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-01-29 10:34:28,268 - aiogram.dispatcher - WARNING - Sleep for 5.034076 seconds and try again... (tryings = 13, bot id = 8016349214)
 2026-01-29 10:34:49,315 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
 2026-01-29 10:34:49,316 - aiogram.dispatcher - WARNING - Sleep for 4.895539 seconds and try again... (tryings = 14, bot id = 8016349214)
+2026-01-29 10:35:10,226 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:35:10,227 - aiogram.dispatcher - WARNING - Sleep for 4.925797 seconds and try again... (tryings = 15, bot id = 8016349214)
