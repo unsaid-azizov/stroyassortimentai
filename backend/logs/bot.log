@@ -3080,3 +3080,15 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-01-29 10:34:49,316 - aiogram.dispatcher - WARNING - Sleep for 4.895539 seconds and try again... (tryings = 14, bot id = 8016349214)
 2026-01-29 10:35:10,226 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
 2026-01-29 10:35:10,227 - aiogram.dispatcher - WARNING - Sleep for 4.925797 seconds and try again... (tryings = 15, bot id = 8016349214)
+2026-01-29 10:35:31,172 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:35:31,172 - aiogram.dispatcher - WARNING - Sleep for 4.951113 seconds and try again... (tryings = 16, bot id = 8016349214)
+2026-01-29 10:35:52,136 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:35:52,136 - aiogram.dispatcher - WARNING - Sleep for 5.086085 seconds and try again... (tryings = 17, bot id = 8016349214)
+2026-01-29 10:36:13,236 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:36:13,237 - aiogram.dispatcher - WARNING - Sleep for 5.040949 seconds and try again... (tryings = 18, bot id = 8016349214)
+2026-01-29 10:36:34,288 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:36:34,288 - aiogram.dispatcher - WARNING - Sleep for 4.936648 seconds and try again... (tryings = 19, bot id = 8016349214)
+2026-01-29 10:36:55,237 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:36:55,238 - aiogram.dispatcher - WARNING - Sleep for 5.021342 seconds and try again... (tryings = 20, bot id = 8016349214)
+2026-01-29 10:37:16,274 - aiogram.dispatcher - ERROR - Failed to fetch updates - TelegramNetworkError: HTTP Client says - ClientConnectorDNSError: Cannot connect to host api.telegram.org:443 ssl:default [Temporary failure in name resolution]
+2026-01-29 10:37:16,275 - aiogram.dispatcher - WARNING - Sleep for 5.066327 seconds and try again... (tryings = 21, bot id = 8016349214)
