@@ -285,7 +285,13 @@ class ParamsManager:
         """
         if self._prompt_text:
             return self._prompt_text
-        return "Ты — Саид, менеджер по продажам «СтройАссортимент». Отвечай только по товарам/ценам/наличию/доставке/оплате и контактам компании."
+        # Fallback: load from default prompt file
+        try:
+            default_path = Path(__file__).parent.parent / "prompts" / "default.txt"
+            return default_path.read_text(encoding="utf-8")
+        except Exception as e:
+            logger.warning(f"Could not load default prompt from file: {e}")
+            return "Ты — Саид, менеджер по продажам «СтройАссортимент». Отвечай только по товарам/ценам/наличию/доставке/оплате и контактам компании."
     
     def get_knowledge_base_text(self) -> str:
         """
